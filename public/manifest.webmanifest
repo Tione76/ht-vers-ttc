@@ -1,0 +1,10 @@
+{
+  "name": "Calculateur Financier",
+  "short_name": "CalcFinance",
+  "description": "Simulateur en ligne gratuit pour vos calculs financiers",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000091",
+  "lang": "fr"
+}

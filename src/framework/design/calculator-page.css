@@ -1,0 +1,243 @@
+/* Calculator Page — header hero + simulateur intégré */
+
+.tool-header {
+  position: relative;
+  background: var(--ds-brand);
+  height: clamp(550px, 600px, 650px);
+  display: flex;
+  flex-direction: column;
+}
+
+.tool-header__inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  max-width: var(--ds-max-content);
+  margin: 0 auto;
+  width: 100%;
+  padding: 16px 24px;
+}
+
+@media (min-width: 640px) {
+  .tool-header__inner {
+    padding: 16px 32px;
+  }
+}
+
+.calc-stage {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+.calc-tool {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 78%;
+  width: 100%;
+}
+
+.calc-columns {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  min-height: 0;
+}
+
+@media (min-width: 900px) {
+  .calc-columns {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+}
+
+.calc-col {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.calc-col-title {
+  font-size: var(--ds-font-size-xs);
+  font-weight: 600;
+  color: rgba(238, 246, 252, 0.65);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.calc-fields {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  overflow-y: auto;
+}
+
+.calc-field-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 520px) {
+  .calc-field-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.calc-field-label {
+  display: block;
+  font-size: var(--ds-font-size-md);
+  font-weight: 600;
+  color: var(--ds-label-on-blue);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.calc-fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.calc-input {
+  width: 100%;
+  height: 40px;
+  padding: 0 16px;
+  font-family: inherit;
+  font-size: var(--ds-font-size-lg);
+  font-weight: 500;
+  color: #1a1a1a;
+  background: #ffffff;
+  border: 1px solid #b8c9d9;
+  border-radius: var(--ds-radius);
+  transition: border-color var(--ds-transition), box-shadow var(--ds-transition);
+}
+
+.calc-input:hover {
+  border-color: #9eb4c8;
+}
+
+.calc-input:focus {
+  outline: none;
+  border-color: #ffffff;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.55);
+}
+
+.calc-input-suffix {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: var(--ds-font-size-base);
+  color: #6b7c8f;
+}
+
+.calc-col-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  flex-shrink: 0;
+}
+
+.calc-cta {
+  height: 48px;
+  min-width: 192px;
+  padding: 0 40px;
+  font-family: inherit;
+  font-size: var(--ds-font-size-xl);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ds-brand);
+  background: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: var(--ds-radius);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color var(--ds-transition), border-color var(--ds-transition);
+}
+
+.calc-cta:hover {
+  background: #eef4fa;
+  border-color: #eef4fa;
+}
+
+.calc-reset {
+  font-size: var(--ds-font-size-base);
+  color: rgba(255, 255, 255, 0.88);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 8px 0;
+  transition: color var(--ds-transition);
+}
+
+.calc-reset:hover {
+  color: #ffffff;
+}
+
+.calc-col--results {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.result-primary {
+  background: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: var(--ds-radius);
+  padding: 32px 40px;
+  flex-shrink: 0;
+}
+
+.result-primary-label {
+  font-size: var(--ds-font-size-xs);
+  font-weight: 600;
+  color: #5a7085;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.result-primary-value {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--ds-brand);
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+@media (min-width: 900px) {
+  .result-primary-value {
+    font-size: 4rem;
+  }
+}
+
+.result-details {
+  margin-top: 8px;
+  font-size: var(--ds-font-size-base);
+  color: #5a7085;
+  line-height: 1.55;
+}
+
+.calc-disclaimer {
+  flex-shrink: 0;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  font-size: var(--ds-font-size-xs);
+  color: rgba(212, 230, 245, 0.65);
+}
