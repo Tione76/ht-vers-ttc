@@ -132,7 +132,10 @@ export const siteConfig = {
   },
 
   analytics: {
-    googleAnalyticsId: process.env.NEXT_PUBLIC_GA_ID,
+    googleAnalyticsId:
+      process.env.NODE_ENV === "production"
+        ? (process.env.NEXT_PUBLIC_GA_ID ?? "G-5886CNKJNM")
+        : undefined,
     googleSearchConsoleId: process.env.NEXT_PUBLIC_GSC_ID,
     googleAdsenseClientId: process.env.NEXT_PUBLIC_ADSENSE_ID,
   },
