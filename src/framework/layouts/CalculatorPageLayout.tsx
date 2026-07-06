@@ -56,6 +56,7 @@ function CalculatorPageInner({ Calculator }: CalculatorPageLayoutProps) {
           nav={site.navigation.header}
           logo={site.logo}
           guidesNavigation={site.guidesNavigation}
+          toolsNavigation={site.toolsNavigation}
         />
         <div className="tool-header__inner">
           <h1 className="tool-header__title">{site.home.h1}</h1>

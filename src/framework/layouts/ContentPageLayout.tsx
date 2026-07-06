@@ -33,6 +33,7 @@ export function ContentPageLayout({
         nav={site.navigation.header}
         logo={site.logo}
         guidesNavigation={site.guidesNavigation}
+        toolsNavigation={site.toolsNavigation}
         meta={meta}
         title={title}
         subtitle={subtitle}

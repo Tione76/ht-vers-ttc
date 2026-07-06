@@ -5,7 +5,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { NavLink } from "@/framework/types";
 import type { GuideNavItem } from "@/site/guides/navigation";
+import type { ToolNavItem } from "@/site/navigation/tools";
 import { GuidesNavMenu } from "@/site/navigation/GuidesNavMenu";
+import { ToolsNavMenu } from "@/site/navigation/ToolsNavMenu";
 
 export interface SiteLogo {
   src: string;
@@ -18,6 +20,7 @@ interface SiteNavProps {
   siteName: string;
   nav: NavLink[];
   logo?: SiteLogo;
+  toolsNavigation?: ToolNavItem[];
   guidesNavigation?: GuideNavItem[];
 }
 
@@ -50,8 +53,10 @@ function NavItem({ link }: { link: NavLink }) {
   );
 }
 
-export function SiteNav({ siteName, nav, logo, guidesNavigation }: SiteNavProps) {
+export function SiteNav({ siteName, nav, logo, toolsNavigation, guidesNavigation }: SiteNavProps) {
+  const showTools = toolsNavigation && toolsNavigation.length > 0;
   const showGuides = guidesNavigation && guidesNavigation.length > 0;
+  const [primaryLink, ...secondaryLinks] = nav;
 
   return (
     <div className="site-header-bar">
@@ -74,13 +79,12 @@ export function SiteNav({ siteName, nav, logo, guidesNavigation }: SiteNavProps)
           </Link>
           <nav aria-label="Navigation principale" className="site-nav">
             <ul>
-              {nav.flatMap((link, index) => {
-                const items = [<NavItem key={link.href} link={link} />];
-                if (index === 0 && showGuides) {
-                  items.push(<GuidesNavMenu key="guides-nav" items={guidesNavigation} />);
-                }
-                return items;
-              })}
+              {primaryLink && <NavItem link={primaryLink} />}
+              {showTools && <ToolsNavMenu key="tools-nav" items={toolsNavigation} />}
+              {showGuides && <GuidesNavMenu key="guides-nav" items={guidesNavigation} />}
+              {secondaryLinks.map((link) => (
+                <NavItem key={link.href} link={link} />
+              ))}
             </ul>
           </nav>
         </header>

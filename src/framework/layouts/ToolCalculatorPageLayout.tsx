@@ -69,6 +69,7 @@ function ToolCalculatorPageInner({ h1, Calculator, editorial, sidebar, variant =
           nav={site.navigation.header}
           logo={site.logo}
           guidesNavigation={site.guidesNavigation}
+          toolsNavigation={site.toolsNavigation}
         />
         <div className="tool-header__inner">
           <h1 className="tool-header__title tool-header__title--sentence">{h1}</h1>

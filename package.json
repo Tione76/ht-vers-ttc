@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "clean": "node scripts/clean-next.js",
     "dev:clean": "node scripts/clean-next.js && next dev",
     "dev:fast": "next dev",
     "build": "next build",

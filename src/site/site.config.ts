@@ -2,6 +2,7 @@
  * Configuration du site — modifiez ce fichier pour chaque nouveau site.
  */
 import { guidesNavigation } from "./guides/navigation";
+import { toolsNavigation } from "./navigation/tools";
 
 export const siteConfig = {
   name: "Calculateur TVA",
@@ -117,6 +118,9 @@ export const siteConfig = {
 
   /** Menu Guides — voir src/site/guides/navigation.ts */
   guidesNavigation,
+
+  /** Menu Nos outils — voir src/site/navigation/tools.ts */
+  toolsNavigation,
 
   navigation: {
     header: [

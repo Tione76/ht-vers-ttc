@@ -2,11 +2,13 @@ import { SiteNav, type SiteLogo } from "./SiteNav";
 import { HeaderCurveDown } from "./Curves";
 import type { NavLink } from "@/framework/types";
 import type { GuideNavItem } from "@/site/guides/navigation";
+import type { ToolNavItem } from "@/site/navigation/tools";
 
 interface CompactPageHeaderProps {
   siteName: string;
   nav: NavLink[];
   logo?: SiteLogo;
+  toolsNavigation?: ToolNavItem[];
   guidesNavigation?: GuideNavItem[];
   meta?: string;
   title: string;
@@ -18,6 +20,7 @@ export function CompactPageHeader({
   siteName,
   nav,
   logo,
+  toolsNavigation,
   guidesNavigation,
   meta,
   title,
@@ -29,6 +32,7 @@ export function CompactPageHeader({
         siteName={siteName}
         nav={nav}
         logo={logo}
+        toolsNavigation={toolsNavigation}
         guidesNavigation={guidesNavigation}
       />
       <div className="article-header__inner">

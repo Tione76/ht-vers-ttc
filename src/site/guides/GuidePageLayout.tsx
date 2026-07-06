@@ -13,10 +13,17 @@ interface GuidePageLayoutProps {
   subtitle: string;
   children: ReactNode;
   sidebar?: ReactNode;
+  prose?: boolean;
 }
 
 /** Layout dédié aux guides — header hero, sans nom de site au-dessus du H1 */
-export function GuidePageLayout({ title, subtitle, children, sidebar }: GuidePageLayoutProps) {
+export function GuidePageLayout({
+  title,
+  subtitle,
+  children,
+  sidebar,
+  prose = true,
+}: GuidePageLayoutProps) {
   const site = useSite();
 
   return (
@@ -27,6 +34,7 @@ export function GuidePageLayout({ title, subtitle, children, sidebar }: GuidePag
           nav={site.navigation.header}
           logo={site.logo}
           guidesNavigation={site.guidesNavigation}
+          toolsNavigation={site.toolsNavigation}
         />
         <div className="guide-header__inner">
           <h1 className="guide-header__title">{title}</h1>
@@ -38,7 +46,7 @@ export function GuidePageLayout({ title, subtitle, children, sidebar }: GuidePag
       <main id="main-content" className="article-page">
         <div className="content-wrap content-wrap--wide">
           <div className="article-layout">
-            <div className="article-body prose">{children}</div>
+            <div className={prose ? "article-body prose" : "article-body"}>{children}</div>
             {sidebar && (
               <aside className="article-sidebar" aria-label="Maillage interne">
                 {sidebar}

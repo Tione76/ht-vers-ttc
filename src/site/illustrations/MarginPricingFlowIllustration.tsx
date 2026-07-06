@@ -12,22 +12,27 @@ export function MarginPricingFlowIllustration() {
 
   const boxW = 200;
   const boxH = 72;
-  const startX = (720 - boxW) / 2;
-  let y = 24;
+  const gap = 36;
+  const padTop = 24;
+  const padBottom = 24;
+  const width = 720;
+  const height = padTop + steps.length * boxH + (steps.length - 1) * gap + padBottom;
+  const startX = (width - boxW) / 2;
+  let y = padTop;
 
   return (
     <svg
-      viewBox="0 0 720 460"
+      viewBox={`0 0 ${width} ${height}`}
       xmlns="http://www.w3.org/2000/svg"
       role="img"
       aria-label="Du prix d'achat HT au prix TTC : taux de marge, prix de vente HT, TVA"
     >
-      <rect width="720" height="460" fill={c.surfaceAlt} />
+      <rect width={width} height={height} fill={c.surfaceAlt} />
 
       {steps.map((step, index) => {
         const isLast = index === steps.length - 1;
         const boxY = y;
-        y += boxH + (isLast ? 0 : 36);
+        y += boxH + (isLast ? 0 : gap);
 
         return (
           <g key={step.label}>

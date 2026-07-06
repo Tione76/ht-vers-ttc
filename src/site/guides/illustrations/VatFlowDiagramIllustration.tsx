@@ -1,41 +1,75 @@
-import { ILLU as c } from "./tokens";
-
-/** Flux TVA collectée et déductible */
+/** Flux TVA collectée / déductible — schéma pédagogique vertical */
 export function VatFlowDiagramIllustration() {
   return (
-    <svg viewBox="0 0 720 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Schéma TVA collectée et TVA déductible">
-      <rect width="720" height="360" fill={c.surfaceAlt} />
+    <div
+      className="vat-balance-flow"
+      role="img"
+      aria-label="Schéma du flux de TVA : collectée sur les ventes, déductible sur les achats, TVA nette reversée à l'État"
+    >
+      <div className="vat-balance-flow__flow">
+        <article className="vat-balance-flow__block vat-balance-flow__block--sales">
+          <p className="vat-balance-flow__tag">VENTES</p>
+          <h4 className="vat-balance-flow__title">TVA collectée</h4>
+          <p className="vat-balance-flow__desc">Facturée au client</p>
+        </article>
 
-      <rect x="48" y="80" width="200" height="100" rx="8" fill={c.brand} />
-      <text x="148" y="116" textAnchor="middle" fill="rgba(255,255,255,0.8)" fontSize="10" fontWeight="600" fontFamily={c.font}>VENTES</text>
-      <text x="148" y="144" textAnchor="middle" fill="#fff" fontSize="13" fontWeight="700" fontFamily={c.font}>TVA collectée</text>
-      <text x="148" y="164" textAnchor="middle" fill="rgba(255,255,255,0.75)" fontSize="10" fontFamily={c.font}>Facturée au client</text>
+        <div className="vat-balance-flow__arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19" />
+            <polyline points="19 12 12 19 5 12" />
+          </svg>
+        </div>
 
-      <rect x="472" y="80" width="200" height="100" rx="8" fill={c.surface} stroke={c.border} strokeWidth="1.5" />
-      <text x="572" y="116" textAnchor="middle" fill={c.textMuted} fontSize="10" fontWeight="600" fontFamily={c.font}>ACHATS</text>
-      <text x="572" y="144" textAnchor="middle" fill={c.brand} fontSize="13" fontWeight="700" fontFamily={c.font}>TVA déductible</text>
-      <text x="572" y="164" textAnchor="middle" fill={c.textMuted} fontSize="10" fontFamily={c.font}>Sur les charges</text>
+        <div className="vat-balance-flow__split">
+          <article className="vat-balance-flow__block vat-balance-flow__block--company">
+            <p className="vat-balance-flow__tag">ENTREPRISE</p>
+            <h4 className="vat-balance-flow__title">Calcul du solde</h4>
+            <p className="vat-balance-flow__desc">Additionne la TVA collectée et impute la TVA déductible</p>
+          </article>
 
-      <path d="M 248 130 L 320 130" stroke={c.brandMuted} strokeWidth="2" markerEnd="url(#arr)" />
-      <path d="M 400 130 L 472 130" stroke={c.brandMuted} strokeWidth="2" />
+          <div className="vat-balance-flow__h-connector" aria-hidden="true">
+            <span className="vat-balance-flow__h-line" />
+            <span className="vat-balance-flow__h-arrows">↔</span>
+            <span className="vat-balance-flow__h-line" />
+          </div>
 
-      <rect x="260" y="220" width="200" height="80" rx="8" fill={c.brandLight} stroke={c.brandMuted} strokeWidth="1.5" />
-      <text x="360" y="252" textAnchor="middle" fill={c.brand} fontSize="11" fontWeight="700" fontFamily={c.font}>Entreprise</text>
-      <text x="360" y="276" textAnchor="middle" fill={c.text} fontSize="10" fontFamily={c.font}>Reverse la différence</text>
+          <article className="vat-balance-flow__block vat-balance-flow__block--purchases">
+            <p className="vat-balance-flow__tag">ACHATS</p>
+            <h4 className="vat-balance-flow__title">TVA déductible</h4>
+            <p className="vat-balance-flow__desc">Payée sur les achats professionnels</p>
+          </article>
+        </div>
 
-      <path d="M 148 180 L 148 220 L 300 220 L 300 260" stroke={c.brandMuted} strokeWidth="2" strokeDasharray="4 3" />
-      <path d="M 572 180 L 572 220 L 420 220 L 420 260" stroke={c.brandMuted} strokeWidth="2" strokeDasharray="4 3" />
+        <div className="vat-balance-flow__arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19" />
+            <polyline points="19 12 12 19 5 12" />
+          </svg>
+        </div>
 
-      <rect x="200" y="310" width="320" height="36" rx="6" fill={c.brand} />
-      <text x="360" y="334" textAnchor="middle" fill="#fff" fontSize="12" fontWeight="600" fontFamily={c.font}>
-        État = TVA collectée − TVA déductible
-      </text>
+        <article className="vat-balance-flow__block vat-balance-flow__block--net">
+          <p className="vat-balance-flow__tag">SOLDE</p>
+          <h4 className="vat-balance-flow__title">TVA nette à reverser</h4>
+          <p className="vat-balance-flow__desc">
+            <strong>TVA collectée − TVA déductible</strong>
+          </p>
+        </article>
 
-      <defs>
-        <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-          <path d="M0,0 L6,3 L0,6" fill={c.brandMuted} />
-        </marker>
-      </defs>
-    </svg>
+        <div className="vat-balance-flow__arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19" />
+            <polyline points="19 12 12 19 5 12" />
+          </svg>
+        </div>
+
+        <article className="vat-balance-flow__block vat-balance-flow__block--state">
+          <p className="vat-balance-flow__tag">ÉTAT</p>
+          <h4 className="vat-balance-flow__title">Paiement ou crédit de TVA</h4>
+          <p className="vat-balance-flow__desc">
+            Reversement à l&apos;administration — ou crédit si la TVA déductible est supérieure
+          </p>
+        </article>
+      </div>
+    </div>
   );
 }

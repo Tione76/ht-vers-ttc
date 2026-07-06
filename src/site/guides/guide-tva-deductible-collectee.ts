@@ -78,7 +78,7 @@ export const guideTvaDeductibleCollectee: Guide = {
           type: "illustration",
           id: "vat-flow-diagram",
           caption:
-            "Flux de la TVA : collectée sur les ventes en amont, déductible sur les achats en aval, solde net reversé via la CA3.",
+            "De la TVA collectée sur les ventes à la TVA déductible sur les achats : l'entreprise calcule la TVA nette à reverser à l'État.",
         },
         {
           type: "callout",

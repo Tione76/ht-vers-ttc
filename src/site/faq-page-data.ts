@@ -16,6 +16,9 @@ export interface FaqPageCategory {
 export const FAQ_PAGE_H1 =
   "FAQ TVA : questions fréquentes sur les calculs HT, TTC et la TVA";
 
+export const FAQ_PAGE_SUBTITLE =
+  "Réponses claires sur le HT, le TTC, les taux de TVA, les factures, la franchise en base et les auto-entrepreneurs.";
+
 export const FAQ_PAGE_INTRO =
   "Cette page répond aux questions les plus fréquentes sur le calcul HT vers TTC, le calcul TTC vers HT, les taux de TVA, les factures, la TVA des entreprises, la franchise en base, les auto-entrepreneurs et la TVA collectée / déductible. Chaque réponse est rédigée pour être claire et fiable ; nos guides détaillés permettent d'aller plus loin sur chaque sujet.";
 
