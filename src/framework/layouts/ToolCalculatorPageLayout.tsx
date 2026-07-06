@@ -14,6 +14,7 @@ interface ToolCalculatorPageLayoutProps {
   Calculator: ComponentType;
   editorial: ReactNode;
   sidebar: ReactNode;
+  breadcrumb?: ReactNode;
   variant?: "default" | "margin";
 }
 
@@ -57,7 +58,7 @@ function CalculatorHero({
   );
 }
 
-function ToolCalculatorPageInner({ h1, Calculator, editorial, sidebar, variant = "default" }: ToolCalculatorPageLayoutProps) {
+function ToolCalculatorPageInner({ h1, Calculator, editorial, sidebar, breadcrumb, variant = "default" }: ToolCalculatorPageLayoutProps) {
   const site = useSite();
   const isMargin = variant === "margin";
 
@@ -84,6 +85,7 @@ function ToolCalculatorPageInner({ h1, Calculator, editorial, sidebar, variant =
         <div className="content-wrap content-wrap--wide home-with-sidebar">
           <div className="article-layout">
             <div className="home-with-sidebar__main">
+              {breadcrumb}
               {editorial}
               <div className="content-wrap">
                 <AdSlot position="after-result" />

@@ -17,6 +17,15 @@ const nextConfig: NextConfig = {
     }
     return config;
   },
+  async redirects() {
+    return [
+      {
+        source: "/simulateurs",
+        destination: "/nos-outils",
+        permanent: true,
+      },
+    ];
+  },
   headers: async () => [
     {
       source: "/(.*)",

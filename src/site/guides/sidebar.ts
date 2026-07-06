@@ -1,11 +1,10 @@
-import { HOME_COVER, MARGIN_CALCULATOR_COVER } from "./covers";
 import type { GuideCoverImage } from "./covers";
 import { guides } from "./registry";
-import { seoConfig } from "../seo.config";
+import { getAllCalculators } from "../navigation/calculators-registry";
 
 export const SIDEBAR_LIMITS = {
-  maxTools: 4,
-  maxGuides: 5,
+  maxTools: 50,
+  maxGuides: 50,
 } as const;
 
 export type SidebarPageType = "home" | "guide" | "calculator" | "faq";
@@ -32,47 +31,19 @@ export interface GuideSidebarLink {
   slug: string;
 }
 
-/** Registre des calculateurs — ajouter une entrée pour chaque nouvel outil */
-const TOOL_REGISTRY: Array<{
-  id: string;
-  cover: GuideCoverImage;
-  resolve: () => Pick<SidebarTool, "title" | "description" | "href">;
-}> = [
-  {
-    id: "ht-ttc",
-    cover: HOME_COVER,
-    resolve: () => ({
-      title: "Calculateur HT → TTC",
-      description: "Calculez instantanément un prix HT, TTC et le montant de TVA.",
-      href: "/",
-    }),
-  },
-  {
-    id: "margin-ht-ttc",
-    cover: MARGIN_CALCULATOR_COVER,
-    resolve: () => ({
-      title: seoConfig.calculators.marginHtTtc.h1,
-      description: seoConfig.calculators.marginHtTtc.description,
-      href: seoConfig.calculators.marginHtTtc.path,
-    }),
-  },
-];
-
-const DEFAULT_TOOL_ICON = "€";
 const DEFAULT_TOOL_BADGE = "✓ Outil gratuit";
 
-/** Tous les outils enregistrés — source unique */
+/** Tous les outils enregistrés — source unique (registre calculateurs) */
 export function getAllSidebarTools(): SidebarTool[] {
-  return TOOL_REGISTRY.map((entry) => {
-    const meta = entry.resolve();
-    return {
-      id: entry.id,
-      ...meta,
-      cover: entry.cover,
-      icon: DEFAULT_TOOL_ICON,
-      badge: DEFAULT_TOOL_BADGE,
-    };
-  });
+  return getAllCalculators().map((calc) => ({
+    id: calc.id,
+    title: calc.shortTitle,
+    description: calc.description,
+    href: calc.path,
+    cover: calc.cover,
+    icon: calc.icon,
+    badge: DEFAULT_TOOL_BADGE,
+  }));
 }
 
 /** @deprecated Utiliser getAllSidebarTools() */

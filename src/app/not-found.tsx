@@ -1,6 +1,15 @@
 import Link from "next/link";
-import { seoConfig } from "@/site";
+import { config, seoConfig } from "@/site";
 import { ContentPageLayout } from "@/framework/layouts/ContentPageLayout";
+import { buildPageMetadata } from "@/framework/seo/metadata";
+
+export const metadata = buildPageMetadata(config, seoConfig, {
+  title: seoConfig.legal.notFound.title,
+  description: seoConfig.legal.notFound.description,
+  path: "/404",
+  robots: { index: false, follow: true },
+  noCanonical: true,
+});
 
 export default function NotFound() {
   return (

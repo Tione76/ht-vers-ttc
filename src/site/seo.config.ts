@@ -24,6 +24,7 @@ export const seoConfig = {
 
   home: {
     title: "Calculateur HT vers TTC — Prix TTC et montant de TVA",
+    h1: "CALCULATEUR TVA : HT → TTC ET TTC → HT",
     description:
       "Calculez instantanément un prix TTC à partir d'un montant hors taxes. Taux de TVA en France métropolitaine (20 %, 10 %, 5,5 % ou 2,1 %). Calcul inverse TTC vers HT, arrondi au centime. Gratuit et sans inscription.",
     ogImage: "/images/og/Calcul-HT-vers-TTC.webp",
@@ -39,6 +40,20 @@ export const seoConfig = {
     },
   },
 
+  guidesHub: {
+    path: "/guides",
+    title: "Guides TVA",
+    description:
+      "Guides pratiques sur la TVA en France : taux applicables, franchise en base, facturation conforme, auto-entrepreneur et TVA déductible / collectée.",
+  },
+
+  toolsHub: {
+    path: "/nos-outils",
+    title: "Nos outils gratuits",
+    description:
+      "Tous nos calculateurs TVA en ligne : conversion HT vers TTC, calcul de marge et prix de vente. Gratuits, sans inscription.",
+  },
+
   legal: {
     contact: { title: "Contact", description: "Contactez l'équipe éditoriale." },
     privacy: { title: "Politique de confidentialité", description: "Informations sur vos données personnelles." },
@@ -50,6 +65,7 @@ export const seoConfig = {
         "Réponses aux questions fréquentes sur le calcul HT vers TTC, les taux de TVA, les factures et la franchise en base.",
     },
     sitemap: { title: "Plan du site", description: "Liste de toutes les pages du site." },
+    /** @deprecated Utiliser toolsHub — conservé pour compatibilité */
     simulators: { title: "Tous les simulateurs", description: "Découvrez l'ensemble de nos outils en ligne." },
     cookiePrefs: { title: "Gestion des cookies", description: "Gérez vos préférences de cookies." },
     notFound: { title: "Page introuvable", description: "La page demandée n'existe pas ou a été déplacée." },

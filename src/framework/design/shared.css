@@ -559,6 +559,25 @@
   transition: border-color 0.15s ease, background-color 0.15s ease;
 }
 
+.sitemap-section {
+  margin-bottom: 2rem;
+}
+
+.sitemap-section h2 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem;
+}
+
+.sitemap-section ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.sitemap-section li + li {
+  margin-top: 0.35rem;
+}
+
 .tool-card--content:hover {
   border-color: var(--ds-brand);
   background: #f6f9fc;

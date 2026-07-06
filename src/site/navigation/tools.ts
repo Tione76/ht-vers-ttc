@@ -1,24 +1,12 @@
-import { seoConfig } from "../seo.config";
+import { getAllCalculators } from "./calculators-registry";
 
 /**
- * Navigation des outils — source unique pour le menu « Nos outils ».
- * Ajouter une entrée ici pour qu'un nouveau calculateur apparaisse automatiquement dans le menu.
+ * Menu « Nos outils » — dérivé automatiquement du registre des calculateurs.
  */
-export interface ToolNavItem {
-  href: string;
-  shortTitle: string;
-  title: string;
-}
+export const toolsNavigation = getAllCalculators().map((calc) => ({
+  href: calc.path,
+  shortTitle: calc.shortTitle,
+  title: calc.title,
+}));
 
-export const toolsNavigation: ToolNavItem[] = [
-  {
-    href: "/",
-    shortTitle: "Calculateur HT → TTC",
-    title: "Calculateur HT vers TTC — Prix TTC et montant de TVA",
-  },
-  {
-    href: seoConfig.calculators.marginHtTtc.path,
-    shortTitle: "Calculateur de marge HT / TTC",
-    title: seoConfig.calculators.marginHtTtc.title,
-  },
-];
+export type ToolNavItem = (typeof toolsNavigation)[number];

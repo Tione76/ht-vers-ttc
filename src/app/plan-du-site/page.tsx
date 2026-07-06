@@ -1,24 +1,13 @@
 import Link from "next/link";
 import { config, seoConfig } from "@/site";
+import { getPlanDuSiteSections } from "@/site/public-pages";
+import { PageBreadcrumb } from "@/framework/design/components/PageBreadcrumb";
 import { ContentPageLayout } from "@/framework/layouts/ContentPageLayout";
 import { JsonLd } from "@/framework/JsonLd";
 import { buildPageMetadata } from "@/framework/seo/metadata";
 import { buildBreadcrumbSchema, buildWebPageSchema } from "@/framework/seo/json-ld";
-import { getAllPages } from "@/framework/seo/pages";
 
 const page = seoConfig.legal.sitemap;
-
-const pageLabels: Record<string, string> = {
-  "/": "Accueil",
-  "/contact": "Contact",
-  "/faq": "Questions fréquentes",
-  "/simulateurs": "Tous les simulateurs",
-  "/plan-du-site": "Plan du site",
-  "/gestion-des-cookies": "Gestion des cookies",
-  "/politique-de-confidentialite": "Politique de confidentialité",
-  "/politique-de-cookies": "Politique de cookies",
-  "/mentions-legales": "Mentions légales",
-};
 
 export const metadata = buildPageMetadata(config, seoConfig, {
   title: page.title,
@@ -27,7 +16,7 @@ export const metadata = buildPageMetadata(config, seoConfig, {
 });
 
 export default function SitemapPage() {
-  const pages = getAllPages(seoConfig);
+  const sections = getPlanDuSiteSections();
 
   return (
     <>
@@ -41,17 +30,24 @@ export default function SitemapPage() {
         ]}
       />
       <ContentPageLayout meta="Navigation" title={page.title}>
-        <ul>
-          {pages.map((entry) => (
-            <li key={entry.path}>
-              <Link href={entry.path}>
-                {pageLabels[entry.path] ??
-                  seoConfig.extraPages.find((p) => `/${p.slug}` === entry.path)?.title ??
-                  entry.path}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <PageBreadcrumb
+          items={[
+            { label: "Accueil", href: "/" },
+            { label: page.title },
+          ]}
+        />
+        {sections.map((section) => (
+          <section key={section.title} className="sitemap-section">
+            <h2>{section.title}</h2>
+            <ul>
+              {section.pages.map((entry) => (
+                <li key={entry.path}>
+                  <Link href={entry.path}>{entry.title}</Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
       </ContentPageLayout>
     </>
   );

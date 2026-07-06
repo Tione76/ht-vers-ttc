@@ -12,6 +12,7 @@ export const metadata = buildPageMetadata(config, seoConfig, {
   title: page.title,
   description: page.description,
   path: "/gestion-des-cookies",
+  robots: { index: false, follow: true },
 });
 
 export default function CookiePreferencesPage() {

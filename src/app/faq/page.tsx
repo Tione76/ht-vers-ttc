@@ -10,6 +10,7 @@ import {
 } from "@/site/faq-page-data";
 import { FaqPageContent } from "@/site/FaqPageContent";
 import { FaqPageSidebar, GuidePageLayout } from "@/site/guides";
+import { PageBreadcrumb } from "@/framework/design/components/PageBreadcrumb";
 import "@/site/guides/guide-page.css";
 
 export const metadata = buildPageMetadata(config, seoConfig, {
@@ -39,6 +40,12 @@ export default function FaqPage() {
         prose={false}
         sidebar={<FaqPageSidebar />}
       >
+        <PageBreadcrumb
+          items={[
+            { label: "Accueil", href: "/" },
+            { label: "FAQ TVA" },
+          ]}
+        />
         <FaqPageContent />
       </GuidePageLayout>
     </>

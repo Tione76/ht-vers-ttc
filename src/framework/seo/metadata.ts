@@ -8,11 +8,19 @@ export interface OgImageInput {
   type?: string;
 }
 
+export interface SeoRobotsInput {
+  index: boolean;
+  follow: boolean;
+}
+
 export interface SeoPageInput {
   title: string;
   description: string;
   path: string;
   ogImage?: string | OgImageInput;
+  robots?: SeoRobotsInput;
+  /** Ne pas émettre de canonical (404, erreurs) */
+  noCanonical?: boolean;
 }
 
 export interface SiteSeoInput {
@@ -71,7 +79,8 @@ export function buildPageMetadata(
     description: page.description,
     keywords: seo.keywords,
     authors: [{ name: site.author }],
-    alternates: { canonical },
+    ...(page.robots && { robots: page.robots }),
+    ...(!page.noCanonical && { alternates: { canonical } }),
     openGraph: {
       type: "website",
       locale: site.locale.replace("-", "_"),

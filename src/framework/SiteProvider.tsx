@@ -19,10 +19,9 @@ import {
 import { initConsentModeDefault, updateConsentMode } from "@/framework/consent/consent-mode";
 import { CookieBanner } from "@/framework/CookieBanner";
 import { AnalyticsScripts, AdSenseLoader } from "@/framework/AnalyticsScripts";
-import type { siteConfig } from "@/site/site.config";
-import type { faq } from "@/site/faq";
+import type { config } from "@/site";
 
-export type SiteConfig = typeof siteConfig & { faq: typeof faq };
+export type SiteConfig = typeof config;
 
 /* ─── Site context ─── */
 

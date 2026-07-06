@@ -1,16 +1,17 @@
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import { config, seoConfig } from "@/site";
 import {
   buildArticleSchema,
   buildGuideTocH2,
   computeReadingTime,
-  getAllGuideSlugs,
   getGuideBySlug,
+  getPublishedGuideSlugs,
+  GUIDE_MODEL_SLUG,
   GuideArticle,
   GuidePageLayout,
   GuidePageSidebar,
 } from "@/site/guides";
+import { PageBreadcrumb } from "@/framework/design/components/PageBreadcrumb";
 import { JsonLd } from "@/framework/JsonLd";
 import { buildPageMetadata } from "@/framework/seo/metadata";
 import { buildBreadcrumbSchema, buildFaqSchema } from "@/framework/seo/json-ld";
@@ -21,9 +22,17 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
+const IS_DEV = process.env.NODE_ENV === "development";
+
 export function generateStaticParams() {
-  return getAllGuideSlugs().map((slug) => ({ slug }));
+  const slugs = getPublishedGuideSlugs();
+  if (IS_DEV) {
+    return [...slugs, GUIDE_MODEL_SLUG].map((slug) => ({ slug }));
+  }
+  return slugs.map((slug) => ({ slug }));
 }
+
+export const dynamicParams = false;
 
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
@@ -37,37 +46,18 @@ export async function generateMetadata({ params }: Props) {
     description: guide.description,
     path: `/guides/${slug}`,
     ogImage: cover ? coverToOgInput(cover) : undefined,
+    ...(guide.isTemplate && { robots: { index: false, follow: false } }),
   });
-}
-
-function GuideBreadcrumb({ title, isTemplate }: { title: string; isTemplate?: boolean }) {
-  return (
-    <nav aria-label="Fil d'Ariane" className="guide-breadcrumb">
-      <ol>
-        <li>
-          <Link href="/">Accueil</Link>
-        </li>
-        <li aria-hidden="true">›</li>
-        {!isTemplate && (
-          <>
-            <li>
-              <span>Guides</span>
-            </li>
-            <li aria-hidden="true">›</li>
-          </>
-        )}
-        <li>
-          <span aria-current="page">{isTemplate ? "Modèle de guide" : title}</span>
-        </li>
-      </ol>
-    </nav>
-  );
 }
 
 export default async function GuidePage({ params }: Props) {
   const { slug } = await params;
   const guide = getGuideBySlug(slug);
   if (!guide) notFound();
+
+  if (guide.isTemplate && !IS_DEV) {
+    notFound();
+  }
 
   const path = `/guides/${slug}`;
   const readingTime = computeReadingTime(guide);
@@ -77,21 +67,32 @@ export default async function GuidePage({ params }: Props) {
     `${readingTime} min de lecture`,
   ].join(" · ");
 
+  const breadcrumbItems = guide.isTemplate
+    ? [
+        { label: "Accueil", href: "/" },
+        { label: "Modèle de guide" },
+      ]
+    : [
+        { label: "Accueil", href: "/" },
+        { label: "Guides TVA", href: seoConfig.guidesHub.path },
+        { label: guide.title },
+      ];
+
   return (
     <>
       <JsonLd
         data={[
-          buildArticleSchema(config, guide, path),
+          ...(guide.isTemplate ? [] : [buildArticleSchema(config, guide, path)]),
           buildBreadcrumbSchema(config, [
             { name: "Accueil", path: "/" },
             ...(guide.isTemplate
               ? [{ name: "Modèle de guide", path }]
               : [
-                  { name: "Guides", path: "/guides" },
+                  { name: "Guides TVA", path: seoConfig.guidesHub.path },
                   { name: guide.title, path },
                 ]),
           ]),
-          buildFaqSchema(guide.faq),
+          ...(guide.isTemplate ? [] : [buildFaqSchema(guide.faq)]),
         ]}
       />
       <GuidePageLayout
@@ -99,7 +100,7 @@ export default async function GuidePage({ params }: Props) {
         subtitle={guide.subtitle}
         sidebar={guide.isTemplate ? undefined : <GuidePageSidebar slug={slug} />}
       >
-        <GuideBreadcrumb title={guide.title} isTemplate={guide.isTemplate} />
+        <PageBreadcrumb items={breadcrumbItems} />
         <p className="guide-meta">
           <em>{meta}</em>
         </p>
@@ -109,7 +110,8 @@ export default async function GuidePage({ params }: Props) {
             <p>
               Cette page présente la structure officielle que chaque guide devra respecter.
               Les textes entre crochets sont des placeholders à remplacer par le contenu
-              définitif.
+              définitif. Elle n&apos;est accessible qu&apos;en environnement de développement
+              et n&apos;est pas indexée par les moteurs de recherche.
             </p>
           </aside>
         )}
@@ -121,6 +123,7 @@ export default async function GuidePage({ params }: Props) {
           faq={guide.faq}
           faqTitle={guide.faqTitle}
           conclusion={guide.conclusion}
+          isTemplate={guide.isTemplate}
         />
       </GuidePageLayout>
     </>

@@ -10,7 +10,11 @@ function blockKey(prefix: string, block: GuideBlock, index: number): string {
   return `${prefix}-${block.type}-${index}`;
 }
 
-function GuideBlockRenderer({ block }: { block: GuideBlock }) {
+function isPlaceholderHref(href: string): boolean {
+  return href.includes("[") || href.includes("]");
+}
+
+function GuideBlockRenderer({ block, isTemplate }: { block: GuideBlock; isTemplate?: boolean }) {
   switch (block.type) {
     case "paragraph":
       return <p>{block.text}</p>;
@@ -116,6 +120,14 @@ function GuideBlockRenderer({ block }: { block: GuideBlock }) {
       );
 
     case "internal-link":
+      if (isTemplate || isPlaceholderHref(block.href)) {
+        return (
+          <p className="guide-internal-link guide-internal-link--placeholder">
+            {block.intro && <>{block.intro} </>}
+            <span className="guide-internal-link__label">{block.label}</span>
+          </p>
+        );
+      }
       return (
         <p className="guide-internal-link">
           {block.intro && <>{block.intro} </>}
@@ -168,6 +180,14 @@ function GuideBlockRenderer({ block }: { block: GuideBlock }) {
       );
 
     case "contextual-cta":
+      if (isTemplate || isPlaceholderHref(block.href)) {
+        return (
+          <aside className="guide-contextual-cta guide-contextual-cta--placeholder">
+            <p className="guide-contextual-cta__text">{block.text}</p>
+            <span className="guide-contextual-cta__link">{block.label} →</span>
+          </aside>
+        );
+      }
       return (
         <aside className="guide-contextual-cta">
           <p className="guide-contextual-cta__text">{block.text}</p>
@@ -310,6 +330,7 @@ interface GuideArticleProps {
   faq: import("./types").Guide["faq"];
   faqTitle?: string;
   conclusion: import("./types").Guide["conclusion"];
+  isTemplate?: boolean;
 }
 
 function GuideQuickSummaryBlock({ summary }: { summary: import("./types").GuideQuickSummary }) {
@@ -328,7 +349,16 @@ function GuideQuickSummaryBlock({ summary }: { summary: import("./types").GuideQ
   );
 }
 
-export function GuideArticle({ introduction, quickSummary, toc, sections, faq, faqTitle, conclusion }: GuideArticleProps) {
+export function GuideArticle({
+  introduction,
+  quickSummary,
+  toc,
+  sections,
+  faq,
+  faqTitle,
+  conclusion,
+  isTemplate,
+}: GuideArticleProps) {
   return (
     <>
       <div className="guide-intro">
@@ -345,7 +375,11 @@ export function GuideArticle({ introduction, quickSummary, toc, sections, faq, f
         <section key={section.id} id={section.id} className="guide-section">
           <h2>{section.title}</h2>
           {section.blocks?.map((block, index) => (
-            <GuideBlockRenderer key={blockKey(section.id, block, index)} block={block} />
+            <GuideBlockRenderer
+              key={blockKey(section.id, block, index)}
+              block={block}
+              isTemplate={isTemplate}
+            />
           ))}
           {section.subsections?.map((subsection) => (
             <div key={subsection.id} id={subsection.id} className="guide-subsection">
@@ -354,6 +388,7 @@ export function GuideArticle({ introduction, quickSummary, toc, sections, faq, f
                 <GuideBlockRenderer
                   key={blockKey(subsection.id, block, index)}
                   block={block}
+                  isTemplate={isTemplate}
                 />
               ))}
             </div>
@@ -392,11 +427,14 @@ export function GuideArticle({ introduction, quickSummary, toc, sections, faq, f
           </ul>
         </div>
         <p className="guide-conclusion__closing">{conclusion.closingText}</p>
-        {conclusion.closingCta && (
-          <Link href={conclusion.closingCta.href} className="guide-conclusion__cta">
-            {conclusion.closingCta.label}
-          </Link>
-        )}
+        {conclusion.closingCta &&
+          (isTemplate || isPlaceholderHref(conclusion.closingCta.href) ? (
+            <span className="guide-conclusion__cta">{conclusion.closingCta.label}</span>
+          ) : (
+            <Link href={conclusion.closingCta.href} className="guide-conclusion__cta">
+              {conclusion.closingCta.label}
+            </Link>
+          ))}
       </section>
     </>
   );
