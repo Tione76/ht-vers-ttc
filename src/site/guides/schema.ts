@@ -10,7 +10,7 @@ interface ArticleSiteInput {
   logo: { src: string };
 }
 
-/** Données structurées Article — Google Search */
+/** Données structurées Article : Google Search */
 export function buildArticleSchema(site: ArticleSiteInput, guide: Guide, path: string) {
   const url = getCanonicalUrl(site.url, path);
   const cover = resolveGuideCover(guide);

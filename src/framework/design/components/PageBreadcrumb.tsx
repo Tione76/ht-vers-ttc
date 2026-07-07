@@ -9,7 +9,7 @@ interface PageBreadcrumbProps {
   items: BreadcrumbItem[];
 }
 
-/** Fil d'Ariane visuel — réutilisable sur guides, calculateurs, FAQ, etc. */
+/** Fil d'Ariane visuel : réutilisable sur guides, calculateurs, FAQ, etc. */
 export function PageBreadcrumb({ items }: PageBreadcrumbProps) {
   return (
     <nav aria-label="Fil d'Ariane" className="guide-breadcrumb">

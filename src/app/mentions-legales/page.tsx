@@ -1,33 +1,49 @@
 import { config, seoConfig } from "@/site";
-import { ContentPageLayout } from "@/framework/layouts/ContentPageLayout";
-import { LegalContent } from "@/framework/LegalContent";
+import { FaqPageSidebar, GuidePageLayout } from "@/site/guides";
+import { MentionsLegalesContent } from "@/site/legal/mentions-legales-content";
+import { PageBreadcrumb } from "@/framework/design/components/PageBreadcrumb";
 import { JsonLd } from "@/framework/JsonLd";
 import { buildPageMetadata } from "@/framework/seo/metadata";
 import { buildBreadcrumbSchema, buildWebPageSchema } from "@/framework/seo/json-ld";
+import "@/site/guides/guide-page.css";
 
 const page = seoConfig.legal.mentions;
+const path = "/mentions-legales";
 
 export const metadata = buildPageMetadata(config, seoConfig, {
   title: page.title,
   description: page.description,
-  path: "/mentions-legales",
+  path,
 });
 
-export default function LegalPage() {
+export default function MentionsLegalesPage() {
   return (
     <>
       <JsonLd
         data={[
-          buildWebPageSchema(config, page.title, page.description, "/mentions-legales"),
+          buildWebPageSchema(config, page.title, page.description, path),
           buildBreadcrumbSchema(config, [
             { name: "Accueil", path: "/" },
-            { name: page.title, path: "/mentions-legales" },
+            { name: page.title, path },
           ]),
         ]}
       />
-      <ContentPageLayout meta="Informations légales" title={page.title}>
-        <LegalContent {...config.legal.mentions} />
-      </ContentPageLayout>
+      <GuidePageLayout
+        title={page.title}
+        subtitle={page.description}
+        sidebar={<FaqPageSidebar />}
+      >
+        <PageBreadcrumb
+          items={[
+            { label: "Accueil", href: "/" },
+            { label: page.title },
+          ]}
+        />
+        <p className="guide-meta">
+          <em>Dernière mise à jour : juillet 2026</em>
+        </p>
+        <MentionsLegalesContent />
+      </GuidePageLayout>
     </>
   );
 }

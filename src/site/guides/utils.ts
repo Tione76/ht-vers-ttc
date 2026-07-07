@@ -33,7 +33,7 @@ function countWordsInBlock(block: GuideBlock): number {
   }
 }
 
-/** Calcule le temps de lecture à partir du contenu — ~200 mots/min */
+/** Calcule le temps de lecture à partir du contenu : ~200 mots/min */
 export function computeReadingTime(guide: Guide): number {
   let words = guide.introduction.join(" ").split(/\s+/).filter(Boolean).length;
   if (guide.quickSummary) {
@@ -65,7 +65,7 @@ export function computeReadingTime(guide: Guide): number {
   return Math.max(1, Math.ceil(words / WORDS_PER_MINUTE));
 }
 
-/** Sommaire H2 uniquement — sections + FAQ + conclusion */
+/** Sommaire H2 uniquement : sections + FAQ + conclusion */
 export function buildGuideTocH2(guide: Guide): GuideTocEntry[] {
   const entries: GuideTocEntry[] = guide.sections.map((section) => ({
     id: section.id,
@@ -83,7 +83,7 @@ export function buildGuideTocH2(guide: Guide): GuideTocEntry[] {
   return entries;
 }
 
-/** Sommaire complet H2 + H3 — usage interne */
+/** Sommaire complet H2 + H3 : usage interne */
 export function buildGuideToc(guide: Guide): GuideTocEntry[] {
   const entries: GuideTocEntry[] = [];
 

@@ -38,7 +38,7 @@ async function main() {
     fs.rmSync(nextDir, { recursive: true, force: true });
     console.log("Cache .next supprimé.");
   } catch {
-    /* dossier absent — ok */
+    /* dossier absent : ok */
   }
 }
 

@@ -1,9 +1,9 @@
 /**
- * Navigation des guides — source unique pour le menu principal.
+ * Navigation des guides : source unique pour le menu principal.
  * Ajouter une entrée ici pour qu'un nouveau guide apparaisse automatiquement dans le menu.
  */
 export interface GuideNavItem {
-  /** Identifiant URL — correspond au slug du guide */
+  /** Identifiant URL : correspond au slug du guide */
   slug: string;
   /** Intitulé affiché dans le menu */
   shortTitle: string;
@@ -20,7 +20,7 @@ export const guidesNavigation: GuideNavItem[] = [
   {
     slug: "franchise-en-base-de-tva",
     shortTitle: "Franchise en base de TVA",
-    title: "Franchise en base de TVA : guide complet 2026",
+    title: "Franchise en base de TVA : guide complet",
   },
   {
     slug: "comment-faire-une-facture-conforme",

@@ -23,7 +23,7 @@ export interface SitemapEntry {
  * Conservé pour getExtraPageSlugs / getExtraPage (routes [slug] optionnelles).
  */
 export function getAllPages(seo: SeoConfigShape): SitemapEntry[] {
-  // Re-export minimal pour rétrocompatibilité — le sitemap utilise public-pages.ts
+  // Re-export minimal pour rétrocompatibilité : le sitemap utilise public-pages.ts
   void seo;
   return [];
 }

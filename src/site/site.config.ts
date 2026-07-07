@@ -1,5 +1,5 @@
 /**
- * Configuration du site — modifiez ce fichier pour chaque nouveau site.
+ * Configuration du site : modifiez ce fichier pour chaque nouveau site.
  */
 import { guidesNavigation } from "./guides/navigation";
 
@@ -28,13 +28,12 @@ export const siteConfig = {
   },
 
   logo: { src: "/logo.png", alt: "Calculateur TVA", width: 800, height: 800 },
-  logoLetter: "€",
   favicon: "/icon.png",
   ogImage: "/images/og/Calcul-HT-vers-TTC.webp",
 
   footerBrandName: "HT-VERS-TTC.FR",
   footerDescription:
-    "Calculateur de TVA gratuit et guides pratiques pour tout comprendre sur la TVA, les prix HT, les prix TTC et la facturation.",
+    "Calculateurs de TVA gratuits et guides pratiques pour tout comprendre sur la TVA, les prix HT, les prix TTC et la facturation.",
 
   home: {
     h1: "CALCULATEUR TVA : HT → TTC ET TTC → HT",
@@ -72,12 +71,11 @@ export const siteConfig = {
     companyName: "[Raison sociale]",
     address: "[Adresse complète]",
     intro:
-      "Une question concernant ce calculateur ? Vous pouvez nous contacter grâce au formulaire ci-dessous.",
+      "Une question, une erreur à signaler ou une suggestion ? Contactez-nous via le formulaire ou directement par e-mail.",
     trustNote:
       "Vos informations sont utilisées uniquement pour répondre à votre demande. Aucune utilisation commerciale.",
     infoItems: ["Réponse sous 48 h", "Gratuit", "Aucune donnée revendue"],
     subjects: [
-      "Question sur le calculateur",
       "Signaler une erreur",
       "Suggestion d'amélioration",
       "Autre demande",
@@ -85,7 +83,7 @@ export const siteConfig = {
     faqLinks: [
       { label: "Consulter la FAQ complète", href: "/faq" },
       { label: "Politique de confidentialité", href: "/politique-de-confidentialite" },
-      { label: "Politique de cookies", href: "/politique-de-cookies" },
+      { label: "Gestion des cookies", href: "/gestion-des-cookies" },
     ],
   },
 
@@ -99,23 +97,16 @@ export const siteConfig = {
       ],
     },
     cookies: {
-      lastUpdated: "2026-01-01",
-      sections: [
-        { title: "Qu'est-ce qu'un cookie ?", content: "Un cookie est un petit fichier texte déposé sur votre terminal." },
-        { title: "Gérer vos préférences", content: 'Cliquez sur « Gérer les cookies » en bas de page ou visitez la page de gestion des cookies.' },
-      ],
+      lastUpdated: "2026-07-01",
+      sections: [],
     },
     mentions: {
-      lastUpdated: "2026-01-01",
-      sections: [
-        { title: "Éditeur du site", content: "[Raison sociale], [adresse]. Contact : contact@ht-vers-ttc.fr." },
-        { title: "Hébergeur", content: "Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis." },
-        { title: "Limitation de responsabilité", content: "Les simulateurs fournissent des estimations indicatives." },
-      ],
+      lastUpdated: "2026-07-01",
+      sections: [],
     },
   },
 
-  /** Menu Guides — voir src/site/guides/navigation.ts */
+  /** Menu Guides : voir src/site/guides/navigation.ts */
   guidesNavigation,
 
   navigation: {
@@ -126,7 +117,7 @@ export const siteConfig = {
     footer: [
       { label: "Mentions légales", href: "/mentions-legales" },
       { label: "Confidentialité", href: "/politique-de-confidentialite" },
-      { label: "Cookies", href: "/politique-de-cookies" },
+      { label: "Cookies", href: "/gestion-des-cookies" },
       { label: "Plan du site", href: "/plan-du-site" },
       { label: "Contact", href: "/contact" },
     ],

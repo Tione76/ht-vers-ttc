@@ -1,6 +1,6 @@
 import type { FaqItem } from "@/framework/types";
 
-/** FAQ page calculateur de marge — texte brut pour Schema.org */
+/** FAQ page calculateur de marge : texte brut pour Schema.org */
 export const marginCalculatorFaq: FaqItem[] = [
   {
     question: "Comment fixer son prix de vente ?",
@@ -50,6 +50,6 @@ export const marginCalculatorFaq: FaqItem[] = [
   {
     question: "Comment utiliser le coefficient multiplicateur ?",
     answer:
-      "Le coefficient multiplicateur HT est le rapport prix de vente HT ÷ prix d'achat HT. Avec un taux de marge de 40 % sur l'achat, le coefficient HT est 1,40 : multipliez tout prix d'achat par 1,40 pour obtenir le prix de vente HT. Certains secteurs utilisent un coefficient TTC — ne confondez pas les deux.",
+      "Le coefficient multiplicateur HT est le rapport prix de vente HT ÷ prix d'achat HT. Avec un taux de marge de 40 % sur l'achat, le coefficient HT est 1,40 : multipliez tout prix d'achat par 1,40 pour obtenir le prix de vente HT. Certains secteurs utilisent un coefficient TTC, ne confondez pas les deux.",
   },
 ];

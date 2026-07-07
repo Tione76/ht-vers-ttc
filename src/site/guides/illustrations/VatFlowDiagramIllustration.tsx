@@ -1,4 +1,4 @@
-/** Flux TVA collectée / déductible — schéma pédagogique vertical */
+/** Flux TVA collectée / déductible : schéma pédagogique vertical */
 export function VatFlowDiagramIllustration() {
   return (
     <div
@@ -66,7 +66,7 @@ export function VatFlowDiagramIllustration() {
           <p className="vat-balance-flow__tag">ÉTAT</p>
           <h4 className="vat-balance-flow__title">Paiement ou crédit de TVA</h4>
           <p className="vat-balance-flow__desc">
-            Reversement à l&apos;administration — ou crédit si la TVA déductible est supérieure
+            Reversement à l&apos;administration, ou crédit si la TVA déductible est supérieure
           </p>
         </article>
       </div>

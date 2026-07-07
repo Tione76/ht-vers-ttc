@@ -7,7 +7,7 @@ export const SIDEBAR_LIMITS = {
   maxGuides: 50,
 } as const;
 
-export type SidebarPageType = "home" | "guide" | "calculator" | "faq";
+export type SidebarPageType = "home" | "guide" | "calculator" | "faq" | "guides-hub" | "tools-hub";
 
 export interface SidebarContext {
   pageType: SidebarPageType;
@@ -33,7 +33,7 @@ export interface GuideSidebarLink {
 
 const DEFAULT_TOOL_BADGE = "✓ Outil gratuit";
 
-/** Tous les outils enregistrés — source unique (registre calculateurs) */
+/** Tous les outils enregistrés : source unique (registre calculateurs) */
 export function getAllSidebarTools(): SidebarTool[] {
   return getAllCalculators().map((calc) => ({
     id: calc.id,
@@ -65,14 +65,15 @@ export function sidebarPathsMatch(a: string, b: string): boolean {
   return normalizeSidebarPath(a) === normalizeSidebarPath(b);
 }
 
-/** Outils à afficher — exclut l'outil de la page courante (y compris sur l'accueil /) */
+/** Outils à afficher : exclut l'outil de la page courante ; vide sur le hub /nos-outils */
 export function getSidebarTools(context: SidebarContext): SidebarTool[] {
+  if (context.pageType === "tools-hub") return [];
   return getAllSidebarTools()
     .filter((tool) => !sidebarPathsMatch(tool.href, context.currentPath))
     .slice(0, SIDEBAR_LIMITS.maxTools);
 }
 
-/** Guides à afficher — exclut le guide courant */
+/** Guides à afficher : exclut le guide courant */
 export function getSidebarGuides(context: SidebarContext): GuideSidebarLink[] {
   return guides
     .filter((guide) => {

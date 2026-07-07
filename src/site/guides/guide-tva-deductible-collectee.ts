@@ -24,7 +24,7 @@ export const guideTvaDeductibleCollectee: Guide = {
 
   introduction: [
     "La TVA collectée est la taxe que vous facturez à vos clients ; la TVA déductible est celle que vous récupérez sur vos achats professionnels.",
-    "Ce guide explique la mécanique complète — de la facturation à la déclaration CA3 — avec formules, exemples chiffrés et références aux articles 271 et 287 du CGI.",
+    "Ce guide explique la mécanique complète (de la facturation à la déclaration CA3), avec formules, exemples chiffrés et références aux articles 271 et 287 du CGI.",
   ],
 
   sections: [
@@ -146,7 +146,7 @@ export const guideTvaDeductibleCollectee: Guide = {
           rows: [
             ["Prestation conseil", "2 000,00 €", "20 %", "400,00 €", "2 400,00 €"],
             ["Frais de déplacement", "150,00 €", "20 %", "30,00 €", "180,00 €"],
-            ["Total période", "2 150,00 €", "—", "430,00 €", "2 580,00 €"],
+            ["Total période", "2 150,00 €", "-", "430,00 €", "2 580,00 €"],
           ],
         },
         {
@@ -226,9 +226,9 @@ export const guideTvaDeductibleCollectee: Guide = {
           rows: [
             ["Fournitures de bureau", "Oui", "Usage professionnel exclusif"],
             ["Loyer de locaux professionnels", "Oui", "Facture au nom de l'entreprise"],
-            ["Carburant véhicule tourisme", "Partielle ou totale selon le cas", "Déduction partielle ou totale selon le carburant et le véhicule — ex. courant : 80 % pour certains carburants avec un véhicule de tourisme (art. 206, annexe II)"],
-            ["Repas d'affaires", "À vérifier", "Selon la nature du repas, le justificatif, les participants et l'intérêt professionnel — certaines dépenses de réception, logement ou représentation sont exclues ou limitées"],
-            ["Cadeaux clients", "À vérifier", "Seuil de 73 € TTC par bénéficiaire et par an — à apprécier au moment de l'opération (art. 271, I du CGI)"],
+            ["Carburant véhicule tourisme", "Partielle ou totale selon le cas", "Déduction partielle ou totale selon le carburant et le véhicule, ex. courant : 80 % pour certains carburants avec un véhicule de tourisme (art. 206, annexe II)"],
+            ["Repas d'affaires", "À vérifier", "Selon la nature du repas, le justificatif, les participants et l'intérêt professionnel, certaines dépenses de réception, logement ou représentation sont exclues ou limitées"],
+            ["Cadeaux clients", "À vérifier", "Seuil de 73 € TTC par bénéficiaire et par an, à apprécier au moment de l'opération (art. 271, I du CGI)"],
             ["Immobilisation (matériel informatique)", "Oui", "Immobilisation au bilan, déduction immédiate"],
           ],
         },
@@ -329,7 +329,7 @@ export const guideTvaDeductibleCollectee: Guide = {
         },
         {
           type: "table",
-          caption: "Exemple numérique — trimestre d'activité",
+          caption: "Exemple numérique : trimestre d'activité",
           headers: ["Poste", "Montant"],
           rows: [
             ["TVA collectée (ventes)", "4 800,00 €"],
@@ -386,7 +386,7 @@ export const guideTvaDeductibleCollectee: Guide = {
       blocks: [
         {
           type: "paragraph",
-          text: "L'article 287 du CGI impose aux assujettis au régime réel normal de déposer une déclaration périodique de TVA — le formulaire CA3 — auprès de l'administration fiscale.",
+          text: "L'article 287 du CGI impose aux assujettis au régime réel normal de déposer une déclaration périodique de TVA (formulaire CA3) auprès de l'administration fiscale.",
         },
         {
           type: "list",
@@ -399,7 +399,7 @@ export const guideTvaDeductibleCollectee: Guide = {
         },
         {
           type: "table",
-          caption: "Correspondance simplifiée CA3 — collectée, déductible, solde",
+          caption: "Correspondance simplifiée CA3 : collectée, déductible, solde",
           headers: ["Case CA3", "Contenu", "Exemple"],
           rows: [
             ["08", "TVA collectée au taux normal 20 %", "4 800 €"],
@@ -525,13 +525,13 @@ export const guideTvaDeductibleCollectee: Guide = {
           blocks: [
             {
               type: "table",
-              caption: "Mois type — consultant IT, TVA 20 %",
+              caption: "Mois type : consultant IT, TVA 20 %",
               headers: ["Flux", "HT", "TVA", "TTC"],
               rows: [
                 ["Facturation client (collectée)", "5 000 €", "+ 1 000 €", "6 000 €"],
                 ["Loyer bureau (déductible)", "800 €", "− 160 €", "960 €"],
                 ["Logiciels SaaS (déductible)", "200 €", "− 40 €", "240 €"],
-                ["TVA due du mois", "—", "800 €", "—"],
+                ["TVA due du mois", "-", "800 €", "-"],
               ],
             },
           ],
@@ -559,13 +559,13 @@ export const guideTvaDeductibleCollectee: Guide = {
           blocks: [
             {
               type: "table",
-              caption: "Chantier rénovation — TVA collectée à 10 %, sous réserve des conditions applicables aux travaux à taux réduit (notamment attestation client lorsque requise).",
+              caption: "Chantier rénovation : TVA collectée à 10 %, sous réserve des conditions applicables aux travaux à taux réduit (notamment attestation client lorsque requise).",
               headers: ["Poste", "TVA collectée", "TVA déductible"],
               rows: [
-                ["Facture client travaux", "540 € (sur 5 400 € HT)", "—"],
-                ["Achat matériaux", "—", "320 €"],
-                ["Location engin", "—", "90 €"],
-                ["Solde TVA due", "130 €", "—"],
+                ["Facture client travaux", "540 € (sur 5 400 € HT)", "-"],
+                ["Achat matériaux", "-", "320 €"],
+                ["Location engin", "-", "90 €"],
+                ["Solde TVA due", "130 €", "-"],
               ],
             },
             {
@@ -615,7 +615,7 @@ export const guideTvaDeductibleCollectee: Guide = {
             "Ne pas appliquer le prorata en activité mixte taxable / exonérée.",
             "Retard de déclaration ou de paiement (majorations de 10 % + intérêts de retard).",
             "Ne pas régulariser un crédit de TVA persistant sans demander le remboursement.",
-            "Collecter de la TVA en franchise de base (art. 293 B) — irrégularité grave.",
+            "Collecter de la TVA en franchise de base (art. 293 B), irrégularité grave.",
           ],
         },
         {
@@ -674,7 +674,7 @@ export const guideTvaDeductibleCollectee: Guide = {
     {
       question: "Peut-on déduire la TVA sur tous les achats professionnels ?",
       answer:
-        "Non. Certaines dépenses sont exclues ou limitées : repas d'affaires (selon nature, justificatif, participants et intérêt professionnel), réception, logement, représentation, carburant de véhicule de tourisme (déduction partielle ou totale selon le cas — ex. courant : 80 % pour certains carburants), cadeaux au-delà de 73 € TTC par bénéficiaire et par an, etc.",
+        "Non. Certaines dépenses sont exclues ou limitées : repas d'affaires (selon nature, justificatif, participants et intérêt professionnel), réception, logement, représentation, carburant de véhicule de tourisme (déduction partielle ou totale selon le cas, ex. courant : 80 % pour certains carburants), cadeaux au-delà de 73 € TTC par bénéficiaire et par an, etc.",
     },
     {
       question: "Qu'est-ce qu'un crédit de TVA ?",
@@ -723,7 +723,7 @@ export const guideTvaDeductibleCollectee: Guide = {
     keyPoints: [
       "La TVA collectée provient de vos ventes ; la TVA déductible, de vos achats professionnels éligibles (art. 271 du CGI, sous réserve des exclusions et limitations).",
       "TVA due = TVA collectée − TVA déductible. Un solde négatif forme un crédit de TVA.",
-      "Déclarez vos montants sur la CA3 (art. 287 du CGI), en respectant la ventilation par taux — vérifiez les numéros de cases sur impots.gouv.fr.",
+      "Déclarez vos montants sur la CA3 (art. 287 du CGI), en respectant la ventilation par taux, vérifiez les numéros de cases sur impots.gouv.fr.",
       "En activité mixte, appliquez le coefficient de déduction et conservez toutes vos factures justificatives.",
     ],
     closingText:

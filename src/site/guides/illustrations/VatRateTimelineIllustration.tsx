@@ -1,6 +1,6 @@
 import { ILLU as c } from "./tokens";
 
-/** Chronologie — 4 étapes pour déterminer le taux de TVA */
+/** Chronologie : 4 étapes pour déterminer le taux de TVA */
 export function VatRateTimelineIllustration() {
   const steps = [
     { num: "1", title: "Identifier la nature", lines: ["Bien ou service ?", "Secteur d'activité ?"] },
@@ -18,7 +18,7 @@ export function VatRateTimelineIllustration() {
       </defs>
       <rect width="720" height="280" fill={c.surfaceAlt} />
       <text x="360" y="28" textAnchor="middle" fill={c.text} fontSize="14" fontWeight="700" fontFamily={c.font}>
-        Méthode en 4 étapes — du produit au taux
+        Méthode en 4 étapes, du produit au taux
       </text>
       <text x="360" y="46" textAnchor="middle" fill={c.textMuted} fontSize="10" fontFamily={c.font}>
         Processus systématique pour choisir le bon taux et facturer correctement

@@ -1,37 +1,53 @@
 import { config, seoConfig } from "@/site";
-import { ContactPageLayout } from "@/framework/layouts/ContactPageLayout";
-import { ContactForm } from "@/framework/ContactForm";
+import { FaqPageSidebar, GuidePageLayout } from "@/site/guides";
+import { ContactPageContent } from "@/site/contact/ContactPageContent";
+import { PageBreadcrumb } from "@/framework/design/components/PageBreadcrumb";
 import { JsonLd } from "@/framework/JsonLd";
 import { buildPageMetadata } from "@/framework/seo/metadata";
 import { buildBreadcrumbSchema, buildWebPageSchema } from "@/framework/seo/json-ld";
+import "@/site/guides/guide-page.css";
 
 const page = seoConfig.legal.contact;
+const path = "/contact";
 
 export const metadata = buildPageMetadata(config, seoConfig, {
   title: page.title,
   description: page.description,
-  path: "/contact",
+  path,
 });
 
 export default function ContactPage() {
+  const { contact } = config;
+
   return (
     <>
       <JsonLd
         data={[
-          buildWebPageSchema(config, page.title, page.description, "/contact"),
+          buildWebPageSchema(config, page.title, page.description, path),
           buildBreadcrumbSchema(config, [
             { name: "Accueil", path: "/" },
-            { name: page.title, path: "/contact" },
+            { name: page.title, path },
           ]),
         ]}
       />
-      <ContactPageLayout title={page.title} subtitle={config.contact.intro}>
-        <ContactForm
-          email={config.contact.email}
-          subjects={config.contact.subjects}
-          trustNote={config.contact.trustNote}
+      <GuidePageLayout
+        title={page.title}
+        subtitle={contact.intro}
+        sidebar={<FaqPageSidebar />}
+        prose={false}
+      >
+        <PageBreadcrumb
+          items={[
+            { label: "Accueil", href: "/" },
+            { label: page.title },
+          ]}
         />
-      </ContactPageLayout>
+        <ContactPageContent
+          email={contact.email}
+          subjects={contact.subjects}
+          trustNote={contact.trustNote}
+        />
+      </GuidePageLayout>
     </>
   );
 }

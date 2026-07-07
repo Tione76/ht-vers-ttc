@@ -39,7 +39,7 @@ const ROWS = [
   },
 ] as const;
 
-/** Comparatif TVA métropole vs DOM — tableau responsive */
+/** Comparatif TVA métropole vs DOM : tableau responsive */
 export function VatRatesDomIllustration() {
   return (
     <div

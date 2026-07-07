@@ -14,8 +14,8 @@ const ROOT = path.join(__dirname, "..");
 const INCOMING = path.join(ROOT, "public", "images", "og", "_incoming");
 const OUT_DIR = path.join(ROOT, "public", "images", "og");
 
-/** Fichiers accueil — sortie dans public/images/og/ */
-const HOME_STEMS = new Set(["Calcul-HT-vers-TTC"]);
+/** Fichiers accueil : sortie dans public/images/og/ */
+const HOME_STEMS = new Set(["Calcul-HT-vers-TTC", "Calcul-marge-HT-TTC"]);
 
 const IMAGE_EXT = /\.(jpe?g|png|webp)$/i;
 

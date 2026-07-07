@@ -1,6 +1,6 @@
 import { ILLU as c } from "./tokens";
 
-/** Flux territorial — France, UE, hors UE */
+/** Flux territorial : France, UE, hors UE */
 export function VatTerritoryFlowIllustration() {
   const zones = [
     {
@@ -41,7 +41,7 @@ export function VatTerritoryFlowIllustration() {
       </defs>
       <rect width="720" height="320" fill={c.surfaceAlt} />
       <text x="360" y="28" textAnchor="middle" fill={c.text} fontSize="14" fontWeight="700" fontFamily={c.font}>
-        Territoire d&apos;imposition — où applique-t-on la TVA ?
+        Territoire d&apos;imposition, où applique-t-on la TVA ?
       </text>
       <text x="360" y="46" textAnchor="middle" fill={c.textMuted} fontSize="10" fontFamily={c.font}>
         Le lieu de la transaction détermine le régime fiscal applicable

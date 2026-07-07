@@ -1,4 +1,4 @@
-/** Liens internes — source unique pour la page FAQ */
+/** Liens internes : source unique pour la page FAQ */
 export const FAQ_INTERNAL_LINKS = {
   calc: { href: "/", link: "calculateur HT vers TTC" },
   margin: {

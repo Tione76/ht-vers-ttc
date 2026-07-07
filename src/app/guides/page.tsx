@@ -1,6 +1,11 @@
-import Link from "next/link";
 import { config, seoConfig } from "@/site";
-import { guides, GuideListCard } from "@/site/guides";
+import {
+  guides,
+  GuideListCard,
+  GuidesHubEditorial,
+  GuidesHubPicker,
+  GuidesHubSidebar,
+} from "@/site/guides";
 import { PageBreadcrumb } from "@/framework/design/components/PageBreadcrumb";
 import { GuidePageLayout } from "@/site/guides/GuidePageLayout";
 import { JsonLd } from "@/framework/JsonLd";
@@ -24,13 +29,14 @@ export default function GuidesHubPage() {
           buildWebPageSchema(config, hub.title, hub.description, hub.path),
           buildBreadcrumbSchema(config, [
             { name: "Accueil", path: "/" },
-            { name: hub.title, path: hub.path },
+            { name: hub.h1, path: hub.path },
           ]),
         ]}
       />
       <GuidePageLayout
-        title="Guides TVA"
-        subtitle="Tout comprendre sur la TVA, la facturation et les régimes applicables en France."
+        title={hub.h1}
+        subtitle={hub.subtitle}
+        sidebar={<GuidesHubSidebar />}
       >
         <PageBreadcrumb
           items={[
@@ -38,17 +44,13 @@ export default function GuidesHubPage() {
             { label: "Guides TVA" },
           ]}
         />
-        <p>
-          Nos guides détaillent chaque sujet avec des exemples concrets, des références
-          légales et des réponses aux questions les plus fréquentes. Besoin d&apos;un calcul
-          rapide ? Consultez aussi nos{" "}
-          <Link href={seoConfig.toolsHub.path}>outils gratuits</Link>.
-        </p>
         <div className="guide-list-grid">
           {guides.map((guide) => (
             <GuideListCard key={guide.slug} guide={guide} />
           ))}
         </div>
+        <GuidesHubPicker />
+        <GuidesHubEditorial />
       </GuidePageLayout>
     </>
   );

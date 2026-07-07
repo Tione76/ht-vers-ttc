@@ -13,7 +13,7 @@ const VAT_PRESETS = [
 
 const ZERO_EUR = "0,00 €";
 const ZERO_PERCENT = "0,00 %";
-const ZERO_COEF = "—";
+const ZERO_COEF = "-";
 const VALUE_TRANSITION = "color 175ms ease, opacity 175ms ease";
 const MUTED_VALUE_COLOR = "#9eb4c8";
 
@@ -217,7 +217,7 @@ export default function MarginCalculator() {
             aria-describedby="marginPercentHint"
           />
           <p className="margin-field-hint" id="marginPercentHint">
-            Appliqué sur le prix d&apos;achat HT — distinct du taux de marque.
+            Appliqué sur le prix d&apos;achat HT, distinct du taux de marque.
           </p>
         </div>
       </div>

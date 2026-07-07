@@ -1,6 +1,6 @@
 import { ILLU as c } from "./tokens";
 
-/** Arbre de décision — quel taux appliquer */
+/** Arbre de décision : quel taux appliquer */
 export function VatRateSelectionIllustration() {
   const branches = [
     { label: "Produit alimentaire", rate: "5,5 %", x: 48, note: "Hors restauration" },
@@ -12,7 +12,7 @@ export function VatRateSelectionIllustration() {
     <svg viewBox="0 0 720 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Arbre de décision pour choisir le taux de TVA">
       <rect width="720" height="420" fill={c.surfaceAlt} />
       <text x="360" y="28" textAnchor="middle" fill={c.text} fontSize="14" fontWeight="700" fontFamily={c.font}>
-        Quel taux appliquer ? — logique de décision
+        Quel taux appliquer ? logique de décision
       </text>
 
       <rect x="250" y="44" width="220" height="52" rx="26" fill={c.brand} />

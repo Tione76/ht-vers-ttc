@@ -9,7 +9,7 @@ interface ContactPageLayoutProps {
   children: React.ReactNode;
 }
 
-/** Template officiel — contact, assistance, support */
+/** Template officiel : contact, assistance, support */
 export function ContactPageLayout({ title, subtitle, children }: ContactPageLayoutProps) {
   const site = useSite();
   const { contact } = site;

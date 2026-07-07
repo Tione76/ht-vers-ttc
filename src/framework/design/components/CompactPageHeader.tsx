@@ -15,7 +15,7 @@ interface CompactPageHeaderProps {
   subtitle?: string;
 }
 
-/** Header compact (~200 px) — pages contenu, contact, légal */
+/** Header compact (~200 px) : pages contenu, contact, légal */
 export function CompactPageHeader({
   siteName,
   nav,

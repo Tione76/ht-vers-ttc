@@ -89,14 +89,6 @@ export function getAllPublicPages(): PublicPage[] {
       priority: 0.5,
       indexable: true,
     },
-    {
-      path: "/gestion-des-cookies",
-      title: legal.cookiePrefs.title,
-      category: "utility",
-      changefreq: "yearly",
-      priority: 0.2,
-      indexable: false,
-    },
   ];
 
   const legalPages: PublicPage[] = [
@@ -117,7 +109,7 @@ export function getAllPublicPages(): PublicPage[] {
       indexable: true,
     },
     {
-      path: "/politique-de-cookies",
+      path: "/gestion-des-cookies",
       title: legal.cookies.title,
       category: "utility",
       changefreq: "yearly",
@@ -147,7 +139,7 @@ export function getAllPublicPages(): PublicPage[] {
   ];
 }
 
-/** Entrées pour sitemap.xml — pages indexables uniquement */
+/** Entrées pour sitemap.xml : pages indexables uniquement */
 export function getSitemapEntries(): SitemapEntry[] {
   return getAllPublicPages()
     .filter((page) => page.indexable)

@@ -1,6 +1,6 @@
 import { ILLU as c } from "./tokens";
 
-/** Facture réaliste — prestation de service / freelance */
+/** Facture réaliste : prestation de service / freelance */
 export function ExampleInvoiceServiceIllustration() {
   return (
     <svg viewBox="0 0 720 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Exemple de facture conforme pour une prestation de service">
@@ -33,7 +33,7 @@ export function ExampleInvoiceServiceIllustration() {
       ))}
 
       <rect x="60" y="242" width="600" height="36" fill={c.surface} stroke={c.borderLight} />
-      <text x="72" y="264" fill={c.textSecondary} fontSize="10" fontFamily={c.font}>Mission conseil stratégique — T3 2026</text>
+      <text x="72" y="264" fill={c.textSecondary} fontSize="10" fontFamily={c.font}>Mission conseil stratégique, T3 2026</text>
       <text x="408" y="264" fill={c.textSecondary} fontSize="10" fontFamily={c.font}>3</text>
       <text x="456" y="264" fill={c.textSecondary} fontSize="10" fontFamily={c.font}>650,00 €</text>
       <text x="548" y="264" fill={c.text} fontSize="10" fontWeight="600" fontFamily={c.font}>1 950,00 €</text>

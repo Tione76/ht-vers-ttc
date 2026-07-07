@@ -45,7 +45,7 @@ function CalculatorHero({
           {result ?? (
             <div className="result-primary">
               <p className="result-primary-label">En attente</p>
-              <p className="result-primary-value">—</p>
+              <p className="result-primary-value">-</p>
               <p className="result-details">Renseignez le formulaire pour voir les résultats.</p>
             </div>
           )}

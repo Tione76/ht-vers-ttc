@@ -1,6 +1,6 @@
 import { ILLU as c } from "./tokens";
 
-/** Facture annotée — HT, TVA par taux, ventilation */
+/** Facture annotée : HT, TVA par taux, ventilation */
 export function VatInvoiceAnnotatedIllustration() {
   return (
     <svg viewBox="0 0 720 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Facture annotée montrant HT, TVA par taux et ventilation">
@@ -14,7 +14,7 @@ export function VatInvoiceAnnotatedIllustration() {
         Lecture d&apos;une facture multi-taux
       </text>
       <text x="360" y="46" textAnchor="middle" fill={c.textMuted} fontSize="10" fontFamily={c.font}>
-        Chaque ligne porte son taux — la ventilation regroupe par catégorie
+        Chaque ligne porte son taux, la ventilation regroupe par catégorie
       </text>
 
       {/* Invoice card */}
@@ -29,7 +29,7 @@ export function VatInvoiceAnnotatedIllustration() {
         <text key={h} x={[152, 340, 420, 500][i]} y="118" fill="#fff" fontSize="9" fontWeight="600" fontFamily={c.font}>{h}</text>
       ))}
 
-      {/* Line 1 — 20% */}
+      {/* Line 1 : 20% */}
       <rect x="140" y="130" width="440" height="34" fill={c.surface} stroke={c.borderLight} />
       <text x="152" y="152" fill={c.textSecondary} fontSize="10" fontFamily={c.font}>Conseil stratégique</text>
       <text x="380" y="152" textAnchor="end" fill={c.text} fontSize="10" fontWeight="600" fontFamily={c.font}>1 000,00 €</text>
@@ -37,7 +37,7 @@ export function VatInvoiceAnnotatedIllustration() {
       <text x="422" y="151" textAnchor="middle" fill={c.brand} fontSize="9" fontWeight="700" fontFamily={c.font}>20 %</text>
       <text x="540" y="152" textAnchor="end" fill={c.text} fontSize="10" fontFamily={c.font}>200,00 €</text>
 
-      {/* Line 2 — 5.5% */}
+      {/* Line 2 : 5.5% */}
       <rect x="140" y="164" width="440" height="34" fill={c.surfaceAlt} stroke={c.borderLight} />
       <text x="152" y="186" fill={c.textSecondary} fontSize="10" fontFamily={c.font}>Livres professionnels</text>
       <text x="380" y="186" textAnchor="end" fill={c.text} fontSize="10" fontWeight="600" fontFamily={c.font}>200,00 €</text>

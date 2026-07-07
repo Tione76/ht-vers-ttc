@@ -24,6 +24,11 @@ const nextConfig: NextConfig = {
         destination: "/nos-outils",
         permanent: true,
       },
+      {
+        source: "/politique-de-cookies",
+        destination: "/gestion-des-cookies",
+        permanent: true,
+      },
     ];
   },
   headers: async () => [

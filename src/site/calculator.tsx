@@ -4,10 +4,10 @@ import { useLayoutEffect, useState } from "react";
 import { useCalculatorSlot } from "@/framework/SiteProvider";
 
 const VAT_RATES = [
-  { value: "20", label: "20 % — taux normal" },
-  { value: "10", label: "10 % — taux intermédiaire" },
-  { value: "5.5", label: "5,5 % — taux réduit" },
-  { value: "2.1", label: "2,1 % — taux super-réduit" },
+  { value: "20", label: "20 %, taux normal" },
+  { value: "10", label: "10 %, taux intermédiaire" },
+  { value: "5.5", label: "5,5 %, taux réduit" },
+  { value: "2.1", label: "2,1 %, taux super-réduit" },
 ] as const;
 
 const ZERO_EUR = "0,00 €";

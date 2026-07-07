@@ -16,7 +16,7 @@ interface GuidePageLayoutProps {
   prose?: boolean;
 }
 
-/** Layout dédié aux guides — header hero, sans nom de site au-dessus du H1 */
+/** Layout dédié aux guides : header hero, sans nom de site au-dessus du H1 */
 export function GuidePageLayout({
   title,
   subtitle,

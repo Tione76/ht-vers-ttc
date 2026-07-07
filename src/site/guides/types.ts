@@ -48,7 +48,7 @@ export type GuideLinkVariant = "calculator" | "guide" | "simulator";
 export interface GuideCallout {
   type: "callout";
   variant: GuideCalloutVariant;
-  /** Paragraphes courts — un item = un paragraphe */
+  /** Paragraphes courts : un item = un paragraphe */
   paragraphs: string[];
 }
 
@@ -105,7 +105,7 @@ export interface GuideIllustration {
   caption?: string;
 }
 
-/** Emplacement réservé pour une illustration — modèle éditorial uniquement */
+/** Emplacement réservé pour une illustration : modèle éditorial uniquement */
 export interface GuideImagePlaceholder {
   type: "image-placeholder";
   description: string;
@@ -178,7 +178,7 @@ export interface GuideConclusion {
   };
 }
 
-/** Liens affichés dans la sidebar — maillage interne */
+/** Liens affichés dans la sidebar : maillage interne */
 export interface GuideSidebarLinks {
   calculator: {
     title: string;
@@ -195,7 +195,7 @@ export interface GuideSidebarLinks {
     description: string;
     href: string;
   };
-  /** Bloc « À découvrir » — maillage vers contenus complémentaires */
+  /** Bloc « À découvrir » : maillage vers contenus complémentaires */
   discover?: {
     title: string;
     href: string;
@@ -210,27 +210,27 @@ export interface Guide {
   slug: string;
   title: string;
   description: string;
-  /** Sous-titre affiché dans le header compact — reformulation de la promesse éditoriale */
+  /** Sous-titre affiché dans le header compact : reformulation de la promesse éditoriale */
   subtitle: string;
-  /** Date ISO (YYYY-MM-DD) — affichée et injectée dans Article JSON-LD (dateModified) */
+  /** Date ISO (YYYY-MM-DD) : affichée et injectée dans Article JSON-LD (dateModified) */
   updatedAt: string;
-  /** Date ISO de première publication — Article JSON-LD (datePublished) */
+  /** Date ISO de première publication : Article JSON-LD (datePublished) */
   publishedAt: string;
-  /** Mots-clés SEO secondaires — complètent seoConfig.keywords globaux */
+  /** Mots-clés SEO secondaires : complètent seoConfig.keywords globaux */
   keywords: string[];
-  /** Image Open Graph / couverture — renseignée via attachGuideCover() */
+  /** Image Open Graph / couverture : renseignée via attachGuideCover() */
   coverImage?: GuideCoverImage;
-  /** 2 à 3 phrases — réponse immédiate à la question principale, sans H2 */
+  /** 2 à 3 phrases : réponse immédiate à la question principale, sans H2 */
   introduction: string[];
   /** Bloc visuel synthétique affiché juste après l'introduction (optionnel) */
   quickSummary?: GuideQuickSummary;
   sections: GuideSection[];
   faq: FaqItem[];
-  /** Titre H2 de la section FAQ — adapté au sujet du guide */
+  /** Titre H2 de la section FAQ : adapté au sujet du guide */
   faqTitle?: string;
   conclusion: GuideConclusion;
   sidebar: GuideSidebarLinks;
-  /** true uniquement pour le modèle de référence /modele — exclu du sitemap */
+  /** true uniquement pour le modèle de référence /modele : exclu du sitemap */
   isTemplate?: boolean;
 }
 

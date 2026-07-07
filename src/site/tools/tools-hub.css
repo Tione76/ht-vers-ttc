@@ -1,0 +1,449 @@
+/* Hub /nos-outils : cartes, éditorial, FAQ */
+
+/* ── Hero calculateurs ── */
+.tools-hub-hero {
+  margin-bottom: 8px;
+}
+
+.tools-hub-hero__title {
+  margin: 0 0 10px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ds-text);
+}
+
+.tools-hub-hero__intro {
+  max-width: 68ch;
+  margin: 0 0 24px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ds-text-muted);
+}
+
+.tool-list-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+@media (min-width: 640px) {
+  .tool-list-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+}
+
+.tool-list-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  background: #ffffff;
+  border: 1px solid var(--ds-border);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.15s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.tool-list-card--featured {
+  box-shadow: 0 2px 12px rgba(26, 75, 124, 0.06);
+}
+
+.tool-list-card--featured:hover {
+  border-color: var(--ds-brand);
+  box-shadow: 0 8px 28px rgba(26, 75, 124, 0.14);
+  transform: translateY(-3px);
+}
+
+.tool-list-card__badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 1;
+  padding: 4px 10px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--ds-brand);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(26, 75, 124, 0.15);
+  border-radius: 4px;
+}
+
+.tool-list-card__cover {
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--ds-surface-alt);
+}
+
+.tool-list-card__cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.25s ease;
+}
+
+.tool-list-card:hover .tool-list-card__cover-img {
+  transform: scale(1.02);
+}
+
+.tool-list-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px 20px 20px;
+  flex: 1;
+}
+
+.tool-list-card__title {
+  display: block;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--ds-text);
+  line-height: 1.35;
+}
+
+.tool-list-card__desc {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--ds-text-muted);
+  flex: 1;
+}
+
+.tool-list-card__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 6px;
+  padding: 11px 16px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: var(--ds-brand);
+  border-radius: 6px;
+  transition: background 0.15s ease;
+}
+
+.tool-list-card:hover .tool-list-card__cta {
+  background: var(--ds-primary-hover, #153d66);
+  text-decoration: none;
+}
+
+/* Réassurance */
+.tools-hub-reassurance {
+  list-style: none;
+  margin: 0 0 40px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+}
+
+.tools-hub-reassurance__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ds-text);
+}
+
+.tools-hub-reassurance__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--ds-brand);
+  background: rgba(26, 75, 124, 0.08);
+  border-radius: 50%;
+}
+
+/* Picker parcours */
+.tools-hub-picker-section {
+  margin: 0 -24px 48px;
+  padding: 40px 24px;
+  border-radius: var(--ds-radius);
+}
+
+@media (min-width: 768px) {
+  .tools-hub-picker-section {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 40px 32px;
+  }
+}
+
+.tools-hub-picker-section h2 {
+  margin-top: 0;
+}
+
+.tools-hub-picker-section__intro {
+  max-width: 68ch;
+  margin: 0 0 24px;
+  color: var(--ds-text-muted);
+  line-height: 1.6;
+}
+
+.tools-hub-picker {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+@media (min-width: 640px) {
+  .tools-hub-picker {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .tools-hub-picker {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.tools-hub-picker__card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px 22px;
+  background: #ffffff;
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.tools-hub-picker__card:hover {
+  border-color: var(--ds-brand);
+  box-shadow: 0 4px 16px rgba(26, 75, 124, 0.08);
+}
+
+.tools-hub-picker__icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.tools-hub-picker__question {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--ds-text);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.tools-hub-picker__cta {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--ds-text-muted);
+  margin: 0;
+}
+
+/* Éditorial */
+.tools-hub-editorial {
+  margin-top: 0;
+}
+
+.tools-hub-section {
+  margin-bottom: 40px;
+  padding: 0;
+}
+
+.tools-hub-section:last-child {
+  margin-bottom: 0;
+}
+
+.tools-hub-section > p {
+  max-width: 68ch;
+}
+
+.tools-hub-section h2 {
+  margin-top: 0;
+}
+
+.tools-hub-section--tinted {
+  margin-left: -24px;
+  margin-right: -24px;
+  padding: 36px 24px;
+  background: linear-gradient(180deg, rgba(26, 75, 124, 0.04) 0%, rgba(26, 75, 124, 0.07) 100%);
+  border-top: 1px solid rgba(26, 75, 124, 0.08);
+  border-bottom: 1px solid rgba(26, 75, 124, 0.08);
+}
+
+@media (min-width: 768px) {
+  .tools-hub-section--tinted {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 40px 32px;
+    border: 1px solid rgba(26, 75, 124, 0.1);
+    border-radius: var(--ds-radius);
+  }
+
+  .tools-hub-picker-section.tools-hub-section--tinted {
+    border-radius: var(--ds-radius);
+  }
+}
+
+.tools-hub-key-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin: 28px 0 0;
+}
+
+@media (min-width: 640px) {
+  .tools-hub-key-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+.tools-hub-key-card {
+  padding: 22px 24px;
+  background: #ffffff;
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius);
+}
+
+.tools-hub-section--tinted .tools-hub-key-card {
+  background: #ffffff;
+}
+
+.tools-hub-key-card h3 {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--ds-brand);
+  margin: 0 0 10px;
+}
+
+.tools-hub-key-card p {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  margin: 0 0 16px;
+  color: var(--ds-text-muted);
+}
+
+.tools-hub-cta {
+  font-weight: 600;
+  color: var(--ds-brand);
+  text-decoration: none;
+}
+
+.tools-hub-cta:hover {
+  text-decoration: underline;
+}
+
+.tools-hub-cta--button {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 16px;
+  font-size: 0.875rem;
+  background: rgba(26, 75, 124, 0.06);
+  border: 1px solid rgba(26, 75, 124, 0.18);
+  border-radius: 6px;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.tools-hub-cta--button:hover {
+  text-decoration: none;
+  background: rgba(26, 75, 124, 0.1);
+  border-color: var(--ds-brand);
+}
+
+.tools-hub-checklist,
+.tools-hub-errors,
+.tools-hub-benefits {
+  margin-top: 20px;
+}
+
+.tools-hub-faq-transition {
+  max-width: 68ch;
+  margin: 0 0 28px;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--ds-text-muted);
+}
+
+.tools-hub-section--faq h2 {
+  margin-bottom: 20px;
+}
+
+/* Tableau orientation */
+.tools-hub-table-wrap {
+  margin-top: 24px;
+  overflow-x: auto;
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius);
+}
+
+.tools-hub-table {
+  width: 100%;
+  min-width: 320px;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.tools-hub-table th,
+.tools-hub-table td {
+  padding: 14px 18px;
+  text-align: left;
+  border-bottom: 1px solid var(--ds-border);
+}
+
+.tools-hub-table th {
+  font-weight: 700;
+  color: var(--ds-brand);
+  background: var(--ds-surface-alt);
+}
+
+.tools-hub-table tr:last-child td {
+  border-bottom: none;
+}
+
+.tools-hub-table td a {
+  font-weight: 600;
+  color: var(--ds-brand);
+  text-decoration: none;
+}
+
+.tools-hub-table td a:hover {
+  text-decoration: underline;
+}
+
+.tools-hub-guides {
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+@media (min-width: 640px) {
+  .tools-hub-guides {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 24px;
+  }
+}
+
+.tools-hub-guides__link {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--ds-brand);
+  text-decoration: none;
+}
+
+.tools-hub-guides__link:hover {
+  text-decoration: underline;
+}
+
+/* FAQ */
+.tools-hub-faq {
+  margin-top: 0;
+}

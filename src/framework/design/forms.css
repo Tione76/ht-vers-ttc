@@ -1,4 +1,4 @@
-/* Formulaires — composants partagés (simulateur, contact, etc.) */
+/* Formulaires : composants partagés (simulateur, contact, etc.) */
 
 .ds-form {
   display: flex;
@@ -100,7 +100,7 @@
   border-color: #123456;
 }
 
-/* Bouton sur fond bleu (simulateur — calc-cta) */
+/* Bouton sur fond bleu (simulateur : calc-cta) */
 .ds-btn--on-brand {
   color: var(--ds-brand);
   background: #ffffff;
@@ -125,4 +125,37 @@
   color: var(--ds-text-muted);
   line-height: 1.55;
   max-width: 36rem;
+}
+
+.ds-field-error {
+  margin-top: 6px;
+  font-size: var(--ds-font-size-sm, 0.875rem);
+  color: var(--ds-error, #ce0500);
+  line-height: 1.4;
+}
+
+.ds-form-feedback {
+  margin-bottom: 24px;
+  padding: 14px 16px;
+  border-radius: var(--ds-radius);
+  font-size: var(--ds-font-size-base);
+  line-height: 1.5;
+  max-width: 36rem;
+}
+
+.ds-form-feedback--success {
+  background: #f0f7f2;
+  border: 1px solid #b8d9c4;
+  color: #1e5631;
+}
+
+.ds-form-feedback--error {
+  background: #fdf2f2;
+  border: 1px solid #f0c4c4;
+  color: #7a2424;
+}
+
+.ds-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
 }

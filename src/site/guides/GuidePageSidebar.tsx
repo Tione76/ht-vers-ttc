@@ -11,14 +11,18 @@ export interface SiteSidebarProps {
   currentGuideSlug?: string;
 }
 
-/** Sidebar unique — filtre automatiquement la page courante */
+/** Sidebar unique : filtre automatiquement la page courante */
 export function SiteSidebar({ pageType, currentPath, currentGuideSlug }: SiteSidebarProps) {
   const context = { pageType, currentPath, currentGuideSlug };
   const tools = getSidebarTools(context);
-  const guides = getSidebarGuides(context);
+  const guides =
+    pageType === "guides-hub"
+      ? []
+      : getSidebarGuides(context);
   const showTools = tools.length > 0;
-  const guidesSectionTitle = pageType === "home" ? "Nos guides" : "À lire aussi";
-  const guidesBlockVariant = pageType === "home" ? "guides" : "also-read";
+  const guidesSectionTitle =
+    pageType === "home" || pageType === "tools-hub" ? "Nos guides" : "À lire aussi";
+  const guidesBlockVariant = pageType === "home" || pageType === "tools-hub" ? "guides" : "also-read";
 
   return (
     <GuideSidebar
@@ -31,7 +35,17 @@ export function SiteSidebar({ pageType, currentPath, currentGuideSlug }: SiteSid
   );
 }
 
-/** Sidebar standard — pages guides */
+/** Sidebar page hub /guides : outils uniquement */
+export function GuidesHubSidebar() {
+  return <SiteSidebar pageType="guides-hub" currentPath="/guides" />;
+}
+
+/** Sidebar page hub /nos-outils : guides uniquement */
+export function ToolsHubSidebar() {
+  return <SiteSidebar pageType="tools-hub" currentPath="/nos-outils" />;
+}
+
+/** Sidebar standard : pages guides */
 export function GuidePageSidebar({ slug }: { slug: string }) {
   return (
     <SiteSidebar
@@ -52,7 +66,7 @@ export function ToolPageSidebar({ currentPath }: { currentPath: string }) {
   return <SiteSidebar pageType="calculator" currentPath={currentPath} />;
 }
 
-/** Sidebar page d'accueil — autres outils + guides (sans le calculateur HT → TTC) */
+/** Sidebar page d'accueil : autres outils + guides (sans le calculateur HT → TTC) */
 export function HomePageSidebar() {
   return <SiteSidebar pageType="home" currentPath="/" />;
 }

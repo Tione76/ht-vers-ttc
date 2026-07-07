@@ -1,5 +1,5 @@
 /**
- * FAQ du site — page d'accueil (Schema.org) et source des questions.
+ * FAQ du site : page d'accueil (Schema.org) et source des questions.
  */
 export const faq = [
   {

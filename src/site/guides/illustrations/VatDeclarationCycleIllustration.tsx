@@ -33,7 +33,7 @@ export function VatDeclarationCycleIllustration() {
 
       <rect x="160" y="230" width="400" height="36" rx="6" fill={c.brandLight} stroke={c.brandMuted} />
       <text x="360" y="254" textAnchor="middle" fill={c.brand} fontSize="11" fontWeight="600" fontFamily={c.font}>
-        Art. 287 et 287 A du CGI — déclaration de TVA obligatoire
+        Art. 287 et 287 A du CGI, déclaration de TVA obligatoire
       </text>
 
       <defs>

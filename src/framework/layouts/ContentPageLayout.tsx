@@ -15,7 +15,7 @@ interface ContentPageLayoutProps {
   prose?: boolean;
 }
 
-/** Template officiel — articles, guides, légal, FAQ, 404, etc. */
+/** Template officiel : articles, guides, légal, FAQ, 404, etc. */
 export function ContentPageLayout({
   meta,
   title,

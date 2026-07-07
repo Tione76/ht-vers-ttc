@@ -1,15 +1,18 @@
 import Link from "next/link";
 import type { Guide } from "./types";
 import { GuideCoverImage } from "./GuideCoverImage";
+import { getGuideHubTeaser } from "./guides-hub-data";
 
 interface GuideListCardProps {
   guide: Guide;
 }
 
-/** Carte guide — future page liste / maillage interne */
+/** Carte guide : hub /guides et future page liste */
 export function GuideListCard({ guide }: GuideListCardProps) {
   const cover = guide.coverImage;
   if (!cover) return null;
+
+  const teaser = getGuideHubTeaser(guide.slug);
 
   return (
     <Link href={`/guides/${guide.slug}`} className="guide-list-card">
@@ -20,7 +23,13 @@ export function GuideListCard({ guide }: GuideListCardProps) {
           sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 320px"
         />
       </span>
-      <span className="guide-list-card__title">{guide.title}</span>
+      <span className="guide-list-card__body">
+        <span className="guide-list-card__title">{guide.title}</span>
+        {teaser && <span className="guide-list-card__desc">{teaser}</span>}
+        <span className="guide-list-card__cta" aria-hidden="true">
+          → Lire le guide
+        </span>
+      </span>
     </Link>
   );
 }

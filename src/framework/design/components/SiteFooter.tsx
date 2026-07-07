@@ -15,7 +15,6 @@ interface SiteFooterProps {
   footerDescription: string;
   tools: SiteTool[];
   footerLinks: NavLink[];
-  logoLetter?: string;
 }
 
 export function SiteFooter({
@@ -24,7 +23,6 @@ export function SiteFooter({
   footerDescription,
   tools,
   footerLinks,
-  logoLetter = "S",
 }: SiteFooterProps) {
   const { openPreferences } = useConsent();
   const year = new Date().getFullYear();
@@ -34,9 +32,6 @@ export function SiteFooter({
       <div className="content-wrap">
         <div className="site-footer__main">
           <div className="site-footer__brand">
-            <div className="site-footer__logo" aria-hidden="true">
-              {logoLetter}
-            </div>
             <p className="site-footer__name">{brandName}</p>
             <p className="site-footer__desc">{footerDescription}</p>
           </div>
@@ -77,7 +72,7 @@ export function SiteFooter({
         </nav>
 
         <p className="site-footer__copy">
-          © {year} {brandName} — Tous droits réservés.
+          © {year} {brandName}. Tous droits réservés.
         </p>
       </div>
     </footer>

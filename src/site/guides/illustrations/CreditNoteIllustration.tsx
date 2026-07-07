@@ -21,7 +21,7 @@ export function CreditNoteIllustration() {
       <text x="580" y="182" fill="#fff" fontSize="10" fontWeight="600" fontFamily={c.font}>Montant TTC</text>
 
       <rect x="60" y="196" width="600" height="32" fill={c.surface} stroke={c.borderLight} />
-      <text x="72" y="216" fill={c.textSecondary} fontSize="10" fontFamily={c.font}>Annulation — erreur de montant sur FAC-2026-0030</text>
+      <text x="72" y="216" fill={c.textSecondary} fontSize="10" fontFamily={c.font}>Annulation : erreur de montant sur FAC-2026-0030</text>
       <text x="640" y="216" textAnchor="end" fill={c.error} fontSize="11" fontWeight="700" fontFamily={c.font}>- 1 200,00 €</text>
 
       <rect x="380" y="252" width="280" height="100" rx="6" fill={c.errorLight} stroke="#fecaca" />

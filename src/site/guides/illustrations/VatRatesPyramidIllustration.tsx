@@ -1,6 +1,6 @@
 import { ILLU as c } from "./tokens";
 
-/** Pyramide des taux de TVA — infographie premium */
+/** Pyramide des taux de TVA : infographie premium */
 export function VatRatesPyramidIllustration() {
   const tiers = [
     { rate: "20 %", label: "Taux normal", sub: "Règle générale", w: 560, color: c.brand, icon: "◆" },
@@ -19,7 +19,7 @@ export function VatRatesPyramidIllustration() {
       </defs>
       <rect width="720" height="400" fill="url(#pyr-bg)" />
       <text x="360" y="34" textAnchor="middle" fill={c.text} fontSize="15" fontWeight="700" fontFamily={c.font}>
-        Pyramide des taux de TVA — métropole
+        Pyramide des taux de TVA, métropole
       </text>
       <text x="360" y="54" textAnchor="middle" fill={c.textMuted} fontSize="10" fontFamily={c.font}>
         Du plus courant (20 %) aux exceptions les plus rares (2,1 %)
@@ -47,7 +47,7 @@ export function VatRatesPyramidIllustration() {
 
       <rect x="140" y="368" width="440" height="22" rx="4" fill={c.surface} stroke={c.border} />
       <text x="360" y="383" textAnchor="middle" fill={c.textMuted} fontSize="9" fontFamily={c.font}>
-        Art. 278 à 281 du CGI — le taux dépend de la nature de l&apos;opération, pas du métier
+        Art. 278 à 281 du CGI, le taux dépend de la nature de l&apos;opération, pas du métier
       </text>
     </svg>
   );

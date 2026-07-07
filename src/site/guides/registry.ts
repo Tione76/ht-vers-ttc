@@ -7,7 +7,7 @@ import { guideTvaAutoEntrepreneur } from "./guide-tva-auto-entrepreneur";
 import { guideTvaDeductibleCollectee } from "./guide-tva-deductible-collectee";
 import { OFFICIAL_GUIDE_MODEL } from "./template";
 
-/** Guides publiés — ajouter ici chaque guide en respectant OFFICIAL_GUIDE_MODEL */
+/** Guides publiés : ajouter ici chaque guide en respectant OFFICIAL_GUIDE_MODEL */
 export const guides: Guide[] = [
   attachGuideCover(guideFactureConforme),
   attachGuideCover(guideTauxTva),

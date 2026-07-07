@@ -1,7 +1,7 @@
 import { getAllCalculators } from "./calculators-registry";
 
 /**
- * Menu « Nos outils » — dérivé automatiquement du registre des calculateurs.
+ * Menu « Nos outils » : dérivé automatiquement du registre des calculateurs.
  */
 export const toolsNavigation = getAllCalculators().map((calc) => ({
   href: calc.path,

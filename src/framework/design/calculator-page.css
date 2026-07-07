@@ -1,4 +1,4 @@
-/* Calculator Page — header hero + simulateur intégré */
+/* Calculator Page : header hero + simulateur intégré */
 
 .tool-header {
   position: relative;
@@ -292,7 +292,7 @@
   color: rgba(212, 230, 245, 0.65);
 }
 
-/* Page d'accueil — colonne principale + sidebar guides */
+/* Page d'accueil : colonne principale + sidebar guides */
 .home-with-sidebar {
   padding-top: 48px;
   padding-bottom: 48px;

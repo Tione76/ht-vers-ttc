@@ -50,7 +50,7 @@ export const GUIDE_FAQ: FaqItem[] = [
   {
     question: "Peut-on récupérer la TVA sur ses achats en franchise ?",
     answer:
-      "Tant que vous êtes en franchise en base (art. 293 B du CGI), vous ne pouvez pas déduire la TVA sur vos achats professionnels — la taxe payée constitue une charge intégrale. Après sortie de franchise ou en cas d'option pour la TVA (art. 293 C), le droit à déduction peut s'ouvrir selon les règles applicables.",
+      "Tant que vous êtes en franchise en base (art. 293 B du CGI), vous ne pouvez pas déduire la TVA sur vos achats professionnels, la taxe payée constitue une charge intégrale. Après sortie de franchise ou en cas d'option pour la TVA (art. 293 C), le droit à déduction peut s'ouvrir selon les règles applicables.",
   },
   {
     question: "Puis-je facturer de la TVA en franchise en base ?",
@@ -106,7 +106,7 @@ export const GUIDE_FAQ: FaqItem[] = [
   {
     question: `Quels sont les seuils de franchise en base de TVA en ${FRANCHISE_THRESHOLDS_META.year} ?`,
     answer:
-      `En ${FRANCHISE_THRESHOLDS_META.year} (${FRANCHISE_THRESHOLDS_META.legalRef}) : ventes de marchandises, restauration et hébergement — ${formatThreshold(ventesRow.base)} (base) et ${formatThreshold(ventesRow.major)} (majoré) ; prestations de services — ${formatThreshold(servicesRow.base)} (base) et ${formatThreshold(servicesRow.major)} (majoré). Montants susceptibles d'évolution par la loi de finances.`,
+      `En ${FRANCHISE_THRESHOLDS_META.year} (${FRANCHISE_THRESHOLDS_META.legalRef}) : ventes de marchandises, restauration et hébergement : ${formatThreshold(ventesRow.base)} (base) et ${formatThreshold(ventesRow.major)} (majoré) ; prestations de services : ${formatThreshold(servicesRow.base)} (base) et ${formatThreshold(servicesRow.major)} (majoré). Montants susceptibles d'évolution par la loi de finances.`,
   },
   {
     question: "Qu'est-ce que l'article 293 B du CGI ?",
@@ -146,7 +146,7 @@ export const GUIDE_FAQ: FaqItem[] = [
   {
     question: "Faut-il un numéro de TVA intracommunautaire en franchise ?",
     answer:
-      "Non requis pour une facture française classique en franchise — le SIRET (ou SIREN) suffit en principe. Des règles spécifiques peuvent toutefois s'appliquer pour les échanges intracommunautaires. Un numéro vous est attribué en cas d'assujettissement ou d'option volontaire (art. 293 C du CGI).",
+      "Non requis pour une facture française classique en franchise, le SIRET (ou SIREN) suffit en principe. Des règles spécifiques peuvent toutefois s'appliquer pour les échanges intracommunautaires. Un numéro vous est attribué en cas d'assujettissement ou d'option volontaire (art. 293 C du CGI).",
   },
   {
     question: "Le projet de seuil unique à 25 000 € est-il toujours d'actualité ?",
@@ -205,44 +205,44 @@ export const ELIGIBILITY_TABLE_ROWS: string[][] = [
   [
     "Entreprise individuelle (EI)",
     "Oui",
-    "Mêmes seuils art. 293 B — régime réel ou micro",
+    "Mêmes seuils art. 293 B, régime réel ou micro",
     "Consultant EI à 30 000 € HT",
   ],
   [
     "SASU",
     "Oui",
-    "Statut juridique indifférent — seuils de CA déterminants",
+    "Statut juridique indifférent, seuils de CA déterminants",
     "Développeur SASU à 35 000 € HT",
   ],
   [
     "EURL",
     "Oui",
-    "IS ou IR — franchise si CA sous les plafonds",
+    "IS ou IR, franchise si CA sous les plafonds",
     "Graphiste EURL à 28 000 € HT",
   ],
   [
     "SAS",
     "Oui",
-    "PME sous les seuils — pas d'exclusion liée à la forme sociale",
+    "PME sous les seuils, pas d'exclusion liée à la forme sociale",
     "Boutique en ligne SAS à 80 000 € HT (ventes)",
   ],
   [
     "SARL",
     "Oui",
-    "Associé unique ou multiple — seuils identiques",
+    "Associé unique ou multiple, seuils identiques",
     "Artisan SARL à 60 000 € HT",
   ],
   [
     "Profession libérale",
     "Oui",
-    `BNC — seuil services ${formatThreshold(servicesRow.base)} / ${formatThreshold(servicesRow.major)}`,
+    `BNC, seuil services ${formatThreshold(servicesRow.base)} / ${formatThreshold(servicesRow.major)}`,
     "Avocat, médecin, architecte sous les plafonds",
   ],
   [
     "Artisan",
     "Oui",
     "Seuil ventes si marchandises ; seuil services si prestations seules",
-    "Menuisier — ventes 50 000 € HT",
+    "Menuisier, ventes 50 000 € HT",
   ],
   [
     "Commerçant",
@@ -253,31 +253,31 @@ export const ELIGIBILITY_TABLE_ROWS: string[][] = [
   [
     "Consultant",
     "Oui",
-    `Prestations BIC/BNC — ${formatThreshold(servicesRow.base)} / ${formatThreshold(servicesRow.major)}`,
+    `Prestations BIC/BNC : ${formatThreshold(servicesRow.base)} / ${formatThreshold(servicesRow.major)}`,
     "Conseil stratégie à 40 000 € HT",
   ],
   [
     "Photographe",
     "Oui",
-    "Prestations de services — seuil services applicable",
+    "Prestations de services, seuil services applicable",
     "Séances photo à 18 000 € HT/an",
   ],
   [
     "Développeur",
     "Oui",
-    "Prestations informatiques — BIC, seuil services",
+    "Prestations informatiques : BIC, seuil services",
     "Développement web à 32 000 € HT",
   ],
   [
     "Graphiste",
     "Oui",
-    "Création graphique — BNC ou BIC selon activité",
+    "Création graphique : BNC ou BIC selon activité",
     "Identité visuelle à 25 000 € HT",
   ],
   [
     "Coach",
     "Oui",
-    "Prestations de coaching — BNC en principe",
+    "Prestations de coaching : BNC en principe",
     "Coaching individuel à 20 000 € HT",
   ],
 ];
@@ -289,7 +289,7 @@ export const PRACTICAL_CASE_ROWS: string[][] = [
     "18 000 € HT",
     "Oui",
     "Non",
-    "Séance mariage 800 € — TVA non applicable, art. 293 B du CGI",
+    "Séance mariage 800 € : TVA non applicable, art. 293 B du CGI",
   ],
   [
     "Consultant",
@@ -297,7 +297,7 @@ export const PRACTICAL_CASE_ROWS: string[][] = [
     "34 000 € HT",
     "Oui",
     "Non",
-    "Mission 3 jours 1 500 € net — art. 293 B",
+    "Mission 3 jours 1 500 € net, art. 293 B",
   ],
   [
     "Développeur",
@@ -305,7 +305,7 @@ export const PRACTICAL_CASE_ROWS: string[][] = [
     "39 000 € HT",
     "Oui (sous majoré)",
     "Non",
-    "Site vitrine 2 400 € — art. 293 B",
+    "Site vitrine 2 400 €, art. 293 B",
   ],
   [
     "Graphiste",
@@ -313,7 +313,7 @@ export const PRACTICAL_CASE_ROWS: string[][] = [
     "28 000 € HT",
     "Oui",
     "Non",
-    "Logo 600 € — TVA non applicable, art. 293 B du CGI",
+    "Logo 600 € : TVA non applicable, art. 293 B du CGI",
   ],
   [
     "Artisan",
@@ -321,7 +321,7 @@ export const PRACTICAL_CASE_ROWS: string[][] = [
     "55 000 € HT",
     "Oui",
     "Non",
-    "Table sur mesure 1 200 € — art. 293 B",
+    "Table sur mesure 1 200 €, art. 293 B",
   ],
   [
     "Restaurant",
@@ -329,7 +329,7 @@ export const PRACTICAL_CASE_ROWS: string[][] = [
     "78 000 € HT",
     "Oui",
     "Non",
-    "Menu 25 € — TVA non applicable, art. 293 B du CGI",
+    "Menu 25 € : TVA non applicable, art. 293 B du CGI",
   ],
   [
     "Coach",
@@ -337,7 +337,7 @@ export const PRACTICAL_CASE_ROWS: string[][] = [
     "38 000 € HT",
     "Oui (sous majoré)",
     "Non",
-    "Séance 150 € — art. 293 B",
+    "Séance 150 €, art. 293 B",
   ],
   [
     "Formateur",
@@ -353,7 +353,7 @@ export const PRACTICAL_CASE_ROWS: string[][] = [
     "25 000 € HT",
     "Oui",
     "Non",
-    "Partenariat 2 000 € — art. 293 B",
+    "Partenariat 2 000 €, art. 293 B",
   ],
   [
     "Agence web",
@@ -361,7 +361,7 @@ export const PRACTICAL_CASE_ROWS: string[][] = [
     "36 000 € HT",
     "Oui",
     "Non",
-    "Refonte site 4 500 € — art. 293 B du CGI",
+    "Refonte site 4 500 €, art. 293 B du CGI",
   ],
 ];
 

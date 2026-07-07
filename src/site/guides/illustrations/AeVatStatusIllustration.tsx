@@ -27,7 +27,7 @@ export function AeVatStatusIllustration() {
       <text x="420" y="266" fill={c.text} fontSize="11" fontFamily={c.font}>• Option ou dépassement de seuils</text>
 
       <text x="360" y="326" textAnchor="middle" fill={c.textMuted} fontSize="10" fontFamily={c.font}>
-        Art. 293 B et 293 C du CGI — régime micro-social distinct du régime TVA
+        Art. 293 B et 293 C du CGI, régime micro-social distinct du régime TVA
       </text>
     </svg>
   );

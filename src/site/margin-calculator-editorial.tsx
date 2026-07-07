@@ -10,14 +10,14 @@ const GUIDE_AE = "/guides/tva-et-auto-entrepreneur";
 const GUIDE_DEDUCTIBLE = "/guides/tva-deductible-et-tva-collectee";
 const GUIDE_FACTURE = "/guides/comment-faire-une-facture-conforme";
 
-/** Réponses FAQ enrichies — clé = question exacte */
+/** Réponses FAQ enrichies : clé = question exacte */
 const FAQ_ANSWERS: Record<string, ReactNode> = {
   "Comment fixer son prix de vente ?": (
     <p>
       Commencez par le <strong>coût d&apos;achat HT</strong> (fournisseur et frais
       d&apos;approvisionnement), appliquez le <strong>taux de marge</strong> visé pour obtenir le
       prix de vente HT, puis ajoutez la TVA. Contrôlez que le prix TTC final reste cohérent avec
-      votre marché et couvre vos charges fixes — loyer, salaires, marketing.
+      votre marché et couvre vos charges fixes, loyer, salaires, marketing.
     </p>
   ),
   "Comment calculer une marge de 30 % ?": (
@@ -67,7 +67,7 @@ const FAQ_ANSWERS: Record<string, ReactNode> = {
   "Comment ajouter la TVA à un prix de vente ?": (
     <p>
       TVA = prix de vente HT × taux de TVA, puis TTC = HT + TVA. À 20&nbsp;%&nbsp;: 150&nbsp;€ HT
-      + 30&nbsp;€ = 180&nbsp;€ TTC. Le taux applicable dépend de votre activité — consultez le{" "}
+      + 30&nbsp;€ = 180&nbsp;€ TTC. Le taux applicable dépend de votre activité, consultez le{" "}
       <Link href={GUIDE_TAUX}>guide sur les taux de TVA en France</Link> avant de fixer vos
       tarifs.
     </p>
@@ -91,13 +91,13 @@ const FAQ_ANSWERS: Record<string, ReactNode> = {
     <p>
       Le calculateur affiche le <strong>coefficient multiplicateur HT</strong> (ex.&nbsp;: 1,40
       pour 40&nbsp;% de taux de marge). Multipliez chaque prix d&apos;achat HT par ce coefficient
-      pour tarifer votre catalogue. Certains secteurs utilisent un coefficient TTC — ne le
+      pour tarifer votre catalogue. Certains secteurs utilisent un coefficient TTC, ne le
       confondez pas avec le coefficient HT affiché ici.
     </p>
   ),
 };
 
-/** Contenu éditorial — calculateur de marge HT / TTC */
+/** Contenu éditorial : calculateur de marge HT / TTC */
 export function MarginCalculatorEditorial() {
   return (
     <section id="contenu" className="content-section">
@@ -107,7 +107,7 @@ export function MarginCalculatorEditorial() {
             Fixer le bon prix de vente, c&apos;est la différence entre une activité rentable et une
             activité qui travaille à perte. Ce <strong>calculateur prix de vente</strong> part de
             votre coût d&apos;achat HT pour déterminer le prix de revente, la marge commerciale,
-            la TVA et le prix TTC — sans tableur ni formule à retenir.
+            la TVA et le prix TTC, sans tableur ni formule à retenir.
           </p>
           <p>
             Commerçant, artisan, restaurateur, photographe ou e-commerçant : le{" "}
@@ -141,7 +141,7 @@ export function MarginCalculatorEditorial() {
           </ul>
           <p>
             Le <strong>taux de marge</strong> saisi dans le calculateur est calculé sur le prix
-            d&apos;achat HT — ce n&apos;est pas le taux de marque, qui se rapporte au prix de
+            d&apos;achat HT, ce n&apos;est pas le taux de marque, qui se rapporte au prix de
             vente.
           </p>
           <p>
@@ -151,7 +151,7 @@ export function MarginCalculatorEditorial() {
             peut surestimer votre rentabilité réelle.
           </p>
           <p>
-            <strong>Exemple — taux de marge de 40&nbsp;% :</strong> achat 100&nbsp;€ HT, taux de
+            <strong>Exemple : taux de marge de 40&nbsp;% :</strong> achat 100&nbsp;€ HT, taux de
             marge 40&nbsp;% → vente 140&nbsp;€ HT (100 × 1,40). Marge brute : 40&nbsp;€.
           </p>
 
@@ -174,7 +174,7 @@ export function MarginCalculatorEditorial() {
             <Link href={CALC_HT_TTC}>calculateur HT vers TTC</Link> isole la partie TVA.
           </p>
           <p>
-            Le taux dépend de votre activité — consultez le{" "}
+            Le taux dépend de votre activité, consultez le{" "}
             <Link href={GUIDE_TAUX}>guide sur les taux de TVA en France</Link>. En{" "}
             <Link href={GUIDE_FRANCHISE}>franchise en base de TVA</Link>, vous ne facturez pas la
             TVA : le passage au TTC ne s&apos;applique alors pas de la même manière.
@@ -183,7 +183,7 @@ export function MarginCalculatorEditorial() {
           <h2>Différence entre taux de marge et taux de marque</h2>
           <p>
             Ces deux indicateurs mesurent la rentabilité d&apos;un produit, mais sur des bases
-            différentes — c&apos;est l&apos;une des confusions les plus fréquentes en gestion
+            différentes, c&apos;est l&apos;une des confusions les plus fréquentes en gestion
             commerciale.
           </p>
 
@@ -241,8 +241,8 @@ export function MarginCalculatorEditorial() {
           </p>
           <p>
             <strong>Coefficient HT et coefficient TTC :</strong> ce calculateur affiche le
-            coefficient HT (vente HT ÷ achat HT). Dans certains secteurs — notamment la grande
-            distribution — on utilise plutôt un <strong>coefficient TTC</strong> (vente TTC ÷ achat
+            coefficient HT (vente HT ÷ achat HT). Dans certains secteurs, notamment la grande
+            distribution, on utilise plutôt un <strong>coefficient TTC</strong> (vente TTC ÷ achat
             HT). Les deux logiques coexistent ; ne les confondez pas lorsque vous comparez vos
             tarifs à ceux de votre métier.
           </p>
@@ -330,23 +330,23 @@ export function MarginCalculatorEditorial() {
           <h2>Pourquoi utiliser ce calculateur de marge ?</h2>
           <ul>
             <li>
-              <strong>Fiabilité</strong> — formules appliquées correctement, montants arrondis au
+              <strong>Fiabilité</strong>, formules appliquées correctement, montants arrondis au
               centime.
             </li>
             <li>
-              <strong>Vision complète</strong> — marge, taux de marge, taux de marque, coefficient
+              <strong>Vision complète</strong>, marge, taux de marge, taux de marque, coefficient
               HT et prix TTC en un seul écran.
             </li>
             <li>
-              <strong>Rapidité</strong> — chaque modification met à jour les résultats
+              <strong>Rapidité</strong>, chaque modification met à jour les résultats
               instantanément.
             </li>
             <li>
-              <strong>TVA intégrée</strong> — 20&nbsp;%, 10&nbsp;%, 5,5&nbsp;%, 2,1&nbsp;% ou
+              <strong>TVA intégrée</strong> : 20&nbsp;%, 10&nbsp;%, 5,5&nbsp;%, 2,1&nbsp;% ou
               taux personnalisé.
             </li>
             <li>
-              <strong>Gratuité</strong> — sans inscription, calculs effectués dans votre
+              <strong>Gratuité</strong>, sans inscription, calculs effectués dans votre
               navigateur.
             </li>
           </ul>

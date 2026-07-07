@@ -132,7 +132,7 @@ export const faqPageCategories: FaqPageCategory[] = [
       {
         question: "Pourquoi ne faut-il pas simplement retirer 20 % d'un prix TTC ?",
         answer: [
-          "Retirer 20 % d'un prix TTC revient à calculer 20 % du TTC, alors que la TVA représente 20 % du HT — pas du TTC. Sur 120 € TTC à 20 %, soustraire 20 % donne 96 €, ce qui est faux : le HT est 100 €. La bonne méthode est HT = TTC ÷ 1,20. Cette confusion est l'une des erreurs les plus fréquentes en calcul de prix. Utilisez le ",
+          "Retirer 20 % d'un prix TTC revient à calculer 20 % du TTC, alors que la TVA représente 20 % du HT, pas du TTC. Sur 120 € TTC à 20 %, soustraire 20 % donne 96 €, ce qui est faux : le HT est 100 €. La bonne méthode est HT = TTC ÷ 1,20. Cette confusion est l'une des erreurs les plus fréquentes en calcul de prix. Utilisez le ",
           L.calc,
           " en mode inverse pour éviter ce piège.",
         ],
@@ -327,7 +327,7 @@ export const faqPageCategories: FaqPageCategory[] = [
         answer: [
           "L'assujettissement intervient lors du dépassement des seuils de franchise (seuil de base ou seuil majoré selon les cas), ou dès le premier jour du mois de déclaration si l'option pour la TVA a été exercée. Dès lors, la TVA doit figurer sur les factures émises. Les modalités de passage et les délais sont expliqués dans le ",
           L.guideAe,
-          " — vérifiez votre situation dès que votre chiffre d'affaires approche les plafonds.",
+          ", vérifiez votre situation dès que votre chiffre d'affaires approche les plafonds.",
         ],
       },
       {
@@ -409,7 +409,7 @@ export const faqPageCategories: FaqPageCategory[] = [
       {
         question: "Pourquoi enlever 20 % d'un prix TTC est faux ?",
         answer: [
-          "Parce que 20 % de TVA s'applique sur le HT, pas sur le TTC. Retirer 20 % du TTC sous-estime le montant hors taxes. Exemple : 120 € TTC à 20 % — soustraire 20 % donne 96 €, alors que le HT est 100 €. La formule correcte est HT = TTC ÷ 1,20. Cette erreur fausse les devis, les marges et les déclarations. Utilisez le ",
+          "Parce que 20 % de TVA s'applique sur le HT, pas sur le TTC. Retirer 20 % du TTC sous-estime le montant hors taxes. Exemple : 120 € TTC à 20 %, soustraire 20 % donne 96 €, alors que le HT est 100 €. La formule correcte est HT = TTC ÷ 1,20. Cette erreur fausse les devis, les marges et les déclarations. Utilisez le ",
           L.calc,
           " en mode TTC vers HT pour sécuriser vos calculs.",
         ],

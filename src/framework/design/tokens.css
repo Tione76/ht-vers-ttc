@@ -1,4 +1,4 @@
-/* Design tokens — identité graphique officielle du framework */
+/* Design tokens : identité graphique officielle du framework */
 
 :root {
   /* Couleurs */
@@ -20,21 +20,21 @@
   --ds-max-content: 64rem;
   --ds-max-article: 72rem;
 
-  /* Typographie — police unique : Source Sans 3 (via layout.tsx) */
+  /* Typographie : police unique : Source Sans 3 (via layout.tsx) */
   --ds-font-family: var(--font-source-sans), "Segoe UI", system-ui, sans-serif;
 
-  --ds-font-size-2xs: 0.625rem;   /* 10px — méta footer */
-  --ds-font-size-xs: 0.6875rem;   /* 11px — eyebrow, sidebar titles */
-  --ds-font-size-sm: 0.75rem;     /* 12px — légal, excerpts */
-  --ds-font-size-base: 0.8125rem; /* 13px — corps secondaire */
-  --ds-font-size-md: 0.875rem;    /* 14px — labels, nav, intro */
-  --ds-font-size-lg: 0.9375rem;   /* 15px — inputs, cartes */
-  --ds-font-size-xl: 1rem;        /* 16px — corps, boutons */
-  --ds-font-size-2xl: 1.0625rem;  /* 17px — prose */
-  --ds-font-size-3xl: 1.125rem;   /* 18px — h3 */
-  --ds-font-size-4xl: 1.375rem;   /* 22px — h2 prose */
-  --ds-font-size-5xl: 1.5rem;     /* 24px — h1 mobile */
-  --ds-font-size-6xl: 1.75rem;    /* 28px — h1 desktop */
+  --ds-font-size-2xs: 0.625rem;   /* 10px : méta footer */
+  --ds-font-size-xs: 0.6875rem;   /* 11px : eyebrow, sidebar titles */
+  --ds-font-size-sm: 0.75rem;     /* 12px : légal, excerpts */
+  --ds-font-size-base: 0.8125rem; /* 13px : corps secondaire */
+  --ds-font-size-md: 0.875rem;    /* 14px : labels, nav, intro */
+  --ds-font-size-lg: 0.9375rem;   /* 15px : inputs, cartes */
+  --ds-font-size-xl: 1rem;        /* 16px : corps, boutons */
+  --ds-font-size-2xl: 1.0625rem;  /* 17px : prose */
+  --ds-font-size-3xl: 1.125rem;   /* 18px : h3 */
+  --ds-font-size-4xl: 1.375rem;   /* 22px : h2 prose */
+  --ds-font-size-5xl: 1.5rem;     /* 24px : h1 mobile */
+  --ds-font-size-6xl: 1.75rem;    /* 28px : h1 desktop */
 
   /* Rayons & transitions */
   --ds-radius: 4px;

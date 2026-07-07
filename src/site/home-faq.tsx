@@ -4,7 +4,7 @@ import { faq } from "./faq";
 
 const GUIDE_TAUX = "/guides/quels-sont-les-taux-de-tva-en-france";
 
-/** Réponses FAQ page d'accueil — maillage interne */
+/** Réponses FAQ page d'accueil : maillage interne */
 const FAQ_ANSWERS: Record<string, ReactNode> = {
   "Comment convertir un montant HT vers TTC ?": (
     <p>
@@ -52,7 +52,7 @@ const FAQ_ANSWERS: Record<string, ReactNode> = {
   ),
 };
 
-/** FAQ page d'accueil — accordéons avec liens internes */
+/** FAQ page d'accueil : accordéons avec liens internes */
 export function HomeFaqContent() {
   return (
     <div className="faq-list">

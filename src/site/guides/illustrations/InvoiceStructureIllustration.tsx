@@ -1,6 +1,6 @@
 import { ILLU as c } from "./tokens";
 
-/** Anatomie d'une facture — 4 zones numérotées */
+/** Anatomie d'une facture : 4 zones numérotées */
 export function InvoiceStructureIllustration() {
   const zones = [
     { n: "1", title: "En-tête", desc: "Vendeur · Client · N° · Date", y: 48, h: 88 },

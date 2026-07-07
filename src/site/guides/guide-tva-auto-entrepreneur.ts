@@ -41,7 +41,7 @@ export const guideTvaAutoEntrepreneur: Guide = {
         {
           type: "list",
           items: [
-            "Régime par défaut : franchise en base (art. 293 B du CGI) — pas de TVA sur les factures.",
+            "Régime par défaut : franchise en base (art. 293 B du CGI), pas de TVA sur les factures.",
             "Seuils TVA distincts des plafonds du régime micro-fiscal.",
             "Dépassement du seuil de base : assujettissement au 1er janvier de l'année suivante.",
             "Dépassement du seuil majoré : la franchise cesse pour les opérations réalisées à compter de la date de dépassement.",
@@ -147,7 +147,7 @@ export const guideTvaAutoEntrepreneur: Guide = {
         },
         {
           type: "table",
-          caption: "Seuils de franchise en base de TVA — art. 293 B du CGI (montants indicatifs)",
+          caption: "Seuils de franchise en base de TVA : art. 293 B du CGI (montants indicatifs)",
           headers: ["Type d'activité", "Seuil de base", "Seuil majoré", "Exemples"],
           rows: [
             [
@@ -180,7 +180,7 @@ export const guideTvaAutoEntrepreneur: Guide = {
           type: "callout",
           variant: "retain",
           paragraphs: [
-            "Les seuils peuvent évoluer chaque année par la loi de finances — vérifiez les montants en vigueur sur impots.gouv.fr ou auprès de votre centre des finances publiques.",
+            "Les seuils peuvent évoluer chaque année par la loi de finances, vérifiez les montants en vigueur sur impots.gouv.fr ou auprès de votre centre des finances publiques.",
           ],
         },
       ],
@@ -197,7 +197,7 @@ export const guideTvaAutoEntrepreneur: Guide = {
               type: "callout",
               variant: "example",
               paragraphs: [
-                "Un auto-entrepreneur vend des créations artisanales (60 000 €) et réalise des prestations (35 000 €). Les ventes restent sous le seuil ventes et les services sous le seuil services — franchise en principe. Si les prestations atteignent 42 000 €, le seuil majoré services est dépassé : la franchise cesse pour les opérations réalisées à compter de cette date.",
+                "Un auto-entrepreneur vend des créations artisanales (60 000 €) et réalise des prestations (35 000 €). Les ventes restent sous le seuil ventes et les services sous le seuil services, franchise en principe. Si les prestations atteignent 42 000 €, le seuil majoré services est dépassé : la franchise cesse pour les opérations réalisées à compter de cette date.",
               ],
             },
           ],
@@ -363,12 +363,12 @@ export const guideTvaAutoEntrepreneur: Guide = {
           blocks: [
             {
               type: "table",
-              caption: "Exemple — auto-entrepreneur en franchise, prestation de conseil",
+              caption: "Exemple : auto-entrepreneur en franchise, prestation de conseil",
               headers: ["Élément", "Valeur"],
               rows: [
-                ["Émetteur", "Jean Dupont — SIRET 123 456 789 00012"],
-                ["Client", "SARL Martin — 10 rue de la Paix, 75002 Paris"],
-                ["Désignation", "Accompagnement stratégique — mission juin 2026"],
+                ["Émetteur", "Jean Dupont, SIRET 123 456 789 00012"],
+                ["Client", "SARL Martin, 10 rue de la Paix, 75002 Paris"],
+                ["Désignation", "Accompagnement stratégique, mission juin 2026"],
                 ["Montant", "2 000,00 €"],
                 ["TVA", "TVA non applicable, art. 293 B du CGI"],
                 ["Total à payer", "2 000,00 €"],
@@ -390,11 +390,11 @@ export const guideTvaAutoEntrepreneur: Guide = {
           blocks: [
             {
               type: "table",
-              caption: "Exemple — même prestation, auto-entrepreneur assujetti à la TVA",
+              caption: "Exemple : même prestation, auto-entrepreneur assujetti à la TVA",
               headers: ["Élément", "Valeur"],
               rows: [
-                ["Émetteur", "Jean Dupont — SIRET 123 456 789 00012 — TVA FR 12 345678901"],
-                ["Désignation", "Accompagnement stratégique — mission juin 2026"],
+                ["Émetteur", "Jean Dupont, SIRET 123 456 789 00012, TVA FR 12 345678901"],
+                ["Désignation", "Accompagnement stratégique, mission juin 2026"],
                 ["Montant HT", "2 000,00 €"],
                 ["TVA 20 %", "400,00 €"],
                 ["Total TTC", "2 400,00 €"],
@@ -454,7 +454,7 @@ export const guideTvaAutoEntrepreneur: Guide = {
           rows: [
             [
               "Clients professionnels majoritaires",
-              "Ils récupèrent la TVA facturée — vous devenez plus compétitif",
+              "Ils récupèrent la TVA facturée, vous devenez plus compétitif",
               "Vous devez collecter et reverser la TVA",
             ],
             [
@@ -655,7 +655,7 @@ export const guideTvaAutoEntrepreneur: Guide = {
     {
       question: "Quels sont les seuils de franchise TVA pour un auto-entrepreneur ?",
       answer:
-        "Pour les prestations de services : 37 500 € (base) et 41 250 € (majoré). Pour les ventes, la restauration et l'hébergement : 85 000 € et 93 500 €. Pour les avocats, auteurs et artistes-interprètes : 50 000 € / 55 000 € (activités réglementées) ou 35 000 € / 38 500 € (autres activités). Les seuils peuvent évoluer — vérifiez les montants en vigueur (art. 293 B du CGI).",
+        "Pour les prestations de services : 37 500 € (base) et 41 250 € (majoré). Pour les ventes, la restauration et l'hébergement : 85 000 € et 93 500 €. Pour les avocats, auteurs et artistes-interprètes : 50 000 € / 55 000 € (activités réglementées) ou 35 000 € / 38 500 € (autres activités). Les seuils peuvent évoluer, vérifiez les montants en vigueur (art. 293 B du CGI).",
     },
     {
       question: "Que se passe-t-il si je dépasse le seuil de TVA ?",

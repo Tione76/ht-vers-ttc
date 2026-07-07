@@ -12,7 +12,7 @@ const LINK_FACTURE = {
 const LINK_FRANCHISE = {
   type: "internal-link" as const,
   variant: "guide" as const,
-  intro: "Si vous êtes en franchise en base, les règles de facturation diffèrent — voir",
+  intro: "Si vous êtes en franchise en base, les règles de facturation diffèrent, voir",
   label: "Franchise en base de TVA",
   href: "/guides/franchise-en-base-de-tva",
 };
@@ -20,7 +20,7 @@ const LINK_FRANCHISE = {
 const LINK_AE = {
   type: "internal-link" as const,
   variant: "guide" as const,
-  intro: "Micro-entrepreneur ou auto-entrepreneur : le régime TVA dépend de votre assujettissement —",
+  intro: "Micro-entrepreneur ou auto-entrepreneur : le régime TVA dépend de votre assujettissement -",
   label: "TVA et auto-entrepreneur",
   href: "/guides/tva-et-auto-entrepreneur",
 };
@@ -59,14 +59,14 @@ export const guideTauxTva: Guide = {
 
   introduction: [
     "En France métropolitaine, la TVA s'applique à quatre taux : 20 % (normal), 10 % (intermédiaire), 5,5 % (réduit) et 2,1 % (particulier).",
-    "Ce guide détaille chaque taux, indique le taux généralement applicable par métier, et fournit des dizaines d'exemples concrets — avec montants HT, TVA et TTC — pour facturer au bon taux.",
+    "Ce guide détaille chaque taux, indique le taux généralement applicable par métier, et fournit des dizaines d'exemples concrets, avec montants HT, TVA et TTC, pour facturer au bon taux.",
     "Chaque opération a son propre taux : le métier ne suffit jamais à le déterminer seul.",
   ],
 
   quickSummary: {
     title: "Les taux de TVA en 30 secondes",
     items: [
-      { rate: "20 %", description: "Taux normal — majorité des biens et services" },
+      { rate: "20 %", description: "Taux normal, majorité des biens et services" },
       { rate: "10 %", description: "Restauration, certains travaux, transport, hébergement" },
       { rate: "5,5 %", description: "Alimentation, livres, énergie domestique, certains équipements" },
       { rate: "2,1 %", description: "Médicaments remboursés, presse, cas très spécifiques" },
@@ -82,7 +82,7 @@ export const guideTauxTva: Guide = {
           type: "callout",
           variant: "legal",
           paragraphs: [
-            "Référence fiscale : la France métropolitaine compte quatre taux — 20 %, 10 %, 5,5 % et 2,1 % — définis aux articles 278 à 281 du CGI. Le taux applicable dépend de la nature de chaque opération, jamais du métier seul.",
+            "Référence fiscale : la France métropolitaine compte quatre taux : 20 %, 10 %, 5,5 % et 2,1 %, définis aux articles 278 à 281 du CGI. Le taux applicable dépend de la nature de chaque opération, jamais du métier seul.",
           ],
         },
         {
@@ -91,7 +91,7 @@ export const guideTauxTva: Guide = {
         },
         {
           type: "table",
-          caption: "Synthèse des taux — France métropolitaine (art. 278 à 281 du CGI)",
+          caption: "Synthèse des taux : France métropolitaine (art. 278 à 281 du CGI)",
           headers: ["Taux", "Appellation", "Base légale", "Exemple (100 € HT)"],
           rows: [
             ["20 %", "Taux normal", "Art. 278 du CGI", "120,00 € TTC"],
@@ -142,25 +142,25 @@ export const guideTauxTva: Guide = {
           ],
         },
         pc(
-          "Consultant — mission de conseil stratégique (3 jours)",
+          "Consultant, mission de conseil stratégique (3 jours)",
           2550,
           20,
-          "Prestation intellectuelle B2B — art. 278 du CGI.",
+          "Prestation intellectuelle B2B, art. 278 du CGI.",
         ),
         pc(
-          "Photographe — séance corporate et retouches",
+          "Photographe, séance corporate et retouches",
           1200,
           20,
           "Prestation de service, pas de vente de support physique.",
         ),
         pc(
-          "Développeur web — refonte de site vitrine",
+          "Développeur web, refonte de site vitrine",
           2200,
           20,
           "Création sur mesure = prestation de service.",
         ),
         pc(
-          "Graphiste — identité visuelle complète",
+          "Graphiste, identité visuelle complète",
           650,
           20,
           "Design et livraison de fichiers sources.",
@@ -169,7 +169,7 @@ export const guideTauxTva: Guide = {
           type: "callout",
           variant: "advice",
           paragraphs: [
-            "Conseil pratique : en cas de doute, le taux normal s'impose — sauf si l'opération entre explicitement dans une liste de taux réduits au CGI.",
+            "Conseil pratique : en cas de doute, le taux normal s'impose, sauf si l'opération entre explicitement dans une liste de taux réduits au CGI.",
           ],
         },
         LINK_FACTURE,
@@ -183,7 +183,7 @@ export const guideTauxTva: Guide = {
       blocks: [
         {
           type: "paragraph",
-          text: "En pratique, le taux de 10 % est prévu à l'article 279 du CGI pour des secteurs identifiés par le législateur — sous conditions précises, opération par opération.",
+          text: "En pratique, le taux de 10 % est prévu à l'article 279 du CGI pour des secteurs identifiés par le législateur, sous conditions précises, opération par opération.",
         },
         {
           type: "table",
@@ -197,31 +197,31 @@ export const guideTauxTva: Guide = {
           ],
         },
         pc(
-          "Restaurant — repas consommés sur place",
+          "Restaurant, repas consommés sur place",
           85,
           10,
-          "Prestation de restauration — art. 279 du CGI. Les alcools de la même addition restent à 20 %.",
+          "Prestation de restauration, art. 279 du CGI. Les alcools de la même addition restent à 20 %.",
         ),
         pc(
-          "Artisan plombier — rénovation salle de bain",
+          "Artisan plombier, rénovation salle de bain",
           3240,
           10,
-          "Logement achevé depuis plus de 2 ans — art. 279, 1° du CGI.",
+          "Logement achevé depuis plus de 2 ans, art. 279, 1° du CGI.",
         ),
         pc(
-          "Peintre — rénovation appartement ancien",
+          "Peintre, rénovation appartement ancien",
           2600,
           10,
           "Travaux d'entretien et d'amélioration sur logement > 2 ans.",
         ),
         pc(
-          "Vente à emporter — plat préparé par un traiteur",
+          "Vente à emporter, plat préparé par un traiteur",
           28,
           10,
           "Sous conditions de qualification en prestation de restauration.",
         ),
         pc(
-          "Plateforme type Uber Eats — commission sur commande",
+          "Plateforme type Uber Eats, commission sur commande",
           4.5,
           20,
           "La commission de mise en relation est une prestation de service à 20 %, distincte du repas livré (souvent 10 % côté restaurateur).",
@@ -259,16 +259,16 @@ export const guideTauxTva: Guide = {
               ],
             },
             pc(
-              "Électricien — installation neuve sur construction < 2 ans",
+              "Électricien, installation neuve sur construction < 2 ans",
               4200,
               20,
-              "Travaux neufs : taux normal — art. 278 du CGI.",
+              "Travaux neufs : taux normal, art. 278 du CGI.",
             ),
             pc(
-              "Plombier — dépannage sur logement de plus de 2 ans",
+              "Plombier, dépannage sur logement de plus de 2 ans",
               1800,
               10,
-              "Rénovation éligible — adresse du chantier obligatoire sur la facture. Attestation client requise selon les cas (art. 279 du CGI).",
+              "Rénovation éligible, adresse du chantier obligatoire sur la facture. Attestation client requise selon les cas (art. 279 du CGI).",
             ),
             {
               type: "callout",
@@ -289,7 +289,7 @@ export const guideTauxTva: Guide = {
             },
             {
               type: "table",
-              caption: "Restauration — consommation immédiate ou différée (synthèse)",
+              caption: "Restauration, consommation immédiate ou différée (synthèse)",
               headers: ["Situation", "Type de consommation", "Taux en principe"],
               rows: [
                 [
@@ -331,22 +331,22 @@ export const guideTauxTva: Guide = {
               ],
             },
             pc(
-              "Restaurant — repas consommés sur place",
+              "Restaurant, repas consommés sur place",
               85,
               10,
-              "Prestation de restauration — consommation immédiate (art. 279 du CGI).",
+              "Prestation de restauration, consommation immédiate (art. 279 du CGI).",
             ),
             pc(
-              "Restaurant — livraison de repas à domicile",
+              "Restaurant, livraison de repas à domicile",
               45,
               10,
-              "Sous conditions de qualification en prestation de restauration — à distinguer de la simple vente alimentaire.",
+              "Sous conditions de qualification en prestation de restauration, à distinguer de la simple vente alimentaire.",
             ),
             pc(
-              "Restaurant — bouteille de vin servie à table",
+              "Restaurant, bouteille de vin servie à table",
               32,
               20,
-              "Boisson alcoolisée — taux normal (art. 278 du CGI), même en restauration.",
+              "Boisson alcoolisée, taux normal (art. 278 du CGI), même en restauration.",
             ),
           ],
         },
@@ -360,12 +360,12 @@ export const guideTauxTva: Guide = {
             },
             {
               type: "table",
-              caption: "Boissons non alcoolisées — repères pratiques",
+              caption: "Boissons non alcoolisées, repères pratiques",
               headers: ["Situation", "Taux en principe"],
               rows: [
                 [
                   "Boisson servie sur place avec un repas (restaurant, café)",
-                  "10 % — même taux que la prestation de restauration",
+                  "10 %, même taux que la prestation de restauration",
                 ],
                 [
                   "Boisson prête à être consommée, vendue à emporter par un restaurateur",
@@ -373,7 +373,7 @@ export const guideTauxTva: Guide = {
                 ],
                 [
                   "Boisson vendue en grande surface pour consommation à domicile",
-                  "5,5 % — produit alimentaire à consommation différée",
+                  "5,5 %, produit alimentaire à consommation différée",
                 ],
                 [
                   "Eau, jus ou soda en bouteille (vente au détail)",
@@ -385,7 +385,7 @@ export const guideTauxTva: Guide = {
               type: "callout",
               variant: "verify",
               paragraphs: [
-                "À retenir : l'alcool reste toujours à 20 % (art. 278 du CGI). Pour les boissons non alcoolisées, qualifiez chaque ligne selon le lieu de vente et la consommation prévue — immédiate ou différée.",
+                "À retenir : l'alcool reste toujours à 20 % (art. 278 du CGI). Pour les boissons non alcoolisées, qualifiez chaque ligne selon le lieu de vente et la consommation prévue, immédiate ou différée.",
               ],
             },
           ],
@@ -399,7 +399,7 @@ export const guideTauxTva: Guide = {
       blocks: [
         {
           type: "paragraph",
-          text: "Lorsqu'un professionnel vend des produits de première nécessité ou des biens culturels, le taux de 5,5 % entre souvent en jeu — il est défini à l'article 278-0 bis du CGI.",
+          text: "Lorsqu'un professionnel vend des produits de première nécessité ou des biens culturels, le taux de 5,5 % entre souvent en jeu, il est défini à l'article 278-0 bis du CGI.",
         },
         {
           type: "table",
@@ -413,34 +413,34 @@ export const guideTauxTva: Guide = {
           ],
         },
         pc(
-          "Librairie — vente d'ouvrages papier",
+          "Librairie, vente d'ouvrages papier",
           450,
           5.5,
-          "Livres éligibles — art. 278-0 bis du CGI.",
+          "Livres éligibles, art. 278-0 bis du CGI.",
         ),
         pc(
-          "Épicerie — panier alimentaire courant",
+          "Épicerie, panier alimentaire courant",
           120,
           5.5,
           "Produits alimentaires hors restauration et alcools.",
         ),
         pc(
-          "Boulangerie — vente de pain et viennoiseries",
+          "Boulangerie, vente de pain et viennoiseries",
           15,
           5.5,
           "Produits de boulangerie de consommation courante.",
         ),
         pc(
-          "Éditeur — vente d'e-book",
+          "Éditeur, vente d'e-book",
           12,
           5.5,
           "Publication électronique assimilée au livre papier, sous conditions.",
         ),
         pc(
-          "Photographe — vente d'album photo relié",
+          "Photographe, vente d'album photo relié",
           350,
           20,
-          "Tirage et album = vente de bien, en principe à 20 % — à distinguer de la prestation de séance.",
+          "Tirage et album = vente de bien, en principe à 20 %, à distinguer de la prestation de séance.",
         ),
       ],
       subsections: [
@@ -499,7 +499,7 @@ export const guideTauxTva: Guide = {
             "Certains spectacles vivants (sous conditions spécifiques).",
           ],
         },
-        pc("Pharmacie — médicament remboursable", 50, 2.1),
+        pc("Pharmacie, médicament remboursable", 50, 2.1),
         {
           type: "callout",
           variant: "tip",
@@ -516,11 +516,11 @@ export const guideTauxTva: Guide = {
       blocks: [
         {
           type: "paragraph",
-          text: "Attention : en Guadeloupe, Martinique et La Réunion, des taux spécifiques s'appliquent (art. 297 et 298 du CGI). La Guyane et Mayotte relèvent de régimes fiscaux distincts — ne pas appliquer les taux métropolitains.",
+          text: "Attention : en Guadeloupe, Martinique et La Réunion, des taux spécifiques s'appliquent (art. 297 et 298 du CGI). La Guyane et Mayotte relèvent de régimes fiscaux distincts, ne pas appliquer les taux métropolitains.",
         },
         {
           type: "table",
-          caption: "Taux DOM — Guadeloupe, Martinique, La Réunion (art. 297 et 298 du CGI)",
+          caption: "Taux DOM : Guadeloupe, Martinique, La Réunion (art. 297 et 298 du CGI)",
           headers: ["Taux DOM", "Équivalent métropolitain", "Exemple (100 € HT)"],
           rows: [
             ["8,5 %", "Taux normal (20 %)", "108,50 € TTC"],
@@ -533,7 +533,7 @@ export const guideTauxTva: Guide = {
           type: "illustration",
           id: "vat-rates-dom",
           caption:
-            "Les quatre niveaux de taux existent en métropole et en DOM — seuls les pourcentages changent.",
+            "Les quatre niveaux de taux existent en métropole et en DOM, seuls les pourcentages changent.",
         },
         {
           type: "callout",
@@ -551,7 +551,7 @@ export const guideTauxTva: Guide = {
       blocks: [
         {
           type: "paragraph",
-          text: "Lorsqu'un professionnel cherche « quel taux pour mon métier », la réponse dépend toujours de la nature exacte de chaque opération — pas du libellé de l'activité. Cette section répond aux recherches les plus fréquentes, avec des nuances par type de prestation.",
+          text: "Lorsqu'un professionnel cherche « quel taux pour mon métier », la réponse dépend toujours de la nature exacte de chaque opération, pas du libellé de l'activité. Cette section répond aux recherches les plus fréquentes, avec des nuances par type de prestation.",
         },
         {
           type: "callout",
@@ -566,20 +566,20 @@ export const guideTauxTva: Guide = {
         },
         {
           type: "table",
-          caption: "Récapitulatif — activité, taux en principe et point de vigilance",
+          caption: "Récapitulatif, activité, taux en principe et point de vigilance",
           headers: ["Activité", "Taux en principe", "Point de vigilance"],
           rows: [
-            ["Prestation intellectuelle (consultant, dev, graphiste)", "20 %", "Art. 278 du CGI — vérifier si un produit livré change la qualification"],
-            ["Avocat", "20 %", "Honoraires — art. 278 ; autoliquidation UE possible (art. 259 B)"],
-            ["Coiffeur / esthétique", "20 %", "Prestation de service — art. 278 du CGI"],
-            ["Agence web", "20 %", "Création, maintenance, conseil digital — art. 278"],
+            ["Prestation intellectuelle (consultant, dev, graphiste)", "20 %", "Art. 278 du CGI, vérifier si un produit livré change la qualification"],
+            ["Avocat", "20 %", "Honoraires, art. 278 ; autoliquidation UE possible (art. 259 B)"],
+            ["Coiffeur / esthétique", "20 %", "Prestation de service, art. 278 du CGI"],
+            ["Agence web", "20 %", "Création, maintenance, conseil digital, art. 278"],
             ["Artisan en rénovation", "10 %", "Logement achevé depuis +2 ans, attestation si requise"],
-            ["Restauration", "10 %", "Consommation immédiate — alcools à 20 %, ventilation obligatoire"],
-            ["Commerce alimentaire", "5,5 %", "Consommation différée — distinguer de la restauration"],
-            ["VTC / taxi", "10 %", "Transport de voyageurs — art. 279 ; prestations annexes à 20 %"],
-            ["Librairie / ebook", "5,5 %", "Ouvrages éligibles — art. 278-0 bis du CGI"],
-            ["Export hors UE", "0 % (exonération)", "Art. 262, I du CGI — justificatifs de sortie"],
-            ["Prestation B2B en UE", "0 % (autoliquidation)", "Art. 259 B du CGI — n° TVA intracommunautaire"],
+            ["Restauration", "10 %", "Consommation immédiate, alcools à 20 %, ventilation obligatoire"],
+            ["Commerce alimentaire", "5,5 %", "Consommation différée, distinguer de la restauration"],
+            ["VTC / taxi", "10 %", "Transport de voyageurs, art. 279 ; prestations annexes à 20 %"],
+            ["Librairie / ebook", "5,5 %", "Ouvrages éligibles, art. 278-0 bis du CGI"],
+            ["Export hors UE", "0 % (exonération)", "Art. 262, I du CGI, justificatifs de sortie"],
+            ["Prestation B2B en UE", "0 % (autoliquidation)", "Art. 259 B du CGI, n° TVA intracommunautaire"],
           ],
         },
         CTA_CALCULATOR,
@@ -612,7 +612,7 @@ export const guideTauxTva: Guide = {
         {
           type: "illustration",
           id: "vat-rate-selection",
-          caption: "Arbre de décision : la nature de l'opération détermine le taux — pas le métier.",
+          caption: "Arbre de décision : la nature de l'opération détermine le taux, pas le métier.",
         },
         {
           type: "illustration",
@@ -631,7 +631,7 @@ export const guideTauxTva: Guide = {
         },
         {
           type: "checklist",
-          title: "Checklist — comment choisir le bon taux de TVA ?",
+          title: "Checklist : comment choisir le bon taux de TVA ?",
           items: [
             "Nature exacte du bien ou service identifiée (pas seulement le secteur d'activité).",
             "Taux vérifié dans le CGI (art. 278 à 281) ou le BOFiP pour les cas complexes.",
@@ -646,32 +646,32 @@ export const guideTauxTva: Guide = {
           type: "callout",
           variant: "legal",
           paragraphs: [
-            "Opérations internationales : les ventes à l'export, les prestations intracommunautaires et les opérations avec des clients étrangers obéissent à des règles de territorialité spécifiques (art. 259 B, 262 et 283-2 du CGI). Les exemples ci-dessous ne constituent qu'un aperçu — un guide dédié à la TVA internationale et aux exportations complétera prochainement ces situations.",
+            "Opérations internationales : les ventes à l'export, les prestations intracommunautaires et les opérations avec des clients étrangers obéissent à des règles de territorialité spécifiques (art. 259 B, 262 et 283-2 du CGI). Les exemples ci-dessous ne constituent qu'un aperçu, un guide dédié à la TVA internationale et aux exportations complétera prochainement ces situations.",
           ],
         },
         pc(
-          "Prestation B2B France — conseil en management",
+          "Prestation B2B France, conseil en management",
           1500,
           20,
-          "Client professionnel assujetti en France — TVA française collectée.",
+          "Client professionnel assujetti en France : TVA française collectée.",
         ),
         pc(
-          "Prestation B2B UE — développement pour client allemand",
+          "Prestation B2B UE, développement pour client allemand",
           1500,
           0,
-          "Autoliquidation par le client — art. 259 B du CGI. Mention « autoliquidation » obligatoire.",
+          "Autoliquidation par le client, art. 259 B du CGI. Mention « autoliquidation » obligatoire.",
         ),
         pc(
-          "Export hors UE — vente de matériel vers les États-Unis",
+          "Export hors UE, vente de matériel vers les États-Unis",
           2000,
           0,
-          "Exonération export — art. 262, I du CGI. Justificatifs de sortie requis.",
+          "Exonération export, art. 262, I du CGI. Justificatifs de sortie requis.",
         ),
         {
           type: "callout",
           variant: "advice",
           paragraphs: [
-            "Conseil pratique : le taux normal est la règle. Les taux réduits sont des exceptions encadrées — ne les appliquez qu'après vérification.",
+            "Conseil pratique : le taux normal est la règle. Les taux réduits sont des exceptions encadrées, ne les appliquez qu'après vérification.",
           ],
         },
         LINK_FACTURE,
@@ -685,15 +685,15 @@ export const guideTauxTva: Guide = {
       blocks: [
         {
           type: "paragraph",
-          text: "Une erreur fréquente consiste à appliquer le taux « habituel » de son secteur sans vérifier l'opération — ces erreurs entraînent des redressements, le rejet de TVA déductible par les clients et des pénalités.",
+          text: "Une erreur fréquente consiste à appliquer le taux « habituel » de son secteur sans vérifier l'opération, ces erreurs entraînent des redressements, le rejet de TVA déductible par les clients et des pénalités.",
         },
         {
           type: "checklist",
           title: "Les erreurs les plus fréquentes",
           items: [
-            "Croire que toute la restauration est à 10 % — sans distinguer consommation immédiate et différée, ni ventiler les alcools à 20 %.",
-            "Oublier les conditions des travaux à taux réduit — logement de plus de deux ans, nature des travaux, attestation client lorsque requise (art. 279 du CGI).",
-            "Penser qu'un auto-entrepreneur ne facture jamais de TVA — en franchise en base (art. 293 B du CGI), oui ; assujetti ou au-delà des seuils, les taux ordinaires s'appliquent.",
+            "Croire que toute la restauration est à 10 %, sans distinguer consommation immédiate et différée, ni ventiler les alcools à 20 %.",
+            "Oublier les conditions des travaux à taux réduit, logement de plus de deux ans, nature des travaux, attestation client lorsque requise (art. 279 du CGI).",
+            "Penser qu'un auto-entrepreneur ne facture jamais de TVA, en franchise en base (art. 293 B du CGI), oui ; assujetti ou au-delà des seuils, les taux ordinaires s'appliquent.",
             "Confondre les taux entre eux (5,5 %, 10 %, 20 %) ou appliquer le taux le plus bas sans qualification juridique.",
           ],
         },
@@ -733,7 +733,7 @@ export const guideTauxTva: Guide = {
       blocks: [
         {
           type: "paragraph",
-          text: "Deux formules couvrent la quasi-totalité des situations professionnelles — à appliquer ligne par ligne lorsque plusieurs taux coexistent sur une même facture.",
+          text: "Deux formules couvrent la quasi-totalité des situations professionnelles, à appliquer ligne par ligne lorsque plusieurs taux coexistent sur une même facture.",
         },
         {
           type: "list",
@@ -770,7 +770,7 @@ export const guideTauxTva: Guide = {
         },
         {
           type: "practical-case",
-          title: "Facture mixte B2B — conseil + livres",
+          title: "Facture mixte B2B : conseil + livres",
           ht: "2 300,00 €",
           rate: "20 % + 5,5 %",
           vat: "416,50 €",
@@ -779,7 +779,7 @@ export const guideTauxTva: Guide = {
         },
         {
           type: "practical-case",
-          title: "Facture mixte artisan — déplacement + main-d'œuvre + matériaux",
+          title: "Facture mixte artisan : déplacement + main-d'œuvre + matériaux",
           ht: "1 580,00 €",
           rate: "10 %",
           vat: "158,00 €",
@@ -788,7 +788,7 @@ export const guideTauxTva: Guide = {
         },
         {
           type: "practical-case",
-          title: "Facture mixte restaurant — repas, alcool et livraison",
+          title: "Facture mixte restaurant : repas, alcool et livraison",
           ht: "105,00 €",
           rate: "10 % + 20 %",
           vat: "14,00 €",
@@ -797,7 +797,7 @@ export const guideTauxTva: Guide = {
         },
         {
           type: "practical-case",
-          title: "Facture à deux taux — restaurant",
+          title: "Facture à deux taux : restaurant",
           ht: "117,00 €",
           rate: "10 % + 20 %",
           vat: "14,90 €",
@@ -822,11 +822,11 @@ export const guideTauxTva: Guide = {
   conclusion: {
     title: "Conclusion",
     keyPoints: [
-      "Le taux normal est de 20 % — c'est la règle par défaut en France métropolitaine.",
+      "Le taux normal est de 20 %, c'est la règle par défaut en France métropolitaine.",
       "Les taux réduits (10 %, 5,5 %, 2,1 %) sont des exceptions strictement encadrées par le CGI.",
       "Le taux dépend de la nature de l'opération, jamais du métier ou du statut du vendeur.",
       "Les DOM appliquent des taux spécifiques (art. 297 et 298 du CGI).",
-      "En cas de doute, vérifiez avant de facturer — le taux normal s'impose en l'absence de catégorie réduite.",
+      "En cas de doute, vérifiez avant de facturer, le taux normal s'impose en l'absence de catégorie réduite.",
     ],
     closingText:
       "Avant de facturer ou de valider un devis, calculez vos montants HT, TVA et TTC au bon taux en quelques secondes.",

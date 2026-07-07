@@ -1,18 +1,20 @@
-import Link from "next/link";
 import { config, seoConfig } from "@/site";
 import { getPlanDuSiteSections } from "@/site/public-pages";
+import { FaqPageSidebar, GuidePageLayout } from "@/site/guides";
+import { SitemapPageContent } from "@/site/sitemap/SitemapPageContent";
 import { PageBreadcrumb } from "@/framework/design/components/PageBreadcrumb";
-import { ContentPageLayout } from "@/framework/layouts/ContentPageLayout";
 import { JsonLd } from "@/framework/JsonLd";
 import { buildPageMetadata } from "@/framework/seo/metadata";
 import { buildBreadcrumbSchema, buildWebPageSchema } from "@/framework/seo/json-ld";
+import "@/site/guides/guide-page.css";
 
 const page = seoConfig.legal.sitemap;
+const path = "/plan-du-site";
 
 export const metadata = buildPageMetadata(config, seoConfig, {
   title: page.title,
   description: page.description,
-  path: "/plan-du-site",
+  path,
 });
 
 export default function SitemapPage() {
@@ -22,33 +24,26 @@ export default function SitemapPage() {
     <>
       <JsonLd
         data={[
-          buildWebPageSchema(config, page.title, page.description, "/plan-du-site"),
+          buildWebPageSchema(config, page.title, page.description, path),
           buildBreadcrumbSchema(config, [
             { name: "Accueil", path: "/" },
-            { name: page.title, path: "/plan-du-site" },
+            { name: page.title, path },
           ]),
         ]}
       />
-      <ContentPageLayout meta="Navigation" title={page.title}>
+      <GuidePageLayout
+        title={page.title}
+        subtitle={page.description}
+        sidebar={<FaqPageSidebar />}
+      >
         <PageBreadcrumb
           items={[
             { label: "Accueil", href: "/" },
             { label: page.title },
           ]}
         />
-        {sections.map((section) => (
-          <section key={section.title} className="sitemap-section">
-            <h2>{section.title}</h2>
-            <ul>
-              {section.pages.map((entry) => (
-                <li key={entry.path}>
-                  <Link href={entry.path}>{entry.title}</Link>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))}
-      </ContentPageLayout>
+        <SitemapPageContent sections={sections} />
+      </GuidePageLayout>
     </>
   );
 }

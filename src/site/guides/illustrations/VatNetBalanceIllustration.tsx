@@ -23,9 +23,9 @@ export function VatNetBalanceIllustration() {
       <text x="640" y="118" textAnchor="middle" fill={c.brand} fontSize="22" fontWeight="700" fontFamily={c.font}>3 600 €</text>
 
       <rect x="120" y="180" width="480" height="80" rx="8" fill={c.surface} stroke={c.border} />
-      <text x="360" y="208" textAnchor="middle" fill={c.textMuted} fontSize="11" fontFamily={c.font}>Exemple — artisan assujetti</text>
+      <text x="360" y="208" textAnchor="middle" fill={c.textMuted} fontSize="11" fontFamily={c.font}>Exemple : artisan assujetti</text>
       <text x="360" y="232" textAnchor="middle" fill={c.text} fontSize="12" fontFamily={c.font}>
-        CA HT 24 000 € × 20 % = 4 800 € collectée — Achats pro 6 000 € HT × 20 % = 1 200 € déductible
+        CA HT 24 000 € × 20 % = 4 800 € collectée : Achats pro 6 000 € HT × 20 % = 1 200 € déductible
       </text>
     </svg>
   );

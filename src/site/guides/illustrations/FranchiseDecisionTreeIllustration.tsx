@@ -1,4 +1,4 @@
-/** Arbre de décision — franchise ou assujettissement */
+/** Arbre de décision : franchise ou assujettissement */
 export function FranchiseDecisionTreeIllustration() {
   return (
     <div
@@ -17,7 +17,7 @@ export function FranchiseDecisionTreeIllustration() {
           <div className="franchise-decision__path">
             <span className="franchise-decision__answer franchise-decision__answer--no">Non / exonéré autre motif</span>
             <div className="franchise-decision__result franchise-decision__result--neutral">
-              Hors franchise art. 293 B — autre régime (exonération, hors champ)
+              Hors franchise art. 293 B, autre régime (exonération, hors champ)
             </div>
           </div>
 

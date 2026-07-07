@@ -42,9 +42,9 @@ export const guideFactureConforme: Guide = {
         {
           type: "list",
           items: [
-            "Obligatoire pour toute vente entre professionnels (B2B) — art. L441-9 du Code de commerce.",
-            "Exigée en B2C si le client la demande ou si le montant dépasse 25 € TTC — art. 289, I-3 du CGI.",
-            "Conservation obligatoire pendant 10 ans — art. L123-22 du Code de commerce.",
+            "Obligatoire pour toute vente entre professionnels (B2B), art. L441-9 du Code de commerce.",
+            "Exigée en B2C si le client la demande ou si le montant dépasse 25 € TTC, art. 289, I-3 du CGI.",
+            "Conservation obligatoire pendant 10 ans, art. L123-22 du Code de commerce.",
           ],
         },
         {
@@ -78,15 +78,15 @@ export const guideFactureConforme: Guide = {
           rows: [
             ["Date d'émission", "Jour de création de la facture", "04/07/2026"],
             ["Numéro unique", "Chronologique et continu, sans rupture", "FAC-2026-0042"],
-            ["Vendeur", "Nom, adresse, SIREN ou SIRET", "SARL Dupont — SIRET 123 456 789 00012"],
+            ["Vendeur", "Nom, adresse, SIREN ou SIRET", "SARL Dupont, SIRET 123 456 789 00012"],
             ["Forme juridique et capital", "Pour les personnes morales", "SARL au capital de 10 000 €"],
             ["RCS", "Ville d'immatriculation", "RCS Paris B 123 456 789"],
-            ["Acheteur", "Nom ou raison sociale, adresse", "SAS Martin — 10 rue de la Paix, 75002 Paris"],
+            ["Acheteur", "Nom ou raison sociale, adresse", "SAS Martin, 10 rue de la Paix, 75002 Paris"],
             ["N° TVA intracommunautaire", "Si assujetti à la TVA", "FR 12 345678901"],
-            ["Désignation", "Description précise des biens ou services", "Prestation de conseil — mission Q2"],
+            ["Désignation", "Description précise des biens ou services", "Prestation de conseil, mission Q2"],
             ["Quantité × prix unitaire HT", "Détail par ligne", "5 × 800,00 € HT"],
             ["Taux et montant de TVA", "Par taux, ou mention d'exonération", "TVA 20 % : 800,00 €"],
-            ["Totaux HT et TTC", "Montants globaux", "4 000 € HT — 4 800 € TTC"],
+            ["Totaux HT et TTC", "Montants globaux", "4 000 € HT, 4 800 € TTC"],
             ["Date de paiement ou délai", "Échéance précise", "Paiement à 30 jours"],
             ["Pénalités de retard", "Taux applicable", "3 × taux d'intérêt légal"],
             ["Indemnité forfaitaire", "40 € pour les factures B2B", "Indemnité forfaitaire : 40 €"],
@@ -132,7 +132,7 @@ export const guideFactureConforme: Guide = {
             {
               type: "list",
               items: [
-                "« TVA non applicable, art. 293 B du CGI » — obligatoire.",
+                "« TVA non applicable, art. 293 B du CGI », obligatoire.",
                 "Numéro SIRET.",
                 "Dispense d'immatriculation au RCS si applicable (art. L123-1-1 du Code de commerce).",
               ],
@@ -187,7 +187,7 @@ export const guideFactureConforme: Guide = {
           caption: "Taux de TVA en vigueur en France métropolitaine",
           headers: ["Taux", "Cas d'application", "Exemple"],
           rows: [
-            ["20 %", "Taux normal — majorité des biens et services", "100 € HT → 120 € TTC"],
+            ["20 %", "Taux normal, majorité des biens et services", "100 € HT → 120 € TTC"],
             ["10 %", "Restauration, rénovation, transport de voyageurs", "100 € HT → 110 € TTC"],
             ["5,5 %", "Alimentaire, livres, énergie, accessibilité PMR", "100 € HT → 105,50 € TTC"],
             ["2,1 %", "Médicaments remboursables, presse", "100 € HT → 102,10 € TTC"],
@@ -243,10 +243,10 @@ export const guideFactureConforme: Guide = {
             },
             {
               type: "table",
-              caption: "Exemple — freelance en prestation de service",
+              caption: "Exemple : freelance en prestation de service",
               headers: ["Élément", "Valeur"],
               rows: [
-                ["Désignation", "Mission conseil stratégique — 3 jours"],
+                ["Désignation", "Mission conseil stratégique, 3 jours"],
                 ["Prix unitaire HT", "650,00 € / jour"],
                 ["Total HT", "1 950,00 €"],
                 ["TVA 20 %", "390,00 €"],
@@ -273,7 +273,7 @@ export const guideFactureConforme: Guide = {
             },
             {
               type: "table",
-              caption: "Exemple — auto-entrepreneur en franchise de TVA",
+              caption: "Exemple : auto-entrepreneur en franchise de TVA",
               headers: ["Élément", "Valeur"],
               rows: [
                 ["Désignation", "Création site web vitrine"],
@@ -302,10 +302,10 @@ export const guideFactureConforme: Guide = {
             },
             {
               type: "table",
-              caption: "Exemple — artisan plombier, TVA 10 %",
+              caption: "Exemple : artisan plombier, TVA 10 %",
               headers: ["Désignation", "Qté", "P.U. HT", "Montant HT"],
               rows: [
-                ["Remplacement chaudière — 15 rue des Lilas", "1", "2 800,00 €", "2 800,00 €"],
+                ["Remplacement chaudière, 15 rue des Lilas", "1", "2 800,00 €", "2 800,00 €"],
                 ["Main-d'œuvre installation", "8 h", "55,00 €", "440,00 €"],
                 ["Total HT", "", "", "3 240,00 €"],
                 ["TVA 10 %", "", "", "324,00 €"],
@@ -372,7 +372,7 @@ export const guideFactureConforme: Guide = {
             "Numéro unique et chronologique attribué.",
             "Date d'émission renseignée.",
             "Identités complètes du vendeur et de l'acheteur (SIRET, adresses).",
-            "N° TVA intracommunautaire si assujetti — ou mention d'exonération si franchise.",
+            "N° TVA intracommunautaire si assujetti, ou mention d'exonération si franchise.",
             "Désignation précise de chaque prestation ou produit.",
             "Montants HT, taux de TVA et montants de TVA corrects par ligne.",
             "Total HT + total TVA = total TTC (vérifiez le calcul).",
@@ -485,9 +485,9 @@ export const guideFactureConforme: Guide = {
         {
           type: "list",
           items: [
-            "Logiciel de facturation en ligne — mentions automatiques, calcul TVA, numérotation sécurisée.",
-            "Tableur (Excel, Sheets) — économique, mais modèle et suivi manuels.",
-            "Expert-comptable — recommandé pour valider vos premiers documents.",
+            "Logiciel de facturation en ligne, mentions automatiques, calcul TVA, numérotation sécurisée.",
+            "Tableur (Excel, Sheets), économique, mais modèle et suivi manuels.",
+            "Expert-comptable, recommandé pour valider vos premiers documents.",
           ],
         },
         {
@@ -565,7 +565,7 @@ export const guideFactureConforme: Guide = {
   conclusion: {
     title: "Conclusion",
     keyPoints: [
-      "Une facture conforme contient toutes les mentions légales — vérifiez la checklist avant chaque envoi.",
+      "Une facture conforme contient toutes les mentions légales, vérifiez la checklist avant chaque envoi.",
       "La numérotation doit être unique, chronologique et sans rupture.",
       "Une facture envoyée ne se modifie jamais : seul un avoir corrige une erreur.",
       "Vérifiez systématiquement que HT + TVA = TTC.",

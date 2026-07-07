@@ -1,7 +1,7 @@
 import { seoConfig } from "../seo.config";
 import { HOME_COVER, MARGIN_CALCULATOR_COVER, type GuideCoverImage } from "../guides/covers";
 
-/** Entrée calculateur — source unique pour menu, sidebar, sitemap et page Nos outils */
+/** Entrée calculateur : source unique pour menu, sidebar, sitemap et page Nos outils */
 export interface CalculatorEntry {
   id: string;
   path: string;

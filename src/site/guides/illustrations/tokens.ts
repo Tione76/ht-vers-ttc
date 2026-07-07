@@ -1,4 +1,4 @@
-/** Tokens graphiques partagés — illustrations guides */
+/** Tokens graphiques partagés : illustrations guides */
 export const ILLU = {
   brand: "#1a4b7c",
   brandDark: "#153d66",

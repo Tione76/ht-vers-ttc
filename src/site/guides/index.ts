@@ -46,6 +46,8 @@ export { GuideArticle, GuideInlineToc, GuideSidebar } from "./GuideRenderer";
 export {
   SiteSidebar,
   GuidePageSidebar,
+  GuidesHubSidebar,
+  ToolsHubSidebar,
   HomePageSidebar,
   FaqPageSidebar,
   ToolPageSidebar,
@@ -63,4 +65,7 @@ export {
 export type { GuideSidebarLink, SidebarContext, SidebarPageType, SidebarTool } from "./sidebar";
 export { GuideCoverImage as GuideCoverImageComponent } from "./GuideCoverImage";
 export { GuideListCard } from "./GuideListCard";
+export { GuidesHubEditorial } from "./guides-hub-editorial";
+export { GuidesHubPicker } from "./guides-hub-picker";
+export { getGuideHubTeaser, GUIDE_HUB_TEASERS } from "./guides-hub-data";
 export { GuidePageLayout } from "./GuidePageLayout";

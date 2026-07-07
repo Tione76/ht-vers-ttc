@@ -1,4 +1,4 @@
-# Design System — Charte graphique officielle
+# Design System : Charte graphique officielle
 
 Document interne de référence. **Toute nouvelle page doit respecter ces règles sans exception.**
 
@@ -46,7 +46,7 @@ Les couleurs sont personnalisables via `site.config.ts` → `colors.primary` (in
 | Élément | Classe | Taille |
 |---------|--------|--------|
 | H1 header compact | `article-header__title` | 24–28px |
-| H1 simulateur | `sr-only` (SEO) | — |
+| H1 simulateur | `sr-only` (SEO) | - |
 | H2 section | `section-title--dark` | 24px |
 | H2 prose | `prose h2` | 22px |
 | H3 prose | `prose h3` | 18px |
@@ -173,13 +173,13 @@ Hover : bordure brand ou fond `#f6f9fc`.
 
 ## Tableaux
 
-Classe `prose table` — bordures `var(--ds-border)`, en-tête fond `var(--ds-surface-alt)`.
+Classe `prose table`, bordures `var(--ds-border)`, en-tête fond `var(--ds-surface-alt)`.
 
 ---
 
 ## FAQ
 
-Classe `faq-item` + `details/summary` — même composant sur accueil et page `/faq`.
+Classe `faq-item` + `details/summary`, même composant sur accueil et page `/faq`.
 
 ---
 

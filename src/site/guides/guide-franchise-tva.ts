@@ -22,7 +22,7 @@ const THRESHOLD_TABLE_ROWS = FRANCHISE_THRESHOLD_ROWS.map((row) => [
 const LINK_TAUX = {
   type: "internal-link" as const,
   variant: "guide" as const,
-  intro: "Une fois assujetti, le taux applicable dépend de la nature de chaque opération — consultez notre",
+  intro: "Une fois assujetti, le taux applicable dépend de la nature de chaque opération, consultez notre",
   label: "guide des taux de TVA en France",
   href: "/guides/quels-sont-les-taux-de-tva-en-france",
 };
@@ -53,7 +53,7 @@ const LINK_DEDUCTIBLE = {
 
 export const guideFranchiseTva: Guide = {
   slug: "franchise-en-base-de-tva",
-  title: "Franchise en base de TVA : guide complet 2026 (article 293 B du CGI)",
+  title: "Franchise en base de TVA : guide complet",
   description:
     "Guide de référence 2026 sur la franchise en base de TVA : art. 293 B du CGI, seuils 85 000 € et 37 500 €, mention sur facture, dépassement, option volontaire et cas pratiques.",
   subtitle:
@@ -87,10 +87,10 @@ export const guideFranchiseTva: Guide = {
   quickSummary: {
     title: "La franchise en base en 30 secondes",
     items: [
-      { rate: "✓", description: "Pas de TVA facturée aux clients — prix nets affichés" },
+      { rate: "✓", description: "Pas de TVA facturée aux clients, prix nets affichés" },
       { rate: "✓", description: "Pas de TVA récupérable sur les achats professionnels" },
       { rate: "✓", description: "Mention obligatoire sur chaque facture (art. 293 B du CGI)" },
-      { rate: "✓", description: "Seuils de CA à respecter — 37 500 € ou 85 000 € selon l'activité" },
+      { rate: "✓", description: "Seuils de CA à respecter : 37 500 € ou 85 000 € selon l'activité" },
     ],
   },
 
@@ -110,9 +110,9 @@ export const guideFranchiseTva: Guide = {
         {
           type: "list",
           items: [
-            "Assujetti : l'entreprise relève du champ de la TVA — elle peut être en franchise ou au régime réel.",
+            "Assujetti : l'entreprise relève du champ de la TVA, elle peut être en franchise ou au régime réel.",
             "Franchise en base (art. 293 B) : pas de TVA facturée ni reversée, sous les seuils.",
-            "Exonération de plein droit : autre motif légal (santé, certaines formations…) — régime distinct de la franchise.",
+            "Exonération de plein droit : autre motif légal (santé, certaines formations…), régime distinct de la franchise.",
           ],
         },
         {
@@ -143,7 +143,7 @@ export const guideFranchiseTva: Guide = {
       blocks: [
         {
           type: "paragraph",
-          text: "En pratique, presque toute structure exerçant une activité économique taxable peut relever de la franchise — à condition que son chiffre d'affaires reste sous les seuils. Le statut juridique (micro-entrepreneur, EURL, SASU…) ne détermine pas à lui seul le régime de TVA.",
+          text: "En pratique, presque toute structure exerçant une activité économique taxable peut relever de la franchise, à condition que son chiffre d'affaires reste sous les seuils. Le statut juridique (micro-entrepreneur, EURL, SASU…) ne détermine pas à lui seul le régime de TVA.",
         },
         {
           type: "table",
@@ -176,7 +176,7 @@ export const guideFranchiseTva: Guide = {
         },
         {
           type: "table",
-          caption: `Seuils de franchise en base de TVA (${FRANCHISE_THRESHOLDS_META.year}) — ${FRANCHISE_THRESHOLDS_META.legalRef}`,
+          caption: `Seuils de franchise en base de TVA (${FRANCHISE_THRESHOLDS_META.year}) : ${FRANCHISE_THRESHOLDS_META.legalRef}`,
           headers: ["Type d'activité", "Seuil de base", "Seuil majoré", "Conséquences du dépassement"],
           rows: THRESHOLD_TABLE_ROWS,
         },
@@ -194,14 +194,14 @@ export const guideFranchiseTva: Guide = {
           type: "callout",
           variant: "example",
           paragraphs: [
-            "Exemple : un artisan réalise 60 000 € HT de ventes de meubles et 35 000 € HT de prestations de pose. Les deux catégories restent sous leurs seuils respectifs — franchise en principe. Si les prestations atteignent 42 000 € HT, le seuil majoré services est dépassé : assujettissement en principe, pour l'ensemble de l'activité.",
+            "Exemple : un artisan réalise 60 000 € HT de ventes de meubles et 35 000 € HT de prestations de pose. Les deux catégories restent sous leurs seuils respectifs, franchise en principe. Si les prestations atteignent 42 000 € HT, le seuil majoré services est dépassé : assujettissement en principe, pour l'ensemble de l'activité.",
           ],
         },
         {
           type: "callout",
           variant: "warning",
           paragraphs: [
-            `Attention : les seuils peuvent évoluer chaque année par la loi de finances. Montants applicables en ${FRANCHISE_THRESHOLDS_META.year} — ${FRANCHISE_THRESHOLDS_META.sourceNote}`,
+            `Attention : les seuils peuvent évoluer chaque année par la loi de finances. Montants applicables en ${FRANCHISE_THRESHOLDS_META.year} : ${FRANCHISE_THRESHOLDS_META.sourceNote}`,
           ],
         },
         {
@@ -222,7 +222,7 @@ export const guideFranchiseTva: Guide = {
       blocks: [
         {
           type: "paragraph",
-          text: "Il faut distinguer le dépassement du seuil de base et celui du seuil majoré — les conséquences ne sont pas les mêmes.",
+          text: "Il faut distinguer le dépassement du seuil de base et celui du seuil majoré, les conséquences ne sont pas les mêmes.",
         },
         {
           type: "list",
@@ -240,17 +240,17 @@ export const guideFranchiseTva: Guide = {
         },
         {
           type: "table",
-          caption: "Exemple — consultante en prestations de services (seuils : 37 500 € / 41 250 €)",
+          caption: "Exemple : consultante en prestations de services (seuils : 37 500 € / 41 250 €)",
           headers: ["Période", "CA HT", "Situation", "Régime TVA"],
           rows: [
             ["2024", "32 000 €", "Sous le seuil de base", "Franchise"],
             ["2025", "39 000 €", "Dépasse le seuil de base, reste sous le majoré", "Franchise jusqu'au 31/12/2025"],
-            ["2026", "—", "CA 2025 > 37 500 €", "Assujettie au 1er janvier 2026"],
+            ["2026", "-", "CA 2025 > 37 500 €", "Assujettie au 1er janvier 2026"],
           ],
         },
         {
           type: "table",
-          caption: "Exemple — dépassement du seuil majoré en cours d'année",
+          caption: "Exemple : dépassement du seuil majoré en cours d'année",
           headers: ["Événement", "Conséquence"],
           rows: [
             ["CA cumulé atteint 41 251 € en septembre (services)", "Assujettissement dès le 1er jour du dépassement"],
@@ -276,7 +276,7 @@ export const guideFranchiseTva: Guide = {
       blocks: [
         {
           type: "paragraph",
-          text: "Pour une entreprise en démarrage ou à faible volume, la franchise offre une simplicité réelle — à condition d'accepter ses limites.",
+          text: "Pour une entreprise en démarrage ou à faible volume, la franchise offre une simplicité réelle, à condition d'accepter ses limites.",
         },
         {
           type: "checklist",
@@ -314,7 +314,7 @@ export const guideFranchiseTva: Guide = {
             "TVA non récupérable tant que vous êtes en franchise : la taxe sur vos achats reste une charge intégrale.",
             "Croissance : dépassement des seuils = bascule obligatoire vers la TVA.",
             "Clients professionnels : ils ne peuvent pas déduire de TVA sur vos factures.",
-            "Investissements lourds : matériel, véhicule, local — la TVA payée n'est pas récupérable.",
+            "Investissements lourds : matériel, véhicule, local, la TVA payée n'est pas récupérable.",
             "Image B2B : certains grands comptes préfèrent des fournisseurs assujettis.",
           ],
         },
@@ -348,7 +348,7 @@ export const guideFranchiseTva: Guide = {
           headers: ["Élément", "Exigence", "Franchise"],
           rows: [
             ["Mention TVA", "TVA non applicable, art. 293 B du CGI", "Obligatoire"],
-            ["Montant", "Prix net — pas de ligne TVA", "Obligatoire"],
+            ["Montant", "Prix net, pas de ligne TVA", "Obligatoire"],
             ["SIRET / identité vendeur", "Nom, adresse, SIRET", "Obligatoire"],
             ["Client B2B", "Nom, adresse du client", "Obligatoire"],
             ["N° TVA intracommunautaire", "Non requis pour une facture française classique ; règles spécifiques possibles en intracommunautaire", "Non"],
@@ -372,7 +372,7 @@ export const guideFranchiseTva: Guide = {
       blocks: [
         {
           type: "paragraph",
-          text: "Tant que vous êtes en franchise en base de TVA, vous ne pouvez pas déduire la TVA sur vos achats professionnels. La taxe payée à vos fournisseurs constitue une charge intégrée au coût d'achat — matériel, logiciels, loyer, prestations, frais de déplacement. Après sortie de franchise ou en cas d'option pour la TVA (art. 293 C), le droit à déduction peut s'ouvrir selon les règles applicables.",
+          text: "Tant que vous êtes en franchise en base de TVA, vous ne pouvez pas déduire la TVA sur vos achats professionnels. La taxe payée à vos fournisseurs constitue une charge intégrée au coût d'achat, matériel, logiciels, loyer, prestations, frais de déplacement. Après sortie de franchise ou en cas d'option pour la TVA (art. 293 C), le droit à déduction peut s'ouvrir selon les règles applicables.",
         },
         {
           type: "paragraph",
@@ -391,7 +391,7 @@ export const guideFranchiseTva: Guide = {
           type: "callout",
           variant: "verify",
           paragraphs: [
-            "À vérifier : si vos achats comportent beaucoup de TVA (équipement, stock), l'option volontaire pour la TVA (art. 293 C) peut devenir intéressante — sous réserve d'une analyse chiffrée.",
+            "À vérifier : si vos achats comportent beaucoup de TVA (équipement, stock), l'option volontaire pour la TVA (art. 293 C) peut devenir intéressante, sous réserve d'une analyse chiffrée.",
           ],
         },
         LINK_DEDUCTIBLE,
@@ -449,7 +449,7 @@ export const guideFranchiseTva: Guide = {
         },
         {
           type: "table",
-          caption: "Cas pratiques — franchise en base de TVA par activité",
+          caption: "Cas pratiques : franchise en base de TVA par activité",
           headers: ["Métier", "Situation", "CA annuel HT", "Franchise ?", "TVA ?", "Facture type"],
           rows: PRACTICAL_CASE_ROWS,
         },
@@ -468,7 +468,7 @@ export const guideFranchiseTva: Guide = {
         },
         {
           type: "table",
-          caption: "Erreurs fréquentes — causes, conséquences et prévention",
+          caption: "Erreurs fréquentes : causes, conséquences et prévention",
           headers: ["Erreur", "Pourquoi c'est un problème", "Conséquence", "Comment l'éviter"],
           rows: ERRORS_ROWS,
         },
@@ -540,7 +540,7 @@ export const guideFranchiseTva: Guide = {
     keyPoints: [
       "La franchise en base de TVA (art. 293 B) dispense de facturer et de reverser la TVA sous les seuils de chiffre d'affaires.",
       "Seuils 2026 : 37 500 € / 41 250 € (services) et 85 000 € / 93 500 € (ventes, restauration, hébergement).",
-      "Chaque facture doit porter la mention « TVA non applicable, art. 293 B du CGI » — sans montant de TVA.",
+      "Chaque facture doit porter la mention « TVA non applicable, art. 293 B du CGI », sans montant de TVA.",
       "Dépassement du seuil majoré → assujettissement immédiat ; dépassement du seuil de base (N-1) → TVA au 1er janvier suivant.",
       "L'option volontaire (art. 293 C) permet de facturer la TVA et de la déduire, même sous les seuils.",
     ],

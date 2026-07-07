@@ -1,4 +1,4 @@
-/* Margin calculator — scoped styles (does not affect HT → TTC calculator) */
+/* Margin calculator : scoped styles (does not affect HT → TTC calculator) */
 
 .margin-calc-fields {
   gap: 20px;
@@ -97,7 +97,7 @@
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.55);
 }
 
-/* Results — two panels side by side on desktop */
+/* Results : two panels side by side on desktop */
 .margin-results-grid {
   display: grid;
   grid-template-columns: 1fr;

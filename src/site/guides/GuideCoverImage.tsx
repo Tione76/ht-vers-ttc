@@ -9,7 +9,7 @@ interface GuideCoverImageProps {
   sizes?: string;
 }
 
-/** Image de couverture — sidebar, listes de guides (hors contenu article) */
+/** Image de couverture : sidebar, listes de guides (hors contenu article) */
 export function GuideCoverImage({
   cover,
   priority = false,

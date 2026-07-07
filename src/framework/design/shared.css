@@ -1,8 +1,8 @@
-/* Shared — Design System officiel (toutes les pages) */
+/* Shared : Design System officiel (toutes les pages) */
 @import "./tokens.css";
 @import "./forms.css";
 
-/* Typographie de base — une seule police, une seule échelle */
+/* Typographie de base : une seule police, une seule échelle */
 .article-header,
 .article-page,
 .content-main,
@@ -559,25 +559,6 @@
   transition: border-color 0.15s ease, background-color 0.15s ease;
 }
 
-.sitemap-section {
-  margin-bottom: 2rem;
-}
-
-.sitemap-section h2 {
-  font-size: 1.125rem;
-  font-weight: 600;
-  margin: 0 0 0.75rem;
-}
-
-.sitemap-section ul {
-  margin: 0;
-  padding-left: 1.25rem;
-}
-
-.sitemap-section li + li {
-  margin-top: 0.35rem;
-}
-
 .tool-card--content:hover {
   border-color: var(--ds-brand);
   background: #f6f9fc;
@@ -634,20 +615,6 @@
 .site-footer__brand {
   flex: 1;
   max-width: 360px;
-}
-
-.site-footer__logo {
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 4px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 8px;
 }
 
 .site-footer__name {

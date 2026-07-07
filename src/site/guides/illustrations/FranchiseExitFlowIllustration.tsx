@@ -3,7 +3,7 @@ import { ILLU as c } from "./tokens";
 const STEPS = [
   {
     title: "Franchise en base",
-    desc: "CA sous les seuils — pas de TVA facturée ni récupérée",
+    desc: "CA sous les seuils, pas de TVA facturée ni récupérée",
     color: c.brand,
   },
   {
@@ -23,7 +23,7 @@ const STEPS = [
   },
   {
     title: "Déclarations et TVA récupérable",
-    desc: "CA3 ou CA12 — déduction de la TVA sur les achats professionnels",
+    desc: "CA3 ou CA12, déduction de la TVA sur les achats professionnels",
     color: c.success,
   },
 ] as const;

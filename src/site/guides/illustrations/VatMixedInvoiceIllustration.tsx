@@ -1,12 +1,12 @@
 import { ILLU as c } from "./tokens";
 
-/** Facture mixte — conseil 20 % + livres 5,5 % */
+/** Facture mixte : conseil 20 % + livres 5,5 % */
 export function VatMixedInvoiceIllustration() {
   return (
     <svg viewBox="0 0 720 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Schéma d'une facture avec plusieurs taux de TVA : conseil à 20 % et livres à 5,5 %">
       <rect width="720" height="360" fill={c.surfaceAlt} />
       <text x="360" y="28" textAnchor="middle" fill={c.text} fontSize="14" fontWeight="700" fontFamily={c.font}>
-        Facture multi-taux — exemple concret
+        Facture multi-taux, exemple concret
       </text>
       <text x="360" y="46" textAnchor="middle" fill={c.textMuted} fontSize="10" fontFamily={c.font}>
         Deux natures d&apos;opérations = deux taux distincts sur la même facture
@@ -24,7 +24,7 @@ export function VatMixedInvoiceIllustration() {
         <text key={h} x={[112, 300, 380, 440, 540][i]} y="116" fill="#fff" fontSize="9" fontWeight="600" fontFamily={c.font}>{h}</text>
       ))}
 
-      {/* Row 1 — Conseil 20% */}
+      {/* Row 1 : Conseil 20% */}
       <rect x="100" y="128" width="520" height="36" fill={c.surface} stroke={c.borderLight} />
       <text x="112" y="150" fill={c.text} fontSize="10" fontWeight="600" fontFamily={c.font}>Mission conseil éditorial</text>
       <rect x="248" y="136" width="52" height="16" rx="3" fill={c.brandLight} stroke={c.brandMuted} />
@@ -35,7 +35,7 @@ export function VatMixedInvoiceIllustration() {
       <text x="470" y="150" textAnchor="end" fill={c.text} fontSize="10" fontFamily={c.font}>160,00 €</text>
       <text x="600" y="150" textAnchor="end" fill={c.text} fontSize="10" fontWeight="600" fontFamily={c.font}>960,00 €</text>
 
-      {/* Row 2 — Livres 5.5% */}
+      {/* Row 2 : Livres 5.5% */}
       <rect x="100" y="164" width="520" height="36" fill={c.surfaceAlt} stroke={c.borderLight} />
       <text x="112" y="186" fill={c.text} fontSize="10" fontWeight="600" fontFamily={c.font}>Lot de 10 ouvrages professionnels</text>
       <rect x="248" y="172" width="52" height="16" rx="3" fill={c.successLight} stroke={c.success} strokeOpacity="0.3" />

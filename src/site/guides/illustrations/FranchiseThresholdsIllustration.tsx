@@ -4,7 +4,7 @@ import {
   formatThreshold,
 } from "../guide-franchise-thresholds";
 
-/** Seuils de franchise en base de TVA — tableau responsive */
+/** Seuils de franchise en base de TVA : tableau responsive */
 export function FranchiseThresholdsIllustration() {
   const mainRows = FRANCHISE_THRESHOLD_ROWS.filter(
     (r) => r.id === "ventes" || r.id === "services",

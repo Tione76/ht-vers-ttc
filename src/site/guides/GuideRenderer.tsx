@@ -113,7 +113,7 @@ function GuideBlockRenderer({ block, isTemplate }: { block: GuideBlock; isTempla
       return (
         <figure>
           <div className="prose-figure__placeholder" aria-hidden="true">
-            Illustration à ajouter — {block.description}
+            Illustration à ajouter : {block.description}
           </div>
           {block.caption && <figcaption>{block.caption}</figcaption>}
         </figure>
@@ -199,7 +199,7 @@ function GuideBlockRenderer({ block, isTemplate }: { block: GuideBlock; isTempla
   }
 }
 
-/** Sommaire inline — H2 uniquement */
+/** Sommaire inline : H2 uniquement */
 export function GuideInlineToc({ entries }: { entries: GuideTocEntry[] }) {
   return (
     <nav className="guide-toc" aria-label="Sommaire">

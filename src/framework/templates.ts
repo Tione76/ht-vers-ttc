@@ -1,5 +1,5 @@
 /**
- * Templates officiels du framework — sélection automatique selon le type de page.
+ * Templates officiels du framework : sélection automatique selon le type de page.
  */
 export const PageTemplate = {
   /** Accueil / simulateur principal */

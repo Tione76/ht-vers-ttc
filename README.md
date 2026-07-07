@@ -13,7 +13,7 @@ Charte graphique : voir **[DESIGN_SYSTEM.md](./DESIGN_SYSTEM.md)**.
 | Modifier | Ne pas modifier |
 |----------|-----------------|
 | `src/site/` (config, contenu, calculateur) | `src/framework/` (layouts, design system, SEO, RGPD) |
-| `public/` (logo, OG image) | `src/app/` (routes — sauf cas exceptionnel) |
+| `public/` (logo, OG image) | `src/app/` (routes, sauf cas exceptionnel) |
 | `src/app/icon.svg` (favicon) | `src/framework/design/` (CSS, composants visuels) |
 
 ---
@@ -64,9 +64,9 @@ Valeur recommandée : `#1a4b7c`.
 
 Éditez **`src/site/calculator.tsx`**. Utilisez les classes du design system :
 
-- `calc-field-label`, `calc-input` — champs sur fond bleu
-- `calc-col-actions`, `calc-cta`, `calc-reset` — boutons
-- `ResultDisplay` — affichage du résultat
+- `calc-field-label`, `calc-input`, champs sur fond bleu
+- `calc-col-actions`, `calc-cta`, `calc-reset`, boutons
+- `ResultDisplay`, affichage du résultat
 
 ```tsx
 "use client";
