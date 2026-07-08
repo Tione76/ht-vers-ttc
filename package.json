@@ -10,7 +10,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint src",
-    "convert:og-images": "node scripts/convert-og-images.mjs"
+    "convert:og-images": "node scripts/convert-og-images.mjs",
+    "indexnow:generate-key": "node scripts/generate-indexnow-key.mjs",
+    "indexnow:notify": "node scripts/notify-indexnow.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",
