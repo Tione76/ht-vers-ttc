@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { HOME_COVER } from "./guides/covers";
+import { GuideHeroImage } from "./guides/GuideCoverImage";
 
 const GUIDE_TAUX = "/guides/quels-sont-les-taux-de-tva-en-france";
 const GUIDE_FRANCHISE = "/guides/franchise-en-base-de-tva";
@@ -18,6 +20,8 @@ export function HomeEditorial() {
             et le détail du calcul en quelques secondes, sans inscription, directement dans votre
             navigateur.
           </p>
+
+          <GuideHeroImage cover={HOME_COVER} />
 
           <h2>Comment convertir un prix HT vers TTC ?</h2>
           <p>

@@ -136,6 +136,59 @@
   margin-top: 20px;
 }
 
+/* Illustration principale (registre covers.ts) : style unique site-wide */
+.guide-hero {
+  margin: 24px 0 32px;
+}
+
+.guide-hero__frame {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: var(--ds-radius);
+  background: var(--ds-surface-alt);
+  aspect-ratio: 1200 / 630;
+}
+
+.guide-hero__img {
+  position: relative;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Spécificité élevée pour ne pas être écrasé par .prose figcaption */
+.guide-hero__credit,
+.prose .guide-hero__credit,
+.prose figcaption.guide-hero__credit {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  margin-top: 0;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.625rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.35;
+  color: #ffffff;
+  background: rgba(10, 10, 10, 0.72);
+  text-align: right;
+}
+
+@media (min-width: 640px) {
+  .guide-hero__credit,
+  .prose .guide-hero__credit,
+  .prose figcaption.guide-hero__credit {
+    font-size: 0.6875rem;
+    padding: 0.4rem 0.75rem;
+  }
+}
+
 /* Synthèse visuelle : ex. « Les taux de TVA en 30 secondes » */
 .guide-quick-summary {
   margin: 32px 0 40px;

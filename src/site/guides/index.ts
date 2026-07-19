@@ -34,9 +34,13 @@ export { buildGuideToc, buildGuideTocH2, computeReadingTime } from "./utils";
 export {
   attachGuideCover,
   coverToOgInput,
+  coverToSchemaImage,
   getGuideCover,
   getGuideCoverByHref,
   GUIDE_COVERS,
+  GUIDES_HUB_COVER,
+  TOOLS_HUB_COVER,
+  FAQ_COVER,
   HOME_COVER,
   MARGIN_CALCULATOR_COVER,
   resolveGuideCover,
@@ -63,7 +67,7 @@ export {
   SIDEBAR_TOOLS,
 } from "./sidebar";
 export type { GuideSidebarLink, SidebarContext, SidebarPageType, SidebarTool } from "./sidebar";
-export { GuideCoverImage as GuideCoverImageComponent } from "./GuideCoverImage";
+export { GuideCoverImage as GuideCoverImageComponent, GuideHeroImage } from "./GuideCoverImage";
 export { GuideListCard } from "./GuideListCard";
 export { GuidesHubEditorial } from "./guides-hub-editorial";
 export { GuidesHubPicker } from "./guides-hub-picker";

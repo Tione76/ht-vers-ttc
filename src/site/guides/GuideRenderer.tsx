@@ -1,6 +1,7 @@
 import Link from "next/link";
+import type { GuideCoverImage as GuideCoverImageType } from "./covers";
 import { getGuideCoverByHref } from "./covers";
-import { GuideCoverImage } from "./GuideCoverImage";
+import { GuideCoverImage, GuideHeroImage } from "./GuideCoverImage";
 import type { GuideSidebarLink, SidebarTool } from "./sidebar";
 import type { GuideBlock, GuideTocEntry } from "./types";
 import { GUIDE_CALLOUT_LABELS } from "./types";
@@ -323,6 +324,8 @@ export function GuideSidebar({
 }
 
 interface GuideArticleProps {
+  /** Illustration principale (registre covers.ts) */
+  cover?: GuideCoverImageType;
   introduction: string[];
   quickSummary?: import("./types").GuideQuickSummary;
   toc: GuideTocEntry[];
@@ -350,6 +353,7 @@ function GuideQuickSummaryBlock({ summary }: { summary: import("./types").GuideQ
 }
 
 export function GuideArticle({
+  cover,
   introduction,
   quickSummary,
   toc,
@@ -366,6 +370,8 @@ export function GuideArticle({
           <p key={paragraph}>{paragraph}</p>
         ))}
       </div>
+
+      {cover && <GuideHeroImage cover={cover} priority />}
 
       {quickSummary && <GuideQuickSummaryBlock summary={quickSummary} />}
 

@@ -1,5 +1,7 @@
-import { faqPageCategories, FAQ_PAGE_INTRO, FAQ_PAGE_UPDATED } from "./faq-page-data";
+import { FAQ_PAGE_INTRO, FAQ_PAGE_UPDATED, faqPageCategories } from "./faq-page-data";
 import { renderFaqAnswer } from "./faq-page-utils";
+import { FAQ_COVER } from "./guides/covers";
+import { GuideHeroImage } from "./guides/GuideCoverImage";
 
 export function FaqPageContent() {
   return (
@@ -8,6 +10,8 @@ export function FaqPageContent() {
         <p className="faq-page__intro">{FAQ_PAGE_INTRO}</p>
         <p className="faq-page__updated">Dernière mise à jour : {FAQ_PAGE_UPDATED}</p>
       </div>
+
+      <GuideHeroImage cover={FAQ_COVER} />
 
       {faqPageCategories.map((category, index) => (
         <section

@@ -118,6 +118,7 @@ export default async function GuidePage({ params }: Props) {
           </aside>
         )}
         <GuideArticle
+          cover={guide.isTemplate ? undefined : resolveGuideCover(guide)}
           introduction={guide.introduction}
           quickSummary={guide.quickSummary}
           toc={toc}

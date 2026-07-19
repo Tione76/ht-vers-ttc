@@ -2,6 +2,7 @@ import { config, seoConfig } from "@/site";
 import { getAllCalculators } from "@/site/navigation/calculators-registry";
 import { GuidePageLayout, ToolsHubSidebar } from "@/site/guides";
 import { coverToOgInput, coverToSchemaImage, TOOLS_HUB_COVER } from "@/site/guides/covers";
+import { GuideHeroImage } from "@/site/guides/GuideCoverImage";
 import { ToolListCard } from "@/site/tools/ToolListCard";
 import { ToolsHubEditorial } from "@/site/tools/tools-hub-editorial";
 import { ToolsHubPicker } from "@/site/tools/tools-hub-picker";
@@ -81,6 +82,7 @@ export default function ToolsHubPage() {
         </section>
 
         <ToolsHubPicker />
+        <GuideHeroImage cover={TOOLS_HUB_COVER} />
         <ToolsHubEditorial />
       </GuidePageLayout>
     </>

@@ -8,6 +8,7 @@ import {
   FAQ_PAGE_SUBTITLE,
   getFaqPageSchemaItems,
 } from "@/site/faq-page-data";
+import { coverToOgInput, FAQ_COVER } from "@/site/guides/covers";
 import { FaqPageContent } from "@/site/FaqPageContent";
 import { FaqPageSidebar, GuidePageLayout } from "@/site/guides";
 import { PageBreadcrumb } from "@/framework/design/components/PageBreadcrumb";
@@ -17,6 +18,7 @@ export const metadata = buildPageMetadata(config, seoConfig, {
   title: FAQ_PAGE_META.title,
   description: FAQ_PAGE_META.description,
   path: "/faq",
+  ogImage: coverToOgInput(FAQ_COVER),
 });
 
 export default function FaqPage() {

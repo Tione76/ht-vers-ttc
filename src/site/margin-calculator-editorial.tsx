@@ -2,6 +2,8 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { MarginPricingFlowIllustration } from "./illustrations/MarginPricingFlowIllustration";
 import { marginCalculatorFaq } from "./margin-calculator-faq-data";
+import { MARGIN_CALCULATOR_COVER } from "./guides/covers";
+import { GuideHeroImage } from "./guides/GuideCoverImage";
 
 const CALC_HT_TTC = "/";
 const GUIDE_TAUX = "/guides/quels-sont-les-taux-de-tva-en-france";
@@ -117,12 +119,7 @@ export function MarginCalculatorEditorial() {
             marge trop faible.
           </p>
 
-          <figure className="guide-illustration">
-            <MarginPricingFlowIllustration />
-            <figcaption>
-              Du prix d&apos;achat HT au prix TTC : taux de marge sur l&apos;achat, puis TVA.
-            </figcaption>
-          </figure>
+          <GuideHeroImage cover={MARGIN_CALCULATOR_COVER} />
 
           <h2>Comment calculer une marge HT ?</h2>
           <p>
@@ -139,6 +136,14 @@ export function MarginCalculatorEditorial() {
               <strong>prix de vente HT = prix d&apos;achat HT × (1 + taux de marge&nbsp;%)</strong>
             </li>
           </ul>
+
+          <figure className="guide-illustration">
+            <MarginPricingFlowIllustration />
+            <figcaption>
+              Du prix d&apos;achat HT au prix TTC : taux de marge sur l&apos;achat, puis TVA.
+            </figcaption>
+          </figure>
+
           <p>
             Le <strong>taux de marge</strong> saisi dans le calculateur est calculé sur le prix
             d&apos;achat HT, ce n&apos;est pas le taux de marque, qui se rapporte au prix de

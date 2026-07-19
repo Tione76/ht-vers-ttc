@@ -14,12 +14,13 @@ const ROOT = path.join(__dirname, "..");
 const INCOMING = path.join(ROOT, "public", "images", "og", "_incoming");
 const OUT_DIR = path.join(ROOT, "public", "images", "og");
 
-/** Fichiers à la racine de public/images/og/ (accueil, marge, hubs) */
+/** Fichiers à la racine de public/images/og/ (accueil, marge, hubs, FAQ) */
 const ROOT_OG_STEMS = new Set([
-  "Calcul-HT-vers-TTC",
-  "Calcul-marge-HT-TTC",
-  "Guides-TVA",
-  "Outils-calcul-tva",
+  "Calculateur-ht-vers-ttc",
+  "Calculateur-marge-HT-TTC",
+  "Calculateurs-HT-TTC-TVA",
+  "Guides-entreprenariat-TVA",
+  "Questions-TVA",
 ]);
 
 const IMAGE_EXT = /\.(jpe?g|png|webp)$/i;

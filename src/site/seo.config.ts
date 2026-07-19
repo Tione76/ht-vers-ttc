@@ -12,7 +12,7 @@ export const seoConfig = {
     h1: "CALCULATEUR TVA : HT → TTC ET TTC → HT",
     description:
       "Calculateur HT en TTC gratuit pour convertir vos prix, calculer la TVA et accéder à des guides fiables sur les taux de TVA, les factures et les entreprises.",
-    ogImage: "/images/og/Calcul-HT-vers-TTC.webp",
+    ogImage: "/images/og/Calculateur-ht-vers-ttc.webp",
   },
 
   calculators: {

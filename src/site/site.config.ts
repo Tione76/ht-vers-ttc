@@ -34,7 +34,8 @@ export const siteConfig = {
     height: 800,
   },
   favicon: "/icon.png",
-  ogImage: "/images/og/Calcul-HT-vers-TTC.webp",
+  /** Fallback OG : source unique HOME_COVER (covers.ts) */
+  ogImage: "/images/og/Calculateur-ht-vers-ttc.webp",
 
   footerBrandName: "HT-VERS-TTC.FR",
   footerDescription:
