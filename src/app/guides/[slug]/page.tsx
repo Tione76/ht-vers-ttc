@@ -1,23 +1,23 @@
 import { notFound } from "next/navigation";
 import { config, seoConfig } from "@/site";
 import {
-  buildArticleSchema,
   buildGuideTocH2,
   computeReadingTime,
   getGuideBySlug,
   getPublishedGuideSlugs,
   GUIDE_MODEL_SLUG,
   GuideArticle,
+  GuideAuthorMeta,
   GuidePageLayout,
   GuidePageSidebar,
 } from "@/site/guides";
 import { PageBreadcrumb } from "@/framework/design/components/PageBreadcrumb";
 import { JsonLd } from "@/framework/JsonLd";
 import { buildPageMetadata } from "@/framework/seo/metadata";
-import { buildBreadcrumbSchema, buildFaqSchema } from "@/framework/seo/json-ld";
-import { coverToOgInput, resolveGuideCover } from "@/site/guides/covers";
+import { buildGuidePageGraph } from "@/framework/seo/page-schemas";
+import { coverToOgInput, coverToSchemaImage, resolveGuideCover } from "@/site/guides/covers";
 import { getGuideSeoMetadata } from "@/site/guides/guide-seo-metadata";
-import { formatDate } from "@/framework/utils";
+import { getDefaultGuideAuthor } from "@/site/seo/entities";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -64,10 +64,9 @@ export default async function GuidePage({ params }: Props) {
   const path = `/guides/${slug}`;
   const readingTime = computeReadingTime(guide);
   const toc = buildGuideTocH2(guide);
-  const meta = [
-    `Mis à jour le ${formatDate(guide.updatedAt)}`,
-    `${readingTime} min de lecture`,
-  ].join(" · ");
+  const cover = guide.isTemplate ? undefined : resolveGuideCover(guide);
+  const author = getDefaultGuideAuthor();
+  const seoMeta = getGuideSeoMetadata(slug);
 
   const breadcrumbItems = guide.isTemplate
     ? [
@@ -80,22 +79,34 @@ export default async function GuidePage({ params }: Props) {
         { label: guide.title },
       ];
 
+  const schemaBreadcrumbs = guide.isTemplate
+    ? [
+        { name: "Accueil", path: "/" },
+        { name: "Modèle de guide", path },
+      ]
+    : [
+        { name: "Accueil", path: "/" },
+        { name: "Guides TVA", path: seoConfig.guidesHub.path },
+        { name: guide.title, path },
+      ];
+
   return (
     <>
       <JsonLd
-        data={[
-          ...(guide.isTemplate ? [] : [buildArticleSchema(config, guide, path)]),
-          buildBreadcrumbSchema(config, [
-            { name: "Accueil", path: "/" },
-            ...(guide.isTemplate
-              ? [{ name: "Modèle de guide", path }]
-              : [
-                  { name: "Guides TVA", path: seoConfig.guidesHub.path },
-                  { name: guide.title, path },
-                ]),
-          ]),
-          ...(guide.isTemplate ? [] : [buildFaqSchema(guide.faq)]),
-        ]}
+        data={
+          guide.isTemplate
+            ? []
+            : buildGuidePageGraph(config, {
+                title: seoMeta?.title ?? guide.title,
+                description: seoMeta?.description ?? guide.description,
+                path,
+                image: cover ? coverToSchemaImage(cover) : undefined,
+                breadcrumbs: schemaBreadcrumbs,
+                guide,
+                author,
+                cover,
+              })
+        }
       />
       <GuidePageLayout
         title={guide.isTemplate ? "Modèle officiel de guide" : guide.title}
@@ -103,9 +114,13 @@ export default async function GuidePage({ params }: Props) {
         sidebar={guide.isTemplate ? undefined : <GuidePageSidebar slug={slug} />}
       >
         <PageBreadcrumb items={breadcrumbItems} />
-        <p className="guide-meta">
-          <em>{meta}</em>
-        </p>
+        {guide.isTemplate ? (
+          <p className="guide-meta">
+            <em>Modèle éditorial (non indexé)</em>
+          </p>
+        ) : (
+          <GuideAuthorMeta updatedAt={guide.updatedAt} readingTime={readingTime} />
+        )}
         {guide.isTemplate && (
           <aside className="prose-callout">
             <strong>Modèle éditorial</strong>
@@ -118,7 +133,7 @@ export default async function GuidePage({ params }: Props) {
           </aside>
         )}
         <GuideArticle
-          cover={guide.isTemplate ? undefined : resolveGuideCover(guide)}
+          cover={cover}
           introduction={guide.introduction}
           quickSummary={guide.quickSummary}
           toc={toc}

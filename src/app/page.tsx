@@ -3,12 +3,7 @@ import { coverToOgInput, coverToSchemaImage, HOME_COVER } from "@/site/guides/co
 import { CalculatorPageLayout } from "@/framework/layouts/CalculatorPageLayout";
 import { JsonLd } from "@/framework/JsonLd";
 import { buildPageMetadata } from "@/framework/seo/metadata";
-import {
-  buildBreadcrumbSchema,
-  buildFaqSchema,
-  buildOrganizationSchema,
-  buildWebApplicationSchema,
-} from "@/framework/seo/json-ld";
+import { buildCalculatorPageGraph } from "@/framework/seo/page-schemas";
 
 export const metadata = buildPageMetadata(config, seoConfig, {
   title: seoConfig.home.title,
@@ -21,15 +16,14 @@ export default function HomePage() {
   return (
     <>
       <JsonLd
-        data={[
-          buildWebApplicationSchema(config, seoConfig.home.title, seoConfig.home.description, {
-            dateModified: "2026-07-01",
-            image: coverToSchemaImage(HOME_COVER),
-          }),
-          buildOrganizationSchema(config),
-          buildBreadcrumbSchema(config, [{ name: "Accueil", path: "/" }]),
-          buildFaqSchema(config.faq),
-        ]}
+        data={buildCalculatorPageGraph(config, {
+          title: seoConfig.home.title,
+          description: seoConfig.home.description,
+          path: "/",
+          image: coverToSchemaImage(HOME_COVER),
+          dateModified: config.legal.privacy.lastUpdated,
+          breadcrumbs: [{ name: "Accueil", path: "/" }],
+        })}
       />
       <CalculatorPageLayout Calculator={Calculator} />
     </>

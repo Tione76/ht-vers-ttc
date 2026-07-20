@@ -11,7 +11,7 @@ import { PageBreadcrumb } from "@/framework/design/components/PageBreadcrumb";
 import { GuidePageLayout } from "@/site/guides/GuidePageLayout";
 import { JsonLd } from "@/framework/JsonLd";
 import { buildPageMetadata } from "@/framework/seo/metadata";
-import { buildBreadcrumbSchema, buildCollectionPageSchema } from "@/framework/seo/json-ld";
+import { buildHubPageGraph } from "@/framework/seo/page-schemas";
 import "@/site/guides/guide-page.css";
 
 const hub = seoConfig.guidesHub;
@@ -27,19 +27,16 @@ export default function GuidesHubPage() {
   return (
     <>
       <JsonLd
-        data={[
-          buildCollectionPageSchema(
-            config,
-            hub.title,
-            hub.description,
-            hub.path,
-            coverToSchemaImage(GUIDES_HUB_COVER),
-          ),
-          buildBreadcrumbSchema(config, [
+        data={buildHubPageGraph(config, {
+          title: hub.title,
+          description: hub.description,
+          path: hub.path,
+          image: coverToSchemaImage(GUIDES_HUB_COVER),
+          breadcrumbs: [
             { name: "Accueil", path: "/" },
             { name: hub.h1, path: hub.path },
-          ]),
-        ]}
+          ],
+        })}
       />
       <GuidePageLayout
         title={hub.h1}

@@ -7,8 +7,7 @@ import { ToolCalculatorPageLayout } from "@/framework/layouts/ToolCalculatorPage
 import { PageBreadcrumb } from "@/framework/design/components/PageBreadcrumb";
 import { JsonLd } from "@/framework/JsonLd";
 import { buildPageMetadata } from "@/framework/seo/metadata";
-import { buildBreadcrumbSchema, buildFaqSchema, buildWebApplicationSchema } from "@/framework/seo/json-ld";
-import { marginCalculatorFaq } from "@/site/margin-calculator-faq-data";
+import { buildCalculatorPageGraph } from "@/framework/seo/page-schemas";
 
 const page = seoConfig.calculators.marginHtTtc;
 const toolsHub = seoConfig.toolsHub;
@@ -24,18 +23,18 @@ export default function MarginCalculatorPage() {
   return (
     <>
       <JsonLd
-        data={[
-          buildWebApplicationSchema(config, page.title, page.description, {
-            dateModified: "2026-07-01",
-            image: coverToSchemaImage(MARGIN_CALCULATOR_COVER),
-          }),
-          buildBreadcrumbSchema(config, [
+        data={buildCalculatorPageGraph(config, {
+          title: page.title,
+          description: page.description,
+          path: page.path,
+          image: coverToSchemaImage(MARGIN_CALCULATOR_COVER),
+          dateModified: config.legal.privacy.lastUpdated,
+          breadcrumbs: [
             { name: "Accueil", path: "/" },
             { name: toolsHub.title, path: toolsHub.path },
             { name: page.h1, path: page.path },
-          ]),
-          buildFaqSchema(marginCalculatorFaq),
-        ]}
+          ],
+        })}
       />
       <ToolCalculatorPageLayout
         h1={page.h1}

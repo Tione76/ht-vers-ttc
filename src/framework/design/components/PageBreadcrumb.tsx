@@ -13,7 +13,7 @@ interface PageBreadcrumbProps {
 export function PageBreadcrumb({ items }: PageBreadcrumbProps) {
   return (
     <nav aria-label="Fil d'Ariane" className="guide-breadcrumb">
-      <ol>
+      <ol className="guide-breadcrumb__list">
         {items.map((item, index) => (
           <li key={`${item.label}-${index}`} className="guide-breadcrumb__item">
             {index > 0 && (
@@ -22,9 +22,13 @@ export function PageBreadcrumb({ items }: PageBreadcrumbProps) {
               </span>
             )}
             {item.href ? (
-              <Link href={item.href}>{item.label}</Link>
+              <Link href={item.href} className="guide-breadcrumb__label">
+                {item.label}
+              </Link>
             ) : (
-              <span aria-current="page">{item.label}</span>
+              <span className="guide-breadcrumb__label" aria-current="page">
+                {item.label}
+              </span>
             )}
           </li>
         ))}

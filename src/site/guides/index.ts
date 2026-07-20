@@ -29,8 +29,8 @@ export {
   getGuideBySlug,
   getPublishedGuideSlugs,
 } from "./registry";
-export { buildArticleSchema } from "./schema";
 export { buildGuideToc, buildGuideTocH2, computeReadingTime } from "./utils";
+export { GuideAuthorMeta } from "./GuideAuthorMeta";
 export {
   attachGuideCover,
   coverToOgInput,

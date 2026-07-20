@@ -8,6 +8,7 @@
 import type { SitemapEntry } from "@/framework/seo/pages";
 import { guides } from "./guides/registry";
 import { getAllCalculators } from "./navigation/calculators-registry";
+import { getAuthorSlugs, getAuthor } from "./seo/entities";
 import { seoConfig } from "./seo.config";
 
 export type PublicPageCategory = "tools" | "guides" | "faq" | "utility";
@@ -127,6 +128,18 @@ export function getAllPublicPages(): PublicPage[] {
     indexable: true,
   }));
 
+  const authorPages: PublicPage[] = getAuthorSlugs()
+    .map((slug) => getAuthor(slug))
+    .filter((author): author is NonNullable<typeof author> => Boolean(author))
+    .map((author) => ({
+      path: author.path,
+      title: author.seoTitle,
+      category: "utility" as const,
+      changefreq: "monthly" as const,
+      priority: 0.5,
+      indexable: true,
+    }));
+
   return [
     ...calculatorPages(),
     toolsHubPage,
@@ -135,6 +148,7 @@ export function getAllPublicPages(): PublicPage[] {
     faqPage,
     ...utilityPages,
     ...legalPages,
+    ...authorPages,
     ...extra,
   ];
 }

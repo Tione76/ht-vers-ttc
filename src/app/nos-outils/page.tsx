@@ -7,15 +7,10 @@ import { ToolListCard } from "@/site/tools/ToolListCard";
 import { ToolsHubEditorial } from "@/site/tools/tools-hub-editorial";
 import { ToolsHubPicker } from "@/site/tools/tools-hub-picker";
 import { ToolsHubReassurance } from "@/site/tools/tools-hub-reassurance";
-import { TOOL_HUB_FAQ } from "@/site/tools/tools-hub-data";
 import { PageBreadcrumb } from "@/framework/design/components/PageBreadcrumb";
 import { JsonLd } from "@/framework/JsonLd";
 import { buildPageMetadata } from "@/framework/seo/metadata";
-import {
-  buildBreadcrumbSchema,
-  buildCollectionPageSchema,
-  buildFaqSchema,
-} from "@/framework/seo/json-ld";
+import { buildHubPageGraph } from "@/framework/seo/page-schemas";
 import "@/site/guides/guide-page.css";
 import "@/site/tools/tools-hub.css";
 
@@ -34,25 +29,16 @@ export default function ToolsHubPage() {
   return (
     <>
       <JsonLd
-        data={[
-          buildCollectionPageSchema(
-            config,
-            hub.title,
-            hub.description,
-            hub.path,
-            coverToSchemaImage(TOOLS_HUB_COVER),
-          ),
-          buildBreadcrumbSchema(config, [
+        data={buildHubPageGraph(config, {
+          title: hub.title,
+          description: hub.description,
+          path: hub.path,
+          image: coverToSchemaImage(TOOLS_HUB_COVER),
+          breadcrumbs: [
             { name: "Accueil", path: "/" },
             { name: hub.h1, path: hub.path },
-          ]),
-          buildFaqSchema(
-            TOOL_HUB_FAQ.map((item) => ({
-              question: item.question,
-              answer: item.answer,
-            })),
-          ),
-        ]}
+          ],
+        })}
       />
       <GuidePageLayout
         title={hub.h1}

@@ -14,6 +14,8 @@ interface GuidePageLayoutProps {
   children: ReactNode;
   sidebar?: ReactNode;
   prose?: boolean;
+  /** Classe optionnelle sur le conteneur principal (ex. page auteur) */
+  bodyClassName?: string;
 }
 
 /** Layout dédié aux guides : header hero, sans nom de site au-dessus du H1 */
@@ -23,6 +25,7 @@ export function GuidePageLayout({
   children,
   sidebar,
   prose = true,
+  bodyClassName,
 }: GuidePageLayoutProps) {
   const site = useSite();
 
@@ -46,7 +49,17 @@ export function GuidePageLayout({
       <main id="main-content" className="article-page">
         <div className="content-wrap content-wrap--wide">
           <div className="article-layout">
-            <div className={prose ? "article-body prose" : "article-body"}>{children}</div>
+            <div
+              className={
+                bodyClassName
+                  ? `article-body${prose ? " prose" : ""} ${bodyClassName}`
+                  : prose
+                    ? "article-body prose"
+                    : "article-body"
+              }
+            >
+              {children}
+            </div>
             {sidebar && (
               <aside className="article-sidebar" aria-label="Maillage interne">
                 {sidebar}
