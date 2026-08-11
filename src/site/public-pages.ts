@@ -10,6 +10,11 @@ import { guides } from "./guides/registry";
 import { getAllCalculators } from "./navigation/calculators-registry";
 import { getAuthorSlugs, getAuthor } from "./seo/entities";
 import { seoConfig } from "./seo.config";
+import {
+  getHtToTtcHubMeta,
+  getPublishedHtToTtcPublicPages,
+  isHtToTtcHubPublished,
+} from "./ht-to-ttc/ht-to-ttc-publish";
 
 export type PublicPageCategory = "tools" | "guides" | "faq" | "utility";
 
@@ -140,6 +145,19 @@ export function getAllPublicPages(): PublicPage[] {
       indexable: true,
     }));
 
+  /** Hub + fiches published de la série HT → TTC (les drafts ne sont jamais listés ici). */
+  const hubMeta = getHtToTtcHubMeta();
+  const htToTtcHubPage: PublicPage = {
+    path: hubMeta.path,
+    title: hubMeta.title,
+    category: "utility",
+    changefreq: "weekly",
+    priority: 0.65,
+    indexable: isHtToTtcHubPublished(),
+  };
+
+  const htToTtcPublishedPages: PublicPage[] = getPublishedHtToTtcPublicPages();
+
   return [
     ...calculatorPages(),
     toolsHubPage,
@@ -150,6 +168,8 @@ export function getAllPublicPages(): PublicPage[] {
     ...legalPages,
     ...authorPages,
     ...extra,
+    htToTtcHubPage,
+    ...htToTtcPublishedPages,
   ];
 }
 

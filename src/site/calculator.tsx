@@ -2,6 +2,7 @@
 
 import { useLayoutEffect, useState } from "react";
 import { useCalculatorSlot } from "@/framework/SiteProvider";
+import { calculateHtToTtc, calculateTtcToHt } from "./ht-to-ttc/ht-to-ttc-calc";
 
 const VAT_RATES = [
   { value: "20", label: "20 %, taux normal" },
@@ -34,9 +35,7 @@ function formatRate(rate: string): string {
 }
 
 /** Arrondi arithmétique au centime d'euro */
-function roundCent(value: number): number {
-  return Math.round(value * 100) / 100;
-}
+// Calculs HT/TTC délégués à la source unique ht-to-ttc/ht-to-ttc-calc
 
 function ResultCard({
   label,
@@ -121,8 +120,9 @@ function buildResults(
 
   if (direction === "ht-to-ttc") {
     ht = parsed;
-    tva = roundCent(ht * (rate / 100));
-    ttc = roundCent(ht + tva);
+    const calc = calculateHtToTtc(ht, rate);
+    tva = calc.vatAmount;
+    ttc = calc.ttc;
 
     const muted = ttc === 0;
 
@@ -145,8 +145,9 @@ function buildResults(
   }
 
   ttc = parsed;
-  ht = roundCent(ttc / (1 + rate / 100));
-  tva = roundCent(ttc - ht);
+  const calc = calculateTtcToHt(ttc, rate);
+  ht = calc.ht;
+  tva = calc.vatAmount;
 
   const muted = ht === 0;
 

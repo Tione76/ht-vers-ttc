@@ -42,6 +42,7 @@ export {
   TOOLS_HUB_COVER,
   FAQ_COVER,
   HOME_COVER,
+  HT_TO_TTC_SERIES_COVER,
   MARGIN_CALCULATOR_COVER,
   resolveGuideCover,
 } from "./covers";

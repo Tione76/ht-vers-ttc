@@ -10,6 +10,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint src",
+    "test": "node scripts/test-ht-to-ttc-draft10.mjs",
     "convert:og-images": "node scripts/convert-og-images.mjs",
     "indexnow:generate-key": "node scripts/generate-indexnow-key.mjs",
     "indexnow:notify": "node scripts/notify-indexnow.mjs"
@@ -19,7 +20,8 @@
     "clsx": "^2.1.1",
     "next": "^15.5.20",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "sharp": "^0.35.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.5",
@@ -29,7 +31,6 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "^15.5.20",
-    "sharp": "^0.35.3",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

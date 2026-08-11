@@ -70,6 +70,16 @@ export const FAQ_COVER: GuideCoverImage = cover(
   "Photo de Ann H via Pexels",
 );
 
+/**
+ * Photo unique de la série « X € HT en TTC » :
+ * illustration visible des fiches + base visuelle des OG dynamiques.
+ */
+export const HT_TO_TTC_SERIES_COVER: GuideCoverImage = cover(
+  "Montants-HT-en-TTC.webp",
+  "Vue de dessus d'un bureau en bois avec une calculatrice, des documents financiers et une personne en train de calculer",
+  "Photo de Pavel Danilyuk via Pexels",
+);
+
 /** Couvertures par slug de guide : source unique pour article, OG, sidebar et listes */
 export const GUIDE_COVERS: Record<string, GuideCoverImage> = {
   "quels-sont-les-taux-de-tva-en-france": cover(
@@ -140,5 +150,6 @@ export function coverToSchemaImage(coverImage: GuideCoverImage) {
     width: coverImage.width,
     height: coverImage.height,
     caption: coverImage.alt,
+    ...(coverImage.credit && { creditText: coverImage.credit }),
   };
 }

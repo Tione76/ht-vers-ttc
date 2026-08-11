@@ -1,0 +1,574 @@
+/* Fiche série HT → TTC : outil de consultation, hiérarchie chiffres, sidebar guides */
+
+.article-body.ht-to-ttc-body {
+  max-width: none;
+}
+
+.ht-to-ttc-page {
+  --ht-success: var(--color-success, #18753c);
+  --ht-success-bg: #ecfdf3;
+  --ht-success-border: #b8d9c4;
+  --ht-blue-soft: #eef5fb;
+  --ht-blue-mid: #d7e6f4;
+  color: var(--ds-text);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+.ht-to-ttc-page h2 {
+  margin: 0 0 0.85rem;
+  font-size: clamp(1.3125rem, 2.6vw, 1.625rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: var(--ds-text);
+}
+
+.ht-to-ttc-page p {
+  margin: 0 0 0.9rem;
+  color: #2d3748;
+}
+
+.ht-to-ttc-page a {
+  color: var(--ds-brand);
+  font-weight: 600;
+}
+
+.ht-to-ttc-page a:hover {
+  text-decoration: underline;
+}
+
+.ht-to-ttc-page > .guide-breadcrumb {
+  margin-bottom: 0.5rem;
+}
+
+.ht-to-ttc-page > .guide-meta {
+  margin-bottom: 1.5rem;
+}
+
+/* ── Réponse immédiate (20 %) ── */
+
+.ht-answer {
+  margin: 0 0 1.25rem;
+  padding: clamp(1.15rem, 2.8vw, 1.6rem);
+  background: linear-gradient(180deg, #ffffff 0%, var(--ht-success-bg) 100%);
+  border: 1px solid var(--ht-success-border);
+  border-radius: 8px;
+}
+
+.ht-answer__eyebrow {
+  margin: 0 0 0.85rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ht-success);
+}
+
+.ht-answer__flow {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.65rem;
+}
+
+@media (min-width: 640px) {
+  .ht-answer__flow {
+    flex-direction: row;
+    align-items: center;
+    gap: 1.15rem;
+    flex-wrap: wrap;
+  }
+}
+
+.ht-answer__ht {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.ht-answer__ht-value {
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--ds-brand);
+  font-variant-numeric: tabular-nums;
+}
+
+.ht-answer__ht-label {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--ds-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.ht-answer__arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+}
+
+@media (min-width: 640px) {
+  .ht-answer__arrow {
+    align-items: center;
+  }
+}
+
+.ht-answer__badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.28rem 0.65rem;
+  border-radius: var(--ds-radius);
+  background: var(--ds-brand);
+  color: #ffffff;
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
+.ht-answer__arrow-icon {
+  font-size: 1.15rem;
+  line-height: 1;
+  color: var(--ds-brand);
+  font-weight: 700;
+}
+
+@media (min-width: 640px) {
+  .ht-answer__arrow-icon {
+    transform: rotate(-90deg);
+  }
+}
+
+.ht-answer__ttc {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.ht-answer__ttc-value {
+  font-size: clamp(2.35rem, 7vw, 3.5rem);
+  font-weight: 900;
+  letter-spacing: -0.045em;
+  line-height: 1;
+  color: var(--ht-success);
+  font-variant-numeric: tabular-nums;
+}
+
+.ht-answer__ttc-label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ht-success);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.ht-answer__vat {
+  margin: 0.85rem 0 0;
+  font-size: 1.0625rem;
+  color: #2d3748;
+}
+
+.ht-answer__vat strong {
+  font-weight: 800;
+  color: var(--ds-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.ht-answer__seo {
+  margin: 0.85rem 0 0;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(24, 117, 60, 0.18);
+  font-size: 1rem;
+  line-height: 1.55;
+  color: #2d3748;
+}
+
+.ht-answer__cta-wrap {
+  margin: 0.9rem 0 0 !important;
+}
+
+.ht-answer__cta {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--ds-brand);
+  text-decoration: none;
+}
+
+.ht-answer__cta:hover {
+  text-decoration: underline;
+}
+
+.ht-answer__cta:focus-visible {
+  outline: 2px solid var(--ds-brand);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ── Mini-calculateur ── */
+
+.ht-mini {
+  margin: 0 0 2rem;
+  padding: clamp(1.15rem, 2.8vw, 1.5rem);
+  background: #ffffff;
+  border: 1px solid var(--ds-border);
+  border-radius: 8px;
+}
+
+.ht-mini__title {
+  margin: 0 0 1.1rem !important;
+}
+
+.ht-mini__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.15rem;
+}
+
+@media (min-width: 720px) {
+  .ht-mini__grid {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 1.35rem;
+    align-items: stretch;
+  }
+}
+
+.ht-mini__controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1.05rem;
+}
+
+.ht-mini__label {
+  display: block;
+  margin-bottom: 0.45rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ds-text);
+}
+
+.ht-mini__input {
+  width: 100%;
+  height: 48px;
+  padding: 0 1rem;
+  font-family: inherit;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--ds-text);
+  background: var(--ds-surface);
+  border: 1px solid var(--ds-input-border);
+  border-radius: var(--ds-radius);
+  font-variant-numeric: tabular-nums;
+}
+
+.ht-mini__input:focus {
+  outline: none;
+  border-color: var(--ds-brand);
+  box-shadow: 0 0 0 3px rgba(26, 75, 124, 0.18);
+}
+
+.ht-mini__rates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.ht-mini__rate {
+  min-width: 4.5rem;
+  min-height: 44px;
+  padding: 0 0.85rem;
+  border-radius: var(--ds-radius);
+  border: 1px solid var(--ds-border);
+  background: #ffffff;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--ds-text-muted);
+  transition:
+    border-color var(--ds-transition),
+    background-color var(--ds-transition),
+    color var(--ds-transition);
+}
+
+.ht-mini__rate:hover {
+  border-color: var(--ds-input-border-hover);
+  color: var(--ds-text);
+}
+
+.ht-mini__rate:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(26, 75, 124, 0.18);
+}
+
+.ht-mini__rate--active {
+  border-color: var(--ds-brand);
+  background: var(--ds-brand);
+  color: #ffffff;
+}
+
+.ht-mini__result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.3rem;
+  padding: 1.15rem 1.1rem;
+  background: var(--ht-blue-soft);
+  border-radius: 8px;
+}
+
+.ht-mini__result-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ds-brand);
+}
+
+.ht-mini__ttc {
+  margin: 0.1rem 0 0.55rem;
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  color: var(--ht-success);
+  font-variant-numeric: tabular-nums;
+}
+
+.ht-mini__vat-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--ht-blue-mid);
+}
+
+.ht-mini__vat {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--ds-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.ht-mini__link {
+  margin: 0.85rem 0 0 !important;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.ht-mini__link a {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.ht-mini__link a:hover {
+  text-decoration: underline;
+}
+
+/* ── Autres taux (secondaires) ── */
+
+.ht-secondary {
+  margin: 0 0 2rem;
+}
+
+.ht-secondary__title {
+  margin-bottom: 0.9rem !important;
+}
+
+.ht-secondary__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .ht-secondary__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.ht-secondary__card {
+  padding: 1rem 1rem 1.05rem;
+  background: #ffffff;
+  border: 1px solid var(--ds-border);
+  border-left: 3px solid var(--ds-brand);
+  border-radius: 6px;
+}
+
+.ht-secondary__badge {
+  margin-bottom: 0.65rem;
+  font-size: clamp(0.9375rem, 2vw, 1.0625rem);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--ds-brand);
+}
+
+.ht-secondary__ttc {
+  font-size: clamp(1.75rem, 4vw, 2.125rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: var(--ds-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.ht-secondary__ttc-label {
+  margin-top: 0.15rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ds-text-muted);
+}
+
+.ht-secondary__vat {
+  margin-top: 0.7rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #374151;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Sections éditoriales ── */
+
+.ht-section {
+  margin: 0 0 2rem;
+}
+
+.ht-section > p:last-child {
+  margin-bottom: 0;
+}
+
+.ht-section__note {
+  margin-top: 0.85rem !important;
+  font-size: 0.9875rem;
+}
+
+/* ── Formules ── */
+
+.ht-formula {
+  margin: 0.85rem 0 0;
+  padding: 0.95rem 1.1rem;
+  background: var(--ht-blue-soft);
+  border-radius: 6px;
+}
+
+.ht-formula__label {
+  margin-bottom: 0.45rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ds-brand);
+}
+
+.ht-formula__line {
+  font-size: clamp(1.0625rem, 2.4vw, 1.25rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.45;
+  color: var(--ds-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.ht-formula__line + .ht-formula__line {
+  margin-top: 0.3rem;
+}
+
+/* ── Tableau ── */
+
+.ht-table-wrap {
+  margin: 0.15rem 0 0;
+}
+
+.ht-table-figure.guide-table-wrap {
+  margin: 0;
+}
+
+.ht-table.guide-table {
+  font-size: 1rem;
+}
+
+.ht-table.guide-table th {
+  padding: 0.95rem 1.1rem;
+  font-size: 0.8125rem;
+}
+
+.ht-table.guide-table td {
+  padding: 0.95rem 1.1rem;
+  font-size: 1rem;
+  color: var(--ds-text);
+  vertical-align: middle;
+}
+
+.ht-table__rate {
+  display: inline-flex;
+  padding: 0.18rem 0.5rem;
+  border-radius: var(--ds-radius);
+  background: var(--ht-blue-soft);
+  color: var(--ds-brand);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.ht-table__rate--primary {
+  background: var(--ds-brand);
+  color: #ffffff;
+}
+
+.ht-table__row--primary td {
+  background: rgba(236, 253, 243, 0.55);
+}
+
+.ht-table__ttc {
+  font-size: 1.125rem !important;
+  font-weight: 800;
+  color: var(--ht-success) !important;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Quel taux (fond blanc, respiration) ── */
+
+.ht-which-rate {
+  margin: 0 0 2rem;
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+
+.ht-which-rate__link {
+  display: inline-flex;
+  font-weight: 700;
+}
+
+/* ── Nearby / FAQ / note ── */
+
+.ht-nearby {
+  margin: 0 0 2rem;
+}
+
+.ht-nearby__list {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.ht-faq {
+  margin: 0 0 1.5rem;
+}
+
+.ht-faq .faq-item__question {
+  font-size: 1.0625rem;
+}
+
+.ht-note {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--ds-text-muted);
+}

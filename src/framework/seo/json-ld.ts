@@ -11,6 +11,8 @@ export interface SchemaImageInput {
   width?: number;
   height?: number;
   caption?: string;
+  /** Property Schema.org ImageObject (crédit photo visible) */
+  creditText?: string;
 }
 
 /** ImageObject Schema.org depuis le registre covers.ts */
@@ -24,6 +26,7 @@ export function buildImageObjectFromCover(
     width: cover.width,
     height: cover.height,
     caption: cover.alt,
+    ...(cover.credit && { creditText: cover.credit }),
   };
 }
 
@@ -37,6 +40,7 @@ export function buildImageObject(
     ...(image.width && { width: image.width }),
     ...(image.height && { height: image.height }),
     ...(image.caption && { caption: image.caption }),
+    ...(image.creditText && { creditText: image.creditText }),
   };
 }
 

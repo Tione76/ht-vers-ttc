@@ -1,0 +1,85 @@
+.article-body.ht-to-ttc-hub-body {
+  max-width: none;
+}
+
+.ht-hub {
+  color: var(--ds-text);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+.ht-hub__intro {
+  margin: 0 0 1.25rem;
+  color: #2d3748;
+}
+
+.ht-hub__empty {
+  margin: 0;
+  padding: 1rem 1.15rem;
+  background: var(--ds-surface-alt);
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius);
+  color: #2d3748;
+}
+
+.ht-hub__toc {
+  margin: 0 0 1.75rem;
+  padding: 1rem 1.15rem;
+  background: var(--ds-surface-alt);
+  border-radius: var(--ds-radius);
+}
+
+.ht-hub__toc ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ht-hub__toc a {
+  color: var(--ds-brand);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.ht-hub__toc a:hover {
+  text-decoration: underline;
+}
+
+.ht-hub__toc-count {
+  margin-left: 0.25rem;
+  color: var(--ds-text-muted);
+  font-size: 0.875rem;
+}
+
+.ht-hub__range {
+  margin: 0 0 1.75rem;
+}
+
+.ht-hub__range h2 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.2rem, 2.4vw, 1.45rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.ht-hub__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10.5rem, 1fr));
+  gap: 0.45rem 0.85rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ht-hub__list a {
+  color: var(--ds-brand);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.ht-hub__list a:hover {
+  text-decoration: underline;
+}
