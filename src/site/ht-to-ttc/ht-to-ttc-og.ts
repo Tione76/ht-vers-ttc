@@ -13,6 +13,13 @@ export const HT_TO_TTC_OG_ROUTE_PREFIX = "/og/ht-en-ttc";
 export const HT_TO_TTC_OG_CREDIT_SHORT = "Photo : Pavel Danilyuk / Pexels";
 
 /**
+ * Base JPEG 1200×630 dérivée de la photo WebP unique.
+ * Utilisée uniquement par ImageResponse (Satori n'accepte pas WebP).
+ * Ne remplace pas HT_TO_TTC_SERIES_COVER pour l'illustration visible.
+ */
+export const HT_TO_TTC_OG_BASE_SRC = "/images/og/Montants-HT-en-TTC-og-base.jpg";
+
+/**
  * Chemin relatif de l'image OG individualisée.
  * Générée à la demande (pas de 1000 fichiers au build).
  */
@@ -48,6 +55,7 @@ export function getHtToTtcOgVisualData(amountHt: number) {
     siteLabel: "ht-vers-ttc.fr",
     credit: HT_TO_TTC_OG_CREDIT_SHORT,
     coverSrc: HT_TO_TTC_SERIES_COVER.src,
+    ogBaseSrc: HT_TO_TTC_OG_BASE_SRC,
   };
 }
 

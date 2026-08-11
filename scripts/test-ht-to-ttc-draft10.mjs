@@ -292,7 +292,10 @@ const ogMod = requireTsModule(path.join(repoRoot, "src/site/ht-to-ttc/ht-to-ttc-
 
 const coverFile = path.join(repoRoot, "public/images/og/Montants-HT-en-TTC.webp");
 assert.ok(fs.existsSync(coverFile), "series WebP must exist");
+const ogBaseFile = path.join(repoRoot, "public/images/og/Montants-HT-en-TTC-og-base.jpg");
+assert.ok(fs.existsSync(ogBaseFile), "OG JPEG base derived from WebP must exist");
 assert.equal(covers.HT_TO_TTC_SERIES_COVER.src, "/images/og/Montants-HT-en-TTC.webp");
+assert.equal(ogMod.HT_TO_TTC_OG_BASE_SRC, "/images/og/Montants-HT-en-TTC-og-base.jpg");
 assert.equal(covers.HT_TO_TTC_SERIES_COVER.credit, "Photo de Pavel Danilyuk via Pexels");
 assert.ok(
   covers.HT_TO_TTC_SERIES_COVER.alt.includes("calculatrice"),

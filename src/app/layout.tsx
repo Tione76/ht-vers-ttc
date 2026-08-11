@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Source_Sans_3 } from "next/font/google";
+import localFont from "next/font/local";
 import { config, seoConfig } from "@/site";
 import { SiteProvider } from "@/framework/SiteProvider";
 import { ThemeStyles } from "@/framework/ThemeStyles";
@@ -7,11 +7,32 @@ import { SkipLink } from "@/framework/SkipLink";
 import { buildRootMetadata } from "@/framework/seo/metadata";
 import "./globals.css";
 
-const sourceSans = Source_Sans_3({
+/** Polices self-hostées : le build Vercel ne dépend plus de fonts.gstatic.com. */
+const sourceSans = localFont({
+  src: [
+    {
+      path: "./fonts/source-sans-3-latin-400-normal.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./fonts/source-sans-3-latin-500-normal.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "./fonts/source-sans-3-latin-600-normal.woff2",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "./fonts/source-sans-3-latin-700-normal.woff2",
+      weight: "700",
+      style: "normal",
+    },
+  ],
   variable: "--font-source-sans",
-  subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600", "700"],
   preload: true,
 });
 

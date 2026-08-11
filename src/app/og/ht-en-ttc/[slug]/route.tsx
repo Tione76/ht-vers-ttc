@@ -1,11 +1,10 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
-import sharp from "sharp";
 import { parseHtToTtcSlug } from "@/site/ht-to-ttc/ht-to-ttc-amounts";
 import {
   getHtToTtcOgVisualData,
-  HT_TO_TTC_SERIES_COVER,
+  HT_TO_TTC_OG_BASE_SRC,
   OG_IMAGE_HEIGHT,
   OG_IMAGE_WIDTH,
 } from "@/site/ht-to-ttc/ht-to-ttc-og";
@@ -17,7 +16,7 @@ export const dynamic = "force-dynamic";
 
 const CACHE_CONTROL = "public, max-age=86400, s-maxage=604800, stale-while-revalidate=86400";
 
-function coverFilePath(src: string): string {
+function publicFilePath(src: string): string {
   const relative = src
     .split("/")
     .filter(Boolean)
@@ -26,11 +25,13 @@ function coverFilePath(src: string): string {
   return join(process.cwd(), "public", relative);
 }
 
-async function loadCoverDataUrl(): Promise<string> {
-  const webp = await readFile(coverFilePath(HT_TO_TTC_SERIES_COVER.src));
-  // ImageResponse / Satori attend PNG ou JPEG ; conversion unique depuis la source WebP.
-  const png = await sharp(webp).resize(OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT, { fit: "cover" }).png().toBuffer();
-  return `data:image/png;base64,${png.toString("base64")}`;
+/**
+ * Charge la base visuelle OG sans sharp runtime
+ * (évite les échecs de tracing / packaging Vercel avec sharp 0.35).
+ */
+async function loadOgBaseDataUrl(): Promise<string> {
+  const bytes = await readFile(publicFilePath(HT_TO_TTC_OG_BASE_SRC));
+  return `data:image/jpeg;base64,${bytes.toString("base64")}`;
 }
 
 export async function GET(
@@ -44,7 +45,7 @@ export async function GET(
   }
 
   const visual = getHtToTtcOgVisualData(amountHt);
-  const background = await loadCoverDataUrl();
+  const background = await loadOgBaseDataUrl();
 
   const image = new ImageResponse(
     (
