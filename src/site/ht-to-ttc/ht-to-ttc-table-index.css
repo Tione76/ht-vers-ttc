@@ -1,0 +1,331 @@
+.article-body.ht-to-ttc-table-index-body {
+  max-width: none;
+}
+
+/* Pleine largeur du content-wrap : priorite au tableau (pas de sidebar). */
+.ht-to-ttc-table-index-body {
+  width: 100%;
+}
+
+.ht-table-index {
+  color: var(--ds-text);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+.ht-table-index__intro {
+  margin: 0 0 1.35rem;
+  max-width: 68ch;
+}
+
+.ht-table-index__intro p {
+  margin: 0 0 0.75rem;
+  color: #2d3748;
+}
+
+.ht-table-index__intro p:last-child {
+  margin-bottom: 0;
+}
+
+.ht-table-index__empty {
+  margin: 0 0 1.5rem;
+  padding: 1rem 1.15rem;
+  background: var(--ds-surface-alt);
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius);
+}
+
+.ht-table-index h2 {
+  margin: 0 0 0.65rem;
+  font-size: clamp(1.15rem, 2.3vw, 1.4rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.ht-table-index__nav,
+.ht-table-index__range,
+.ht-table-index__cta,
+.ht-table-index__howto,
+.ht-table-index__formula,
+.ht-table-index__rate {
+  margin: 0 0 1.75rem;
+}
+
+.ht-table-index__toc {
+  margin: 0 0 0.75rem;
+  padding: 0.85rem 1rem;
+  background: var(--ds-surface-alt);
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius);
+}
+
+.ht-table-index__toc ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.9rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ht-table-index__toc a {
+  color: var(--ds-brand);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.ht-table-index__toc a:hover {
+  text-decoration: underline;
+}
+
+.ht-table-index__toc a:focus-visible {
+  outline: 2px solid var(--ds-brand);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.ht-table-index__toc-count {
+  margin-left: 0.2rem;
+  color: var(--ds-text-muted);
+  font-size: 0.875rem;
+}
+
+.ht-table-index__toc-deferred {
+  color: var(--ds-text-muted);
+  font-weight: 600;
+}
+
+.ht-table-index__truncation {
+  margin: 0;
+  color: var(--ds-text-muted);
+  font-size: 0.9375rem;
+}
+
+.ht-table-index__range {
+  scroll-margin-top: 5.5rem;
+}
+
+.ht-table-index__range-title {
+  margin: 0 0 0.55rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.ht-table-index__scroll-hint {
+  display: none;
+  margin: 0 0 0.4rem;
+  color: var(--ds-text-muted);
+  font-size: 0.8125rem;
+}
+
+@media (max-width: 767px) {
+  .ht-table-index__scroll-hint {
+    display: block;
+  }
+}
+
+.ht-table-index__scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius);
+  background: #fff;
+}
+
+.ht-table-index__table {
+  width: 100%;
+  min-width: 36rem;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.ht-table-index__table thead {
+  background: var(--ds-brand);
+}
+
+.ht-table-index__table th[scope="col"] {
+  padding: 0.75rem 0.9rem;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.ht-table-index__table th[scope="row"],
+.ht-table-index__table td {
+  padding: 0.78rem 0.95rem;
+  border-bottom: 1px solid var(--ds-border-light);
+  color: #2d3748;
+  font-size: 0.9875rem;
+  white-space: nowrap;
+}
+
+.ht-table-index__table td {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.ht-table-index__table th[scope="col"]:not(:first-child) {
+  text-align: right;
+}
+
+.ht-table-index__table tbody tr:nth-child(even) {
+  background: var(--ds-surface-alt);
+}
+
+.ht-table-index__table tbody tr:last-child th,
+.ht-table-index__table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Survol de ligne très discret (lisibilité, pas décoratif). */
+@media (hover: hover) {
+  .ht-table-index__table tbody tr:hover > th[scope="row"],
+  .ht-table-index__table tbody tr:hover > td {
+    background: rgba(26, 75, 124, 0.05);
+  }
+
+  .ht-table-index__table tbody tr:hover > .ht-table-index__col-primary {
+    background: rgba(26, 75, 124, 0.1);
+  }
+}
+
+.ht-table-index__col-primary {
+  font-weight: 700;
+  background: rgba(26, 75, 124, 0.06);
+}
+
+.ht-table-index__table thead .ht-table-index__col-primary {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.ht-table-index__table tbody tr:nth-child(even) .ht-table-index__col-primary {
+  background: rgba(26, 75, 124, 0.09);
+}
+
+/* Première colonne sticky en scroll horizontal mobile */
+.ht-table-index__table th[scope="row"] {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: #fff;
+  box-shadow: 1px 0 0 var(--ds-border-light);
+  font-weight: 600;
+  text-align: left;
+}
+
+.ht-table-index__table tbody tr:nth-child(even) th[scope="row"] {
+  background: var(--ds-surface-alt);
+}
+
+/* Montants HT : cliquables mais discrets dans le tableau. */
+.ht-table-index__amount-link {
+  color: var(--ds-brand-dark);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.ht-table-index__amount-link:hover {
+  color: var(--ds-brand);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.ht-table-index__amount-link:focus-visible {
+  color: var(--ds-brand);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  outline: 2px solid var(--ds-brand);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.ht-table-index__cta {
+  padding: 1.2rem 1.15rem 1.3rem;
+  background: linear-gradient(180deg, rgba(26, 75, 124, 0.06), rgba(26, 75, 124, 0.02));
+  border: 1px solid rgba(26, 75, 124, 0.18);
+  border-radius: var(--ds-radius);
+}
+
+.ht-table-index__cta p {
+  margin: 0 0 1rem;
+  max-width: 56ch;
+  color: #2d3748;
+}
+
+.ht-table-index__cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.85rem;
+  padding: 0.7rem 1.15rem;
+  border-radius: 8px;
+  background: var(--ds-brand);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.ht-table-index__cta-button:hover {
+  background: #163a63;
+}
+
+.ht-table-index__cta-button:focus-visible {
+  outline: 2px solid var(--ds-brand);
+  outline-offset: 3px;
+}
+
+.ht-table-index__howto p,
+.ht-table-index__formula p,
+.ht-table-index__rate p {
+  margin: 0;
+  max-width: 68ch;
+  color: #2d3748;
+}
+
+.ht-table-index__hub-link {
+  margin: 0 0 1.75rem;
+}
+
+/*
+ * Liens éditoriaux / contextuels (paragraphes + FAQ de cette page uniquement).
+ * Exclus volontairement : nav TOC, bouton CTA, colonnes du tableau.
+ */
+.ht-table-index__rate a,
+.ht-table-index__hub-link a,
+.ht-table-index__empty a,
+.ht-table-index .ht-faq .faq-item__body a {
+  color: var(--ds-brand);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
+.ht-table-index__rate a:hover,
+.ht-table-index__hub-link a:hover,
+.ht-table-index__empty a:hover,
+.ht-table-index .ht-faq .faq-item__body a:hover {
+  color: var(--ds-brand-dark);
+  text-decoration-thickness: 2px;
+}
+
+.ht-table-index__rate a:focus-visible,
+.ht-table-index__hub-link a:focus-visible,
+.ht-table-index__empty a:focus-visible,
+.ht-table-index .ht-faq .faq-item__body a:focus-visible {
+  outline: 2px solid var(--ds-brand);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@media (max-width: 639px) {
+  .ht-table-index__cta-button {
+    width: 100%;
+  }
+}

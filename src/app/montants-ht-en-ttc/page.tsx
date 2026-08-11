@@ -3,6 +3,7 @@ import { JsonLd } from "@/framework/JsonLd";
 import { buildPageMetadata } from "@/framework/seo/metadata";
 import {
   buildBreadcrumbSchema,
+  buildFaqPageSchema,
   buildWebPageSchema,
   buildSiteGraph,
 } from "@/framework/seo/json-ld";
@@ -13,6 +14,7 @@ import {
   getHtToTtcHubMeta,
   getHtToTtcHubRobots,
 } from "@/site/ht-to-ttc/ht-to-ttc-publish";
+import { getHtToTtcHubFaqSchemaItems } from "@/site/ht-to-ttc/ht-to-ttc-hub-content";
 
 const hub = getHtToTtcHubMeta();
 
@@ -27,13 +29,22 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function MontantsHtEnTtcHubRoute() {
   const ctx = createSchemaContext(config);
-  const webPage = buildWebPageSchema(ctx, hub.title, hub.description, hub.path);
+  const faqItems = getHtToTtcHubFaqSchemaItems();
+  const faqSchema = buildFaqPageSchema(ctx, hub.title, hub.description, hub.path, faqItems);
+  const faqSchemaId = (faqSchema as { "@id": string })["@id"];
+
+  const webPage = {
+    ...buildWebPageSchema(ctx, hub.title, hub.description, hub.path),
+    mainEntity: { "@id": faqSchemaId },
+  };
+
   const graph = [
     ...buildSiteGraph(ctx),
     webPage,
+    faqSchema,
     buildBreadcrumbSchema(ctx, hub.path, [
       { name: "Accueil", path: "/" },
-      { name: hub.title, path: hub.path },
+      { name: hub.h1, path: hub.path },
     ]),
   ];
 

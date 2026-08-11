@@ -11,7 +11,6 @@
 import {
   getAllHtToTtcAmounts,
   HT_TO_TTC_HUB_PATH,
-  HT_TO_TTC_HUB_TITLE,
   HT_TO_TTC_STEP,
   htToTtcSlugFromAmount,
   isValidHtToTtcAmount,
@@ -58,7 +57,7 @@ export const HT_TO_TTC_PUBLISHED: readonly HtToTtcPublishRecord[] =
   );
 
 /** Taille standard d'un lot de publication (lots suivants). */
-export const HT_TO_TTC_PUBLISH_LOT_SIZE = 30;
+export const HT_TO_TTC_PUBLISH_LOT_SIZE = 50;
 
 export function isHtToTtcPublished(amount: number): boolean {
   return HT_TO_TTC_PUBLISHED.some((record) => record.amount === amount);
@@ -100,10 +99,12 @@ export function getHtToTtcHubRobots(): { index: boolean; follow: boolean } {
 export function getHtToTtcHubMeta() {
   return {
     path: HT_TO_TTC_HUB_PATH,
-    title: HT_TO_TTC_HUB_TITLE,
-    h1: HT_TO_TTC_HUB_TITLE,
+    /** Title SEO (balise title / Open Graph). */
+    title: "Liste des montants HT en TTC : toutes les conversions",
+    /** H1 du Hub. */
+    h1: "Liste des montants HT en TTC",
     description:
-      "Retrouvez les conversions de montants HT en TTC selon les taux de TVA de 20 %, 10 %, 5,5 % et 2,1 %.",
+      "Retrouvez les conversions HT en TTC par montant et accédez aux fiches détaillées selon les taux de TVA de 20 %, 10 %, 5,5 % et 2,1 %.",
   };
 }
 

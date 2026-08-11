@@ -5,88 +5,169 @@ import { formatHtEditorial } from "@/site/ht-to-ttc/ht-to-ttc-calc";
 import { htToTtcPath } from "@/site/ht-to-ttc/ht-to-ttc-paths";
 import {
   getPublishedHtToTtcAmounts,
+  getHtToTtcHubMeta,
   isHtToTtcHubPublished,
 } from "@/site/ht-to-ttc/ht-to-ttc-publish";
-import { HT_TO_TTC_HUB_TITLE } from "@/site/ht-to-ttc/ht-to-ttc-amounts";
+import { getHtToTtcSiteLinks } from "@/site/ht-to-ttc/ht-to-ttc-site-links";
+import { HtToTtcFaq } from "@/site/ht-to-ttc/HtToTtcFaq";
+import {
+  buildHtToTtcHubFaqItems,
+  buildHtToTtcHubRanges,
+  getHtToTtcCommonPublishedAmounts,
+  getHtToTtcHubFeatureItems,
+  getHtToTtcHubGuideHighlights,
+  getHtToTtcHubIntroParagraphs,
+} from "@/site/ht-to-ttc/ht-to-ttc-hub-content";
 import "@/site/ht-to-ttc/ht-to-ttc-hub.css";
 
-type AmountRange = {
-  id: string;
-  label: string;
-  min: number;
-  max: number;
-};
-
-const HUB_RANGES: AmountRange[] = [
-  { id: "10-300", label: "10 € à 300 €", min: 10, max: 300 },
-  { id: "310-600", label: "310 € à 600 €", min: 310, max: 600 },
-  { id: "610-900", label: "610 € à 900 €", min: 610, max: 900 },
-  { id: "910-1500", label: "910 € à 1 500 €", min: 910, max: 1500 },
-  { id: "1510-3000", label: "1 510 € à 3 000 €", min: 1510, max: 3000 },
-  { id: "3010-5000", label: "3 010 € à 5 000 €", min: 3010, max: 5000 },
-  { id: "5010-7500", label: "5 010 € à 7 500 €", min: 5010, max: 7500 },
-  { id: "7510-10000", label: "7 510 € à 10 000 €", min: 7510, max: 10000 },
-];
+function AmountChip({ amount, emphasized = false }: { amount: number; emphasized?: boolean }) {
+  const label = formatHtEditorial(amount);
+  return (
+    <Link
+      href={htToTtcPath(amount)}
+      className={emphasized ? "ht-hub__chip ht-hub__chip--emphasis" : "ht-hub__chip"}
+      aria-label={`Conversion de ${label} HT en TTC`}
+    >
+      <span className="ht-hub__chip-amount">{label}</span>
+    </Link>
+  );
+}
 
 export function HtToTtcHubPage() {
+  const hub = getHtToTtcHubMeta();
   const published = getPublishedHtToTtcAmounts();
   const hubLive = isHtToTtcHubPublished();
-
-  const ranges = HUB_RANGES.map((range) => ({
-    ...range,
-    amounts: published.filter((amount) => amount >= range.min && amount <= range.max),
-  })).filter((range) => range.amounts.length > 0);
+  const ranges = buildHtToTtcHubRanges(published);
+  const common = getHtToTtcCommonPublishedAmounts(10);
+  const links = getHtToTtcSiteLinks();
+  const intro = getHtToTtcHubIntroParagraphs();
+  const features = getHtToTtcHubFeatureItems();
+  const guideHighlights = getHtToTtcHubGuideHighlights();
+  const faqItems = buildHtToTtcHubFaqItems();
 
   return (
     <GuidePageLayout
-      title={HT_TO_TTC_HUB_TITLE}
-      subtitle="Convertissez un montant hors taxes en TTC selon les principaux taux de TVA."
+      title={hub.h1}
+      subtitle="Retrouvez rapidement la conversion d'un montant hors taxes en TTC selon les principaux taux de TVA."
       prose={false}
       bodyClassName="ht-to-ttc-hub-body"
-      sidebar={<SiteSidebar pageType="faq" currentPath="/montants-ht-en-ttc" />}
+      sidebar={<SiteSidebar pageType="faq" currentPath={hub.path} />}
     >
       <div className="ht-hub">
-        <PageBreadcrumb
-          items={[{ label: "Accueil", href: "/" }, { label: HT_TO_TTC_HUB_TITLE }]}
-        />
+        <PageBreadcrumb items={[{ label: "Accueil", href: "/" }, { label: hub.h1 }]} />
 
-        <p className="ht-hub__intro">
-          Chaque fiche indique le montant TTC pour 20 %, 10 %, 5,5 % et 2,1 %, avec un
-          mini-calculateur et un tableau de conversion.
-        </p>
+        <div className="ht-hub__intro">
+          {intro.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
 
         {!hubLive || published.length === 0 ? (
           <p className="ht-hub__empty">
             Les montants HT en TTC seront publiés progressivement. En attendant, utilisez le{" "}
-            <Link href="/">calculateur HT → TTC</Link>.
+            <Link href={links.mainCalculator.path}>{links.mainCalculator.title}</Link>.
           </p>
         ) : (
           <>
-            <nav className="ht-hub__toc" aria-label="Plages de montants">
-              <ul>
-                {ranges.map((range) => (
-                  <li key={range.id}>
-                    <a href={`#${range.id}`}>{range.label}</a>
-                    <span className="ht-hub__toc-count">({range.amounts.length})</span>
+            {common.length > 0 ? (
+              <section className="ht-hub__common" aria-labelledby="ht-hub-common-title">
+                <h2 id="ht-hub-common-title">Conversions courantes</h2>
+                <p className="ht-hub__lead">Accédez directement à une sélection de montants courants.</p>
+                <ul className="ht-hub__chips ht-hub__chips--common">
+                  {common.map((amount) => (
+                    <li key={amount}>
+                      <AmountChip amount={amount} emphasized />
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ) : null}
+
+            <section className="ht-hub__find" aria-labelledby="ht-hub-find-title">
+              <h2 id="ht-hub-find-title">Trouver un montant HT</h2>
+              <p className="ht-hub__lead">
+                Sélectionnez une plage, puis ouvrez la fiche du montant recherché.
+              </p>
+              <nav className="ht-hub__toc" aria-label="Plages de montants">
+                <ul>
+                  {ranges.map((range) => (
+                    <li key={range.id}>
+                      <a href={`#${range.id}`}>{range.label}</a>
+                      <span className="ht-hub__toc-count">({range.amounts.length})</span>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+
+              {ranges.map((range) => (
+                <section key={range.id} id={range.id} className="ht-hub__range">
+                  <h3 className="ht-hub__range-title">{range.label}</h3>
+                  <ul className="ht-hub__chips">
+                    {range.amounts.map((amount) => (
+                      <li key={amount}>
+                        <AmountChip amount={amount} />
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              ))}
+            </section>
+
+            <section className="ht-hub__cta" aria-labelledby="ht-hub-cta-title">
+              <h2 id="ht-hub-cta-title">Votre montant n&apos;est pas dans la liste ?</h2>
+              <p>
+                Entrez directement votre montant HT et choisissez le taux de TVA dans notre
+                calculateur.
+              </p>
+              <Link href={links.mainCalculator.path} className="ht-hub__cta-button">
+                Calculer un montant HT → TTC
+              </Link>
+              <p className="ht-hub__table-link">
+                <Link href="/tableau-conversion-ht-ttc">Voir le tableau de conversion HT en TTC</Link>
+              </p>
+            </section>
+
+            <section className="ht-hub__features" aria-labelledby="ht-hub-features-title">
+              <h2 id="ht-hub-features-title">Que contient chaque fiche de conversion ?</h2>
+              <ul className="ht-hub__feature-grid">
+                {features.map((feature) => (
+                  <li key={feature.title} className="ht-hub__feature">
+                    <h3 className="ht-hub__feature-title">{feature.title}</h3>
+                    <p>{feature.text}</p>
                   </li>
                 ))}
               </ul>
-            </nav>
+            </section>
 
-            {ranges.map((range) => (
-              <section key={range.id} id={range.id} className="ht-hub__range">
-                <h2>{range.label}</h2>
-                <ul className="ht-hub__list">
-                  {range.amounts.map((amount) => (
-                    <li key={amount}>
-                      <Link href={htToTtcPath(amount)}>
-                        {formatHtEditorial(amount)} HT en TTC
+            <section className="ht-hub__diff" aria-labelledby="ht-hub-diff-title">
+              <h2 id="ht-hub-diff-title">HT et TTC : quelle différence ?</h2>
+              <p>
+                HT est le prix avant TVA. TTC est le prix après ajout de la TVA. Pour obtenir le
+                TTC : HT × (1 + taux de TVA). Exemple : 100 € HT à 20 % = 120 € TTC.
+              </p>
+            </section>
+
+            {guideHighlights.length > 0 ? (
+              <section className="ht-hub__guides" aria-labelledby="ht-hub-guides-title">
+                <h2 id="ht-hub-guides-title">Comprendre la TVA</h2>
+                <p className="ht-hub__lead">
+                  Quelques guides pour choisir le bon taux et comprendre la TVA sur une facture. La
+                  sidebar liste aussi d&apos;autres ressources.
+                </p>
+                <ul className="ht-hub__guide-list">
+                  {guideHighlights.map((guide) => (
+                    <li key={guide.slug}>
+                      <Link href={guide.path} className="ht-hub__guide-link">
+                        <span className="ht-hub__guide-title">{guide.title}</span>
+                        <span className="ht-hub__guide-desc">{guide.description}</span>
                       </Link>
                     </li>
                   ))}
                 </ul>
               </section>
-            ))}
+            ) : null}
+
+            <HtToTtcFaq items={faqItems} />
           </>
         )}
       </div>

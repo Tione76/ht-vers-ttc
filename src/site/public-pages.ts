@@ -15,6 +15,7 @@ import {
   getPublishedHtToTtcPublicPages,
   isHtToTtcHubPublished,
 } from "./ht-to-ttc/ht-to-ttc-publish";
+import { getHtToTtcTableIndexMeta } from "./ht-to-ttc/ht-to-ttc-table-index";
 
 export type PublicPageCategory = "tools" | "guides" | "faq" | "utility";
 
@@ -149,7 +150,7 @@ export function getAllPublicPages(): PublicPage[] {
   const hubMeta = getHtToTtcHubMeta();
   const htToTtcHubPage: PublicPage = {
     path: hubMeta.path,
-    title: hubMeta.title,
+    title: hubMeta.h1,
     category: "utility",
     changefreq: "weekly",
     priority: 0.65,
@@ -158,9 +159,20 @@ export function getAllPublicPages(): PublicPage[] {
 
   const htToTtcPublishedPages: PublicPage[] = getPublishedHtToTtcPublicPages();
 
+  const tableIndexMeta = getHtToTtcTableIndexMeta();
+  const htToTtcTableIndexPage: PublicPage = {
+    path: tableIndexMeta.path,
+    title: tableIndexMeta.h1,
+    category: "tools",
+    changefreq: "weekly",
+    priority: 0.7,
+    indexable: true,
+  };
+
   return [
     ...calculatorPages(),
     toolsHubPage,
+    htToTtcTableIndexPage,
     guideHubPage,
     ...guidePages,
     faqPage,

@@ -170,8 +170,13 @@ assert.ok(nearby510.every((v) => publish.isHtToTtcPublished(v)));
 assert.ok(!nearby510.includes(510));
 assert.ok(!nearby510.includes(520));
 
-assert.equal(publish.getNextHtToTtcPublishLot(30)[0], 510);
-assert.equal(publish.getNextHtToTtcPublishLot(30)[29], 800);
+assert.equal(publish.HT_TO_TTC_PUBLISH_LOT_SIZE, 50);
+const nextLotDefault = publish.getNextHtToTtcPublishLot();
+const nextLot50 = publish.getNextHtToTtcPublishLot(50);
+assert.deepEqual(nextLotDefault, nextLot50);
+assert.equal(nextLotDefault.length, 50);
+assert.equal(nextLotDefault[0], 510);
+assert.equal(nextLotDefault[49], 1000);
 
 // ── Calculs + SEO pour montants clés ──
 const samples = [
@@ -265,15 +270,90 @@ assert.ok(slugPageTxt.includes("getHtToTtcRobots"));
 
 const hubPagePath = path.join(repoRoot, "src/app/montants-ht-en-ttc/page.tsx");
 assert.ok(fs.existsSync(hubPagePath));
-assert.ok(fs.readFileSync(hubPagePath, "utf8").includes("getHtToTtcHubRobots"));
+const hubRouteTxt = fs.readFileSync(hubPagePath, "utf8");
+assert.ok(hubRouteTxt.includes("getHtToTtcHubRobots"));
+assert.ok(hubRouteTxt.includes("buildFaqPageSchema"));
+assert.ok(hubRouteTxt.includes("getHtToTtcHubFaqSchemaItems"));
 
 const hubPageTxt = fs.readFileSync(
   path.join(repoRoot, "src/site/ht-to-ttc/HtToTtcHubPage.tsx"),
   "utf8"
 );
 assert.ok(hubPageTxt.includes("getPublishedHtToTtcAmounts"));
+assert.ok(hubPageTxt.includes("buildHtToTtcHubRanges"));
+assert.ok(hubPageTxt.includes("getHtToTtcCommonPublishedAmounts"));
+assert.ok(hubPageTxt.includes("htToTtcPath"));
+assert.ok(hubPageTxt.includes("aria-label"));
 assert.ok(!hubPageTxt.includes("getDraftHtToTtcAmounts"));
 assert.ok(!hubPageTxt.includes("getAllHtToTtcAmounts"));
+assert.ok(hubPageTxt.includes('href="/tableau-conversion-ht-ttc"'));
+assert.ok(hubPageTxt.includes("Voir le tableau de conversion HT en TTC"));
+assert.ok(!hubPageTxt.includes("HUB_RANGES"));
+
+const hubContent = requireTsModule(path.join(repoRoot, "src/site/ht-to-ttc/ht-to-ttc-hub-content.ts"), {
+  "./ht-to-ttc-calc": calc,
+  "./ht-to-ttc-publish": publish,
+  "./ht-to-ttc-site-links": mockLinks,
+  "./ht-to-ttc-content": contentMod,
+  "@/site/guides/registry": {
+    getGuideBySlug: (slug) => {
+      const titles = {
+        "quels-sont-les-taux-de-tva-en-france": "Les taux de TVA en France",
+        "tva-deductible-et-tva-collectee": "TVA déductible et collectée",
+        "tva-et-auto-entrepreneur": "TVA et auto-entrepreneur",
+      };
+      if (!titles[slug]) return undefined;
+      return { slug, title: titles[slug], description: `Desc ${slug}` };
+    },
+  },
+});
+
+const hubMeta = publish.getHtToTtcHubMeta();
+assert.equal(hubMeta.title, "Liste des montants HT en TTC : toutes les conversions");
+assert.equal(hubMeta.h1, "Liste des montants HT en TTC");
+assert.equal(
+  hubMeta.description,
+  "Retrouvez les conversions HT en TTC par montant et accédez aux fiches détaillées selon les taux de TVA de 20 %, 10 %, 5,5 % et 2,1 %."
+);
+assert.equal(hubMeta.path, "/montants-ht-en-ttc");
+assert.ok(hubPageTxt.includes("Accédez directement à une sélection de montants courants."));
+assert.ok(!hubPageTxt.includes("les plus souvent convertis"));
+const commonIdx = hubPageTxt.indexOf('id="ht-hub-common-title"');
+const findIdx = hubPageTxt.indexOf('id="ht-hub-find-title"');
+const ctaIdx = hubPageTxt.indexOf('id="ht-hub-cta-title"');
+assert.ok(commonIdx > 0 && findIdx > commonIdx && ctaIdx > findIdx, "section order: common → find → cta");
+
+const ranges = hubContent.buildHtToTtcHubRanges(publish.getPublishedHtToTtcAmounts());
+assert.equal(ranges.length, 5);
+assert.equal(ranges[0].min, 10);
+assert.equal(ranges[0].max, 100);
+assert.equal(ranges[0].amounts.length, 10);
+assert.equal(ranges[4].min, 410);
+assert.equal(ranges[4].max, 500);
+assert.ok(ranges.every((range) => range.amounts.every((amount) => publish.isHtToTtcPublished(amount))));
+assert.ok(!ranges.some((range) => range.amounts.includes(510)));
+
+const common = hubContent.getHtToTtcCommonPublishedAmounts(10);
+assert.ok(common.length >= 6 && common.length <= 10);
+assert.equal(common.join(","), "10,20,50,100,150,200,250,300,400,500");
+assert.ok(common.every((amount) => publish.isHtToTtcPublished(amount)));
+assert.ok(!common.includes(510));
+assert.ok(!common.includes(1000));
+
+const hubFaq = hubContent.buildHtToTtcHubFaqItems();
+assert.ok(hubFaq.length >= 3 && hubFaq.length <= 5);
+const hubFaqSchema = hubContent.getHtToTtcHubFaqSchemaItems();
+assert.equal(hubFaqSchema.length, hubFaq.length);
+assert.equal(hubFaqSchema[0].question, hubFaq[0].question);
+
+const future1000 = [];
+for (let amount = 10; amount <= 10000; amount += 10) future1000.push(amount);
+const futureRanges = hubContent.buildHtToTtcHubRanges(future1000);
+assert.ok(futureRanges.length >= 8 && futureRanges.length <= 20);
+assert.equal(
+  futureRanges.reduce((sum, range) => sum + range.amounts.length, 0),
+  1000
+);
 
 assert.ok(!fs.existsSync(path.join(repoRoot, "src/app/10-euros-ht-en-ttc/page.tsx")));
 
@@ -357,4 +437,89 @@ assert.equal(amounts.parseHtToTtcSlug("11-euros-ht-en-ttc"), null);
 assert.equal(amounts.parseHtToTtcSlug("5-euros-ht-en-ttc"), null);
 assert.equal(amounts.parseHtToTtcSlug("10001-euros-ht-en-ttc"), null);
 
-console.log("OK: test-ht-to-ttc-draft10 (lot 1 published 10→500 + series photo/OG)");
+// ── Tableau Index /tableau-conversion-ht-ttc ──
+const tableIndex = requireTsModule(path.join(repoRoot, "src/site/ht-to-ttc/ht-to-ttc-table-index.ts"), {
+  "./ht-to-ttc-calc": calc,
+  "./ht-to-ttc-paths": paths,
+  "./ht-to-ttc-publish": publish,
+  "./ht-to-ttc-rates": rates,
+  "./ht-to-ttc-content": contentMod,
+  "./ht-to-ttc-site-links": mockLinks,
+  "./ht-to-ttc-amounts": amounts,
+});
+
+const tableMeta = tableIndex.getHtToTtcTableIndexMeta();
+assert.equal(tableMeta.path, "/tableau-conversion-ht-ttc");
+assert.equal(tableMeta.title, "Tableau de conversion HT en TTC : tous les montants");
+assert.equal(tableMeta.h1, "Tableau de conversion HT en TTC");
+assert.ok(tableMeta.description.includes("tableau de conversion HT en TTC"));
+assert.ok(tableMeta.title.length <= 65);
+
+const view = tableIndex.getHtToTtcTableIndexView();
+assert.equal(view.rows.length, 50);
+assert.equal(view.truncated, false);
+assert.ok(view.rows.every((row) => row.isPublished));
+assert.ok(view.rows.some((row) => row.amountHt === 500));
+assert.ok(!view.rows.some((row) => row.amountHt === 510));
+assert.ok(view.rows.every((row) => row.path === `/${row.amountHt}-euros-ht-en-ttc`));
+
+const row10 = view.rows.find((row) => row.amountHt === 10);
+const row100 = view.rows.find((row) => row.amountHt === 100);
+const row150 = view.rows.find((row) => row.amountHt === 150);
+const row500 = view.rows.find((row) => row.amountHt === 500);
+assert.equal(row10.ttc20, calc.formatEuro2(12));
+assert.equal(row10.ttc10, calc.formatEuro2(11));
+assert.equal(row10.ttc55, calc.formatEuro2(10.55));
+assert.equal(row10.ttc21, calc.formatEuro2(10.21));
+assert.equal(row100.ttc20, calc.formatEuro2(120));
+assert.equal(row100.ttc10, calc.formatEuro2(110));
+assert.equal(row100.ttc55, calc.formatEuro2(105.5));
+assert.equal(row100.ttc21, calc.formatEuro2(102.1));
+assert.equal(row150.ttc20, calc.formatEuro2(180));
+assert.equal(row150.ttc10, calc.formatEuro2(165));
+assert.equal(row150.ttc55, calc.formatEuro2(158.25));
+assert.equal(row150.ttc21, calc.formatEuro2(153.15));
+assert.equal(row500.ttc20, calc.formatEuro2(600));
+assert.equal(row500.ttc10, calc.formatEuro2(550));
+assert.equal(row500.ttc55, calc.formatEuro2(527.5));
+assert.equal(row500.ttc21, calc.formatEuro2(510.5));
+
+for (const size of [100, 500, 1000, 5000, 10000]) {
+  const scale = Array.from({ length: size }, (_, i) => i + 1);
+  const scaled = tableIndex.getHtToTtcTableIndexView(scale);
+  assert.ok(scaled.rows.length <= tableIndex.HT_TO_TTC_TABLE_INDEX_MAX_ROWS, `cap @${size}`);
+  assert.equal(new Set(scaled.rows.map((r) => r.amountHt)).size, scaled.rows.length, `uniq @${size}`);
+  for (let i = 1; i < scaled.rows.length; i += 1) {
+    assert.ok(scaled.rows[i].amountHt > scaled.rows[i - 1].amountHt, `sorted @${size}`);
+  }
+  const covered = new Set(scaled.ranges.flatMap((r) => r.amounts));
+  assert.equal(covered.size, size, `no loss in ranges @${size}`);
+  if (size > tableIndex.HT_TO_TTC_TABLE_INDEX_MAX_ROWS) {
+    assert.equal(scaled.truncated, true, `truncated @${size}`);
+    assert.ok(scaled.deferredRanges.length > 0, `deferred @${size}`);
+  }
+}
+
+const scale1 = Array.from({ length: 10000 }, (_, i) => i + 1);
+const bigView = tableIndex.getHtToTtcTableIndexView(scale1);
+assert.ok(bigView.truncated);
+assert.ok(bigView.rows.length <= tableIndex.HT_TO_TTC_TABLE_INDEX_MAX_ROWS);
+assert.ok(bigView.deferredRanges.length > 0);
+assert.equal(
+  bigView.displayedRanges.reduce((sum, range) => sum + range.amounts.length, 0),
+  bigView.rows.length
+);
+assert.equal(tableIndex.htToTtcTableRangePath(101, 200), "/tableau-conversion-ht-ttc/101-a-200");
+assert.ok(!fs.existsSync(path.join(repoRoot, "src/app/tableau-conversion-ht-ttc/101-a-200")));
+
+const tableRoute = path.join(repoRoot, "src/app/tableau-conversion-ht-ttc/page.tsx");
+assert.ok(fs.existsSync(tableRoute));
+const tableRouteTxt = fs.readFileSync(tableRoute, "utf8");
+assert.ok(tableRouteTxt.includes("buildFaqPageSchema"));
+assert.ok(tableRouteTxt.includes("coverToOgInput"));
+assert.ok(tableRouteTxt.includes("index: true"));
+
+const publicPagesTxt2 = fs.readFileSync(path.join(repoRoot, "src/site/public-pages.ts"), "utf8");
+assert.ok(publicPagesTxt2.includes("getHtToTtcTableIndexMeta"));
+
+console.log("OK: test-ht-to-ttc-draft10 (hub + table index + series photo/OG)");
