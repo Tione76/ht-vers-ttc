@@ -80,6 +80,26 @@ export const HT_TO_TTC_SERIES_COVER: GuideCoverImage = cover(
   "Photo de Pavel Danilyuk via Pexels",
 );
 
+/**
+ * Photo unique de la série « X € TTC en HT » :
+ * illustration visible des fiches + base visuelle des OG dynamiques.
+ * Dimensions réelles du WebP : 1200 × 800.
+ */
+export const TTC_TO_HT_SERIES_COVER: GuideCoverImage = {
+  src: ogPath("Montants-TTC-en-HT.webp"),
+  alt: "Vue de dessus d'une calculatrice, d'une loupe, d'un marqueur et de formulaires fiscaux sur un bureau en bois",
+  width: 1200,
+  height: 800,
+  credit: "Photo de Mikhail Nilov via Pexels",
+};
+
+/** Rendu court du crédit pour les images OG dynamiques. */
+export function coverCreditToOgShort(credit: string): string {
+  const match = /^Photo de (.+) via Pexels$/.exec(credit);
+  if (match) return `Photo : ${match[1]} / Pexels`;
+  return credit;
+}
+
 /** Couvertures par slug de guide : source unique pour article, OG, sidebar et listes */
 export const GUIDE_COVERS: Record<string, GuideCoverImage> = {
   "quels-sont-les-taux-de-tva-en-france": cover(

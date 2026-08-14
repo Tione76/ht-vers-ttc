@@ -111,72 +111,84 @@ assert.equal(amounts.parseHtToTtcSlug("0150-euros-ht-en-ttc"), null);
 assert.equal(amounts.parseHtToTtcSlug("abc"), null);
 assert.equal(amounts.parseHtToTtcSlug("10-euro-ht-en-ttc"), null);
 
-// ── Draft / published (lot 1 : 10 → 500) ──
-const expectedLotCount =
+// ── Draft / published (lots 1–2 : 10 → 1 000) ──
+const expectedLot1Count =
   Math.floor(
     (publish.HT_TO_TTC_FIRST_LOT_MAX - publish.HT_TO_TTC_FIRST_LOT_MIN) / amounts.HT_TO_TTC_STEP
   ) + 1;
-assert.equal(expectedLotCount, 50, "first lot must be exactly 50 amounts");
-assert.equal(publish.countHtToTtcPublished(), 50);
-assert.equal(publish.countHtToTtcDrafts(), 950);
-assert.equal(publish.HT_TO_TTC_PUBLISHED.length, 50);
-assert.equal(publish.getPublishedHtToTtcAmounts().length, 50);
+const expectedLot2Count =
+  Math.floor(
+    (publish.HT_TO_TTC_SECOND_LOT_MAX - publish.HT_TO_TTC_SECOND_LOT_MIN) / amounts.HT_TO_TTC_STEP
+  ) + 1;
+assert.equal(expectedLot1Count, 50, "first lot must be exactly 50 amounts");
+assert.equal(expectedLot2Count, 50, "second lot must be exactly 50 amounts");
+assert.equal(publish.countHtToTtcPublished(), 100);
+assert.equal(publish.countHtToTtcDrafts(), 900);
+assert.equal(publish.HT_TO_TTC_PUBLISHED.length, 100);
+assert.equal(publish.getPublishedHtToTtcAmounts().length, 100);
 assert.equal(publish.getPublishedHtToTtcAmounts()[0], 10);
 assert.equal(publish.getPublishedHtToTtcAmounts()[49], 500);
-assert.equal(publish.getDraftHtToTtcAmounts()[0], 510);
+assert.equal(publish.getPublishedHtToTtcAmounts()[50], 510);
+assert.equal(publish.getPublishedHtToTtcAmounts()[99], 1000);
+assert.equal(publish.getDraftHtToTtcAmounts()[0], 1010);
 assert.equal(publish.getDraftHtToTtcAmounts().at(-1), 10000);
 
 for (let i = 1; i < publish.HT_TO_TTC_PUBLISHED.length; i += 1) {
   const prev = publish.HT_TO_TTC_PUBLISHED[i - 1];
   const curr = publish.HT_TO_TTC_PUBLISHED[i];
   assert.equal(curr.amount - prev.amount, 10, `no hole around ${curr.amount}`);
-  assert.equal(curr.datePublished, "2026-08-11");
 }
-assert.equal(publish.HT_TO_TTC_PUBLISHED[0].datePublished, "2026-08-11");
+for (const record of publish.HT_TO_TTC_PUBLISHED) {
+  const expectedDate =
+    record.amount <= publish.HT_TO_TTC_FIRST_LOT_MAX
+      ? publish.HT_TO_TTC_FIRST_LOT_DATE
+      : publish.HT_TO_TTC_SECOND_LOT_DATE;
+  assert.equal(record.datePublished, expectedDate, `date ${record.amount}`);
+}
 
 assert.equal(publish.isHtToTtcHubPublished(), true);
 assert.equal(publish.getHtToTtcRobots(10).index, true);
-assert.equal(publish.getHtToTtcRobots(10).follow, true);
 assert.equal(publish.getHtToTtcRobots(500).index, true);
-assert.equal(publish.getHtToTtcRobots(510).index, false);
-assert.equal(publish.getHtToTtcRobots(510).follow, false);
-assert.equal(publish.getHtToTtcRobots(1000).index, false);
+assert.equal(publish.getHtToTtcRobots(510).index, true);
+assert.equal(publish.getHtToTtcRobots(1000).index, true);
+assert.equal(publish.getHtToTtcRobots(1010).index, false);
+assert.equal(publish.getHtToTtcRobots(1010).follow, false);
 assert.equal(publish.getHtToTtcRobots(10000).index, false);
 assert.equal(publish.getHtToTtcHubRobots().index, true);
 assert.equal(publish.getHtToTtcHubRobots().follow, true);
 
 assert.equal(publish.getHtToTtcStatus(500), "published");
-assert.equal(publish.getHtToTtcStatus(510), "draft");
+assert.equal(publish.getHtToTtcStatus(510), "published");
+assert.equal(publish.getHtToTtcStatus(1000), "published");
+assert.equal(publish.getHtToTtcStatus(1010), "draft");
 assert.equal(publish.getHtToTtcPublishRecord(500)?.datePublished, "2026-08-11");
-assert.equal(publish.getHtToTtcPublishRecord(510), null);
-
-const nearby100 = paths.getNearbyHtToTtcAmounts(100);
-assert.ok(nearby100.length >= 4 && nearby100.length <= 6);
-assert.ok(nearby100.every((v) => publish.isHtToTtcPublished(v)));
-assert.ok(!nearby100.includes(100));
-assert.deepEqual(
-  nearby100.slice().sort((a, b) => Math.abs(a - 100) - Math.abs(b - 100) || a - b),
-  nearby100
-);
+assert.equal(publish.getHtToTtcPublishRecord(510)?.datePublished, "2026-08-14");
+assert.equal(publish.getHtToTtcPublishRecord(1000)?.datePublished, "2026-08-14");
+assert.equal(publish.getHtToTtcPublishRecord(1010), null);
 
 const nearby500 = paths.getNearbyHtToTtcAmounts(500);
 assert.ok(nearby500.length >= 4 && nearby500.length <= 6);
-assert.ok(nearby500.every((v) => v <= 500 && publish.isHtToTtcPublished(v)));
-assert.ok(!nearby500.includes(510));
-assert.ok(!nearby500.includes(520));
+assert.ok(nearby500.every((v) => publish.isHtToTtcPublished(v)));
+assert.ok(!nearby500.includes(500));
+assert.ok(nearby500.includes(510));
 
-const nearby510 = paths.getNearbyHtToTtcAmounts(510);
-assert.ok(nearby510.every((v) => publish.isHtToTtcPublished(v)));
-assert.ok(!nearby510.includes(510));
-assert.ok(!nearby510.includes(520));
+const nearby750 = paths.getNearbyHtToTtcAmounts(750);
+assert.ok(nearby750.every((v) => publish.isHtToTtcPublished(v)));
+assert.ok(!nearby750.includes(750));
+assert.ok(!nearby750.includes(1010));
+
+const nearby1000 = paths.getNearbyHtToTtcAmounts(1000);
+assert.ok(nearby1000.every((v) => publish.isHtToTtcPublished(v)));
+assert.ok(!nearby1000.includes(1000));
+assert.ok(!nearby1000.includes(1010));
 
 assert.equal(publish.HT_TO_TTC_PUBLISH_LOT_SIZE, 50);
 const nextLotDefault = publish.getNextHtToTtcPublishLot();
 const nextLot50 = publish.getNextHtToTtcPublishLot(50);
 assert.deepEqual(nextLotDefault, nextLot50);
 assert.equal(nextLotDefault.length, 50);
-assert.equal(nextLotDefault[0], 510);
-assert.equal(nextLotDefault[49], 1000);
+assert.equal(nextLotDefault[0], 1010);
+assert.equal(nextLotDefault[49], 1500);
 
 // ── Calculs + SEO pour montants clés ──
 const samples = [
@@ -212,7 +224,7 @@ for (const row of samples) {
   assert.ok(!page.metaDescription.includes(`${row.ttc20}`), "meta must not leak TTC");
   assert.equal(page.path, `/${row.amount}-euros-ht-en-ttc`);
   assert.equal(paths.htToTtcPath(row.amount), `/${row.amount}-euros-ht-en-ttc`);
-  const expectedStatus = row.amount <= 500 ? "published" : "draft";
+  const expectedStatus = row.amount <= 1000 ? "published" : "draft";
   assert.equal(publish.getHtToTtcStatus(row.amount), expectedStatus);
 }
 
@@ -224,15 +236,13 @@ assert.equal(paths.htToTtcPath(10000), "/10000-euros-ht-en-ttc");
 
 // ── Échantillons published / draft ──
 const sampleStatuses = [
-  { amount: 10, status: "published" },
-  { amount: 50, status: "published" },
-  { amount: 100, status: "published" },
-  { amount: 250, status: "published" },
-  { amount: 490, status: "published" },
-  { amount: 500, status: "published" },
-  { amount: 510, status: "draft" },
-  { amount: 1000, status: "draft" },
-  { amount: 10000, status: "draft" },
+  { amount: 10, status: "published", date: "2026-08-11" },
+  { amount: 500, status: "published", date: "2026-08-11" },
+  { amount: 510, status: "published", date: "2026-08-14" },
+  { amount: 750, status: "published", date: "2026-08-14" },
+  { amount: 1000, status: "published", date: "2026-08-14" },
+  { amount: 1010, status: "draft", date: null },
+  { amount: 10000, status: "draft", date: null },
 ];
 for (const row of sampleStatuses) {
   assert.equal(publish.getHtToTtcStatus(row.amount), row.status, `status ${row.amount}`);
@@ -241,7 +251,7 @@ for (const row of sampleStatuses) {
   assert.equal(robots.index, expectIndex);
   assert.equal(robots.follow, expectIndex);
   if (expectIndex) {
-    assert.equal(publish.getHtToTtcPublishRecord(row.amount)?.datePublished, "2026-08-11");
+    assert.equal(publish.getHtToTtcPublishRecord(row.amount)?.datePublished, row.date);
   } else {
     assert.equal(publish.getHtToTtcPublishRecord(row.amount), null);
   }
@@ -249,12 +259,13 @@ for (const row of sampleStatuses) {
 
 // ── Sitemap / Hub : published only ──
 const seriesPublic = publish.getPublishedHtToTtcPublicPages();
-assert.equal(seriesPublic.length, 50);
+assert.equal(seriesPublic.length, 100);
 assert.ok(seriesPublic.every((page) => page.indexable));
 assert.ok(seriesPublic.some((page) => page.path === "/10-euros-ht-en-ttc"));
 assert.ok(seriesPublic.some((page) => page.path === "/500-euros-ht-en-ttc"));
-assert.ok(!seriesPublic.some((page) => page.path === "/510-euros-ht-en-ttc"));
-assert.ok(!seriesPublic.some((page) => page.path === "/1000-euros-ht-en-ttc"));
+assert.ok(seriesPublic.some((page) => page.path === "/510-euros-ht-en-ttc"));
+assert.ok(seriesPublic.some((page) => page.path === "/1000-euros-ht-en-ttc"));
+assert.ok(!seriesPublic.some((page) => page.path === "/1010-euros-ht-en-ttc"));
 assert.ok(!seriesPublic.some((page) => page.path === "/10000-euros-ht-en-ttc"));
 
 const publicPagesTxt = fs.readFileSync(path.join(repoRoot, "src/site/public-pages.ts"), "utf8");
@@ -324,21 +335,21 @@ const ctaIdx = hubPageTxt.indexOf('id="ht-hub-cta-title"');
 assert.ok(commonIdx > 0 && findIdx > commonIdx && ctaIdx > findIdx, "section order: common → find → cta");
 
 const ranges = hubContent.buildHtToTtcHubRanges(publish.getPublishedHtToTtcAmounts());
-assert.equal(ranges.length, 5);
+assert.equal(ranges.length, 10);
 assert.equal(ranges[0].min, 10);
 assert.equal(ranges[0].max, 100);
 assert.equal(ranges[0].amounts.length, 10);
-assert.equal(ranges[4].min, 410);
-assert.equal(ranges[4].max, 500);
+assert.equal(ranges[9].min, 910);
+assert.equal(ranges[9].max, 1000);
 assert.ok(ranges.every((range) => range.amounts.every((amount) => publish.isHtToTtcPublished(amount))));
-assert.ok(!ranges.some((range) => range.amounts.includes(510)));
+assert.ok(!ranges.some((range) => range.amounts.includes(1010)));
 
 const common = hubContent.getHtToTtcCommonPublishedAmounts(10);
 assert.ok(common.length >= 6 && common.length <= 10);
 assert.equal(common.join(","), "10,20,50,100,150,200,250,300,400,500");
 assert.ok(common.every((amount) => publish.isHtToTtcPublished(amount)));
-assert.ok(!common.includes(510));
-assert.ok(!common.includes(1000));
+assert.ok(!common.includes(1010));
+assert.ok(!common.includes(750));
 
 const hubFaq = hubContent.buildHtToTtcHubFaqItems();
 assert.ok(hubFaq.length >= 3 && hubFaq.length <= 5);
@@ -456,11 +467,13 @@ assert.ok(tableMeta.description.includes("tableau de conversion HT en TTC"));
 assert.ok(tableMeta.title.length <= 65);
 
 const view = tableIndex.getHtToTtcTableIndexView();
-assert.equal(view.rows.length, 50);
+assert.equal(view.rows.length, 100);
 assert.equal(view.truncated, false);
 assert.ok(view.rows.every((row) => row.isPublished));
 assert.ok(view.rows.some((row) => row.amountHt === 500));
-assert.ok(!view.rows.some((row) => row.amountHt === 510));
+assert.ok(view.rows.some((row) => row.amountHt === 510));
+assert.ok(view.rows.some((row) => row.amountHt === 1000));
+assert.ok(!view.rows.some((row) => row.amountHt === 1010));
 assert.ok(view.rows.every((row) => row.path === `/${row.amountHt}-euros-ht-en-ttc`));
 
 const row10 = view.rows.find((row) => row.amountHt === 10);

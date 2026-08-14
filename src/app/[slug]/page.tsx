@@ -15,6 +15,14 @@ import {
   getHtToTtcRobots,
   getPublishedHtToTtcAmounts,
 } from "@/site/ht-to-ttc/ht-to-ttc-publish";
+import { TtcToHtAmountPage } from "@/site/ttc-to-ht/TtcToHtAmountPage";
+import { parseTtcToHtSlug, ttcToHtSlugFromAmount } from "@/site/ttc-to-ht/ttc-to-ht-amounts";
+import { buildTtcToHtPageContent } from "@/site/ttc-to-ht/ttc-to-ht-content";
+import { ttcToHtOgImageInput } from "@/site/ttc-to-ht/ttc-to-ht-og";
+import {
+  getTtcToHtRobots,
+  getPublishedTtcToHtAmounts,
+} from "@/site/ttc-to-ht/ttc-to-ht-publish";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -28,10 +36,13 @@ interface Props {
  */
 export function generateStaticParams() {
   const extra = getExtraPageSlugs(seoConfig).map((slug) => ({ slug }));
-  const amounts = getPublishedHtToTtcAmounts().map((amount) => ({
+  const htAmounts = getPublishedHtToTtcAmounts().map((amount) => ({
     slug: htToTtcSlugFromAmount(amount),
   }));
-  return [...extra, ...amounts];
+  const ttcAmounts = getPublishedTtcToHtAmounts().map((amount) => ({
+    slug: ttcToHtSlugFromAmount(amount),
+  }));
+  return [...extra, ...htAmounts, ...ttcAmounts];
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -46,6 +57,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       path: content.path,
       robots: getHtToTtcRobots(amount),
       ogImage: htToTtcOgImageInput(amount),
+    });
+  }
+
+  const amountTtc = parseTtcToHtSlug(slug);
+  if (amountTtc !== null) {
+    const content = buildTtcToHtPageContent(amountTtc);
+    return buildPageMetadata(config, seoConfig, {
+      title: content.title,
+      description: content.metaDescription,
+      path: content.path,
+      robots: getTtcToHtRobots(amountTtc),
+      ogImage: ttcToHtOgImageInput(amountTtc),
     });
   }
 
@@ -64,6 +87,11 @@ export default async function DynamicRootSlugPage({ params }: Props) {
   const amount = parseHtToTtcSlug(slug);
   if (amount !== null) {
     return <HtToTtcAmountPage amountHt={amount} />;
+  }
+
+  const amountTtc = parseTtcToHtSlug(slug);
+  if (amountTtc !== null) {
+    return <TtcToHtAmountPage amountTtc={amountTtc} />;
   }
 
   const page = getExtraPage(seoConfig, slug);

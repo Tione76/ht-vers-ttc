@@ -30,6 +30,11 @@ export const HT_TO_TTC_FIRST_LOT_MIN = 10;
 export const HT_TO_TTC_FIRST_LOT_MAX = 500;
 export const HT_TO_TTC_FIRST_LOT_DATE = "2026-08-11";
 
+/** Lot 2 : 510 € → 1 000 € (pas de 10). */
+export const HT_TO_TTC_SECOND_LOT_MIN = 510;
+export const HT_TO_TTC_SECOND_LOT_MAX = 1000;
+export const HT_TO_TTC_SECOND_LOT_DATE = "2026-08-14";
+
 function buildHtToTtcPublishRecords(
   min: number,
   max: number,
@@ -48,13 +53,20 @@ function buildHtToTtcPublishRecords(
 /**
  * Montants published uniquement.
  * Lot 1 : 10 → 500 (€), datePublished 2026-08-11.
+ * Lot 2 : 510 → 1 000 (€), datePublished 2026-08-14.
  */
-export const HT_TO_TTC_PUBLISHED: readonly HtToTtcPublishRecord[] =
-  buildHtToTtcPublishRecords(
+export const HT_TO_TTC_PUBLISHED: readonly HtToTtcPublishRecord[] = [
+  ...buildHtToTtcPublishRecords(
     HT_TO_TTC_FIRST_LOT_MIN,
     HT_TO_TTC_FIRST_LOT_MAX,
     HT_TO_TTC_FIRST_LOT_DATE,
-  );
+  ),
+  ...buildHtToTtcPublishRecords(
+    HT_TO_TTC_SECOND_LOT_MIN,
+    HT_TO_TTC_SECOND_LOT_MAX,
+    HT_TO_TTC_SECOND_LOT_DATE,
+  ),
+];
 
 /** Taille standard d'un lot de publication (lots suivants). */
 export const HT_TO_TTC_PUBLISH_LOT_SIZE = 50;

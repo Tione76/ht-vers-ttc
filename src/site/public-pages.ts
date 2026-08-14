@@ -16,6 +16,11 @@ import {
   isHtToTtcHubPublished,
 } from "./ht-to-ttc/ht-to-ttc-publish";
 import { getHtToTtcTableIndexMeta } from "./ht-to-ttc/ht-to-ttc-table-index";
+import {
+  getTtcToHtHubMeta,
+  getPublishedTtcToHtPublicPages,
+  isTtcToHtHubPublished,
+} from "./ttc-to-ht/ttc-to-ht-publish";
 
 export type PublicPageCategory = "tools" | "guides" | "faq" | "utility";
 
@@ -159,6 +164,19 @@ export function getAllPublicPages(): PublicPage[] {
 
   const htToTtcPublishedPages: PublicPage[] = getPublishedHtToTtcPublicPages();
 
+  /** Hub + fiches published de la série TTC → HT (les drafts ne sont jamais listés ici). */
+  const ttcToHtHubMeta = getTtcToHtHubMeta();
+  const ttcToHtHubPage: PublicPage = {
+    path: ttcToHtHubMeta.path,
+    title: ttcToHtHubMeta.h1,
+    category: "utility",
+    changefreq: "weekly",
+    priority: 0.65,
+    indexable: isTtcToHtHubPublished(),
+  };
+
+  const ttcToHtPublishedPages: PublicPage[] = getPublishedTtcToHtPublicPages();
+
   const tableIndexMeta = getHtToTtcTableIndexMeta();
   const htToTtcTableIndexPage: PublicPage = {
     path: tableIndexMeta.path,
@@ -182,6 +200,8 @@ export function getAllPublicPages(): PublicPage[] {
     ...extra,
     htToTtcHubPage,
     ...htToTtcPublishedPages,
+    ttcToHtHubPage,
+    ...ttcToHtPublishedPages,
   ];
 }
 
